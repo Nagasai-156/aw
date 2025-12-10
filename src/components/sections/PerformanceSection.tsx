@@ -93,9 +93,9 @@ export default function PerformanceSection() {
 
                         {/* Metric 2 */}
                         <div>
-                            <div className="text-[48px] font-bold leading-none mb-6 text-black">
+                            <div className="text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] font-bold leading-none mb-4 md:mb-6 text-black">
                                 500<span className="text-[#00FF41]">x</span>
-                                <span className="text-[20px] font-normal text-gray-600 ml-3">
+                                <span className="text-[16px] sm:text-[18px] md:text-[20px] font-normal text-gray-600 ml-2 md:ml-3 block sm:inline mt-2 sm:mt-0">
                                     faster finality time
                                 </span>
                             </div>
@@ -125,9 +125,9 @@ export default function PerformanceSection() {
 
                         {/* Metric 3 */}
                         <div>
-                            <div className="text-[48px] font-bold leading-none mb-6 text-black">
+                            <div className="text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] font-bold leading-none mb-4 md:mb-6 text-black">
                                 50<span className="text-[#00FF41]">x</span>
-                                <span className="text-[20px] font-normal text-gray-600 ml-3">
+                                <span className="text-[16px] sm:text-[18px] md:text-[20px] font-normal text-gray-600 ml-2 md:ml-3 block sm:inline mt-2 sm:mt-0">
                                     lower transaction cost
                                 </span>
                             </div>
