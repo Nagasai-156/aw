@@ -4,6 +4,15 @@ import { motion } from 'framer-motion';
 import { Calendar, User, Clock, ArrowLeft, Share2, Twitter, Linkedin, Facebook } from 'lucide-react';
 import Link from 'next/link';
 
+// Required for static export
+export function generateStaticParams() {
+    return [
+        { slug: 'introducing-arthachain' },
+        { slug: 'quantum-resistant-cryptography' },
+        { slug: 'achieving-1m-tps' },
+    ];
+}
+
 export default function BlogPostPage() {
     return (
         <main className="min-h-screen bg-white text-black">
