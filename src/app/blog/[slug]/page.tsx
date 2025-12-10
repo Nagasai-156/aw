@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Calendar, User, Clock, ArrowLeft, Share2, Twitter, Linkedin, Facebook } from 'lucide-react';
 import Link from 'next/link';
 
@@ -27,11 +24,7 @@ export default function BlogPostPage() {
                         BACK TO BLOG
                     </Link>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
+                    <div>
                         {/* Category Badge */}
                         <span className="inline-block text-xs sm:text-sm font-bold uppercase px-4 py-2 bg-[#00FF41] text-black mb-6">
                             ANNOUNCEMENT
@@ -57,7 +50,7 @@ export default function BlogPostPage() {
                                 <span>5 min read</span>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -71,29 +64,11 @@ export default function BlogPostPage() {
             {/* Article Content */}
             <article className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-[800px] mx-auto">
-                    {/* Share Buttons - Desktop Sidebar */}
-                    <div className="hidden lg:block fixed left-8 top-1/2 -translate-y-1/2">
-                        <div className="flex flex-col gap-4">
-                            <button className="w-12 h-12 border-2 border-black hover:bg-black hover:text-[#00FF41] transition-all flex items-center justify-center">
-                                <Share2 size={20} />
-                            </button>
-                            <button className="w-12 h-12 border-2 border-black hover:bg-black hover:text-[#00FF41] transition-all flex items-center justify-center">
-                                <Twitter size={20} />
-                            </button>
-                            <button className="w-12 h-12 border-2 border-black hover:bg-black hover:text-[#00FF41] transition-all flex items-center justify-center">
-                                <Linkedin size={20} />
-                            </button>
-                            <button className="w-12 h-12 border-2 border-black hover:bg-black hover:text-[#00FF41] transition-all flex items-center justify-center">
-                                <Facebook size={20} />
-                            </button>
-                        </div>
-                    </div>
-
                     {/* Content */}
                     <div className="prose prose-lg max-w-none">
                         <p className="text-xl sm:text-2xl font-semibold text-gray-800 leading-relaxed mb-8">
-                            Today marks a significant milestone in blockchain technology. We're thrilled to announce ArthaChain,
-                            a next-generation Layer 1 blockchain that pushes the boundaries of what's possible in decentralized infrastructure.
+                            Today marks a significant milestone in blockchain technology. We are thrilled to announce ArthaChain,
+                            a next-generation Layer 1 blockchain that pushes the boundaries of what is possible in decentralized infrastructure.
                         </p>
 
                         <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-black uppercase mt-12 mb-6">
@@ -106,8 +81,8 @@ export default function BlogPostPage() {
                         </p>
 
                         <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
-                            Our vision was clear: create a blockchain that doesn't compromise on speed, security, or decentralization.
-                            A platform that's ready for the next billion users and the next generation of decentralized applications.
+                            Our vision was clear: create a blockchain that does not compromise on speed, security, or decentralization.
+                            A platform that is ready for the next billion users and the next generation of decentralized applications.
                         </p>
 
                         <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-black uppercase mt-12 mb-6">
@@ -140,7 +115,7 @@ export default function BlogPostPage() {
                         {/* Quote Block */}
                         <div className="my-12 border-l-4 border-[#00FF41] pl-6 sm:pl-8 py-4">
                             <p className="text-xl sm:text-2xl font-semibold italic text-gray-800">
-                                "We're not just building another blockchain. We're building the infrastructure for the decentralized future."
+                                We are not just building another blockchain. We are building the infrastructure for the decentralized future.
                             </p>
                             <p className="text-sm sm:text-base text-gray-600 mt-4">
                                 - Dr. Sarah Chen, CTO
@@ -157,29 +132,30 @@ export default function BlogPostPage() {
 
                         {/* Stats Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 my-8 sm:my-12">
-                            {[
-                                { value: '1M+', label: 'Transactions/Sec' },
-                                { value: '<1s', label: 'Block Finality' },
-                                { value: '99.9%', label: 'Network Uptime' },
-                                { value: '$0.0001', label: 'Avg TX Fee' },
-                            ].map((stat, index) => (
-                                <div key={index} className="border-2 border-black p-6 text-center">
-                                    <div className="text-[32px] sm:text-[40px] md:text-[48px] font-black text-[#00FF41] mb-2">
-                                        {stat.value}
-                                    </div>
-                                    <div className="text-sm sm:text-base font-semibold uppercase tracking-wider">
-                                        {stat.label}
-                                    </div>
-                                </div>
-                            ))}
+                            <div className="border-2 border-black p-6 text-center">
+                                <div className="text-[32px] sm:text-[40px] md:text-[48px] font-black text-[#00FF41] mb-2">1M+</div>
+                                <div className="text-sm sm:text-base font-semibold uppercase tracking-wider">Transactions/Sec</div>
+                            </div>
+                            <div className="border-2 border-black p-6 text-center">
+                                <div className="text-[32px] sm:text-[40px] md:text-[48px] font-black text-[#00FF41] mb-2">&lt;1s</div>
+                                <div className="text-sm sm:text-base font-semibold uppercase tracking-wider">Block Finality</div>
+                            </div>
+                            <div className="border-2 border-black p-6 text-center">
+                                <div className="text-[32px] sm:text-[40px] md:text-[48px] font-black text-[#00FF41] mb-2">99.9%</div>
+                                <div className="text-sm sm:text-base font-semibold uppercase tracking-wider">Network Uptime</div>
+                            </div>
+                            <div className="border-2 border-black p-6 text-center">
+                                <div className="text-[32px] sm:text-[40px] md:text-[48px] font-black text-[#00FF41] mb-2">$0.0001</div>
+                                <div className="text-sm sm:text-base font-semibold uppercase tracking-wider">Avg TX Fee</div>
+                            </div>
                         </div>
 
                         <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-black uppercase mt-12 mb-6">
-                            What's Next
+                            What is Next
                         </h2>
 
                         <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
-                            This is just the beginning. Over the coming months, we'll be rolling out:
+                            This is just the beginning. Over the coming months, we will be rolling out:
                         </p>
 
                         <ul className="space-y-3 mb-8 text-base sm:text-lg text-gray-700">
@@ -206,19 +182,6 @@ export default function BlogPostPage() {
                             join our Discord community, and start building on ArthaChain today.
                         </p>
                     </div>
-
-                    {/* Mobile Share Buttons */}
-                    <div className="lg:hidden mt-12 pt-8 border-t-2 border-gray-200">
-                        <div className="text-sm font-bold uppercase tracking-wider mb-4">Share This Article</div>
-                        <div className="flex gap-3">
-                            <button className="flex-1 border-2 border-black hover:bg-black hover:text-[#00FF41] transition-all py-3 flex items-center justify-center gap-2 text-sm font-bold">
-                                <Twitter size={18} /> Twitter
-                            </button>
-                            <button className="flex-1 border-2 border-black hover:bg-black hover:text-[#00FF41] transition-all py-3 flex items-center justify-center gap-2 text-sm font-bold">
-                                <Linkedin size={18} /> LinkedIn
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </article>
 
@@ -230,25 +193,57 @@ export default function BlogPostPage() {
                     </h2>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="border-2 border-black bg-white hover:shadow-[8px_8px_0px_0px_rgba(0,255,65,1)] transition-all duration-300">
-                                <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 border-b-2 border-black"></div>
-                                <div className="p-6">
-                                    <span className="text-[10px] sm:text-[11px] font-bold uppercase px-2.5 py-1 bg-black text-[#00FF41]">
-                                        Technology
-                                    </span>
-                                    <h3 className="text-lg sm:text-xl font-black mt-4 mb-3">
-                                        Related Article Title {i}
-                                    </h3>
-                                    <p className="text-sm text-gray-700 mb-4">
-                                        Brief excerpt of the related article...
-                                    </p>
-                                    <button className="text-sm font-bold hover:text-[#00FF41] transition-colors uppercase">
-                                        READ MORE →
-                                    </button>
-                                </div>
+                        <div className="border-2 border-black bg-white hover:shadow-[8px_8px_0px_0px_rgba(0,255,65,1)] transition-all duration-300">
+                            <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 border-b-2 border-black"></div>
+                            <div className="p-6">
+                                <span className="text-[10px] sm:text-[11px] font-bold uppercase px-2.5 py-1 bg-black text-[#00FF41]">
+                                    Technology
+                                </span>
+                                <h3 className="text-lg sm:text-xl font-black mt-4 mb-3">
+                                    Quantum-Resistant Cryptography
+                                </h3>
+                                <p className="text-sm text-gray-700 mb-4">
+                                    How we are preparing for the post-quantum era...
+                                </p>
+                                <Link href="/blog/quantum-resistant-cryptography" className="text-sm font-bold hover:text-[#00FF41] transition-colors uppercase">
+                                    READ MORE →
+                                </Link>
                             </div>
-                        ))}
+                        </div>
+                        <div className="border-2 border-black bg-white hover:shadow-[8px_8px_0px_0px_rgba(0,255,65,1)] transition-all duration-300">
+                            <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 border-b-2 border-black"></div>
+                            <div className="p-6">
+                                <span className="text-[10px] sm:text-[11px] font-bold uppercase px-2.5 py-1 bg-black text-[#00FF41]">
+                                    Performance
+                                </span>
+                                <h3 className="text-lg sm:text-xl font-black mt-4 mb-3">
+                                    Achieving 1M+ TPS
+                                </h3>
+                                <p className="text-sm text-gray-700 mb-4">
+                                    The technical architecture behind our speed...
+                                </p>
+                                <Link href="/blog/achieving-1m-tps" className="text-sm font-bold hover:text-[#00FF41] transition-colors uppercase">
+                                    READ MORE →
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="border-2 border-black bg-white hover:shadow-[8px_8px_0px_0px_rgba(0,255,65,1)] transition-all duration-300">
+                            <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 border-b-2 border-black"></div>
+                            <div className="p-6">
+                                <span className="text-[10px] sm:text-[11px] font-bold uppercase px-2.5 py-1 bg-black text-[#00FF41]">
+                                    Ecosystem
+                                </span>
+                                <h3 className="text-lg sm:text-xl font-black mt-4 mb-3">
+                                    Building on ArthaChain
+                                </h3>
+                                <p className="text-sm text-gray-700 mb-4">
+                                    Developer tools and resources to get started...
+                                </p>
+                                <Link href="/blog" className="text-sm font-bold hover:text-[#00FF41] transition-colors uppercase">
+                                    READ MORE →
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

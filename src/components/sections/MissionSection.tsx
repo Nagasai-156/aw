@@ -213,11 +213,9 @@ export default function MissionSection() {
                             <div className="perspective-container" style={{ perspective: '2500px' }}>
                                 <div
                                     ref={cuboidRef}
-                                    className="cuboid-3d transition-transform duration-1000 ease-out"
+                                    className="cuboid-3d transition-transform duration-1000 ease-out w-[800px] xl:w-[1200px] h-[300px] xl:h-[450px]"
                                     style={{
                                         transformStyle: 'preserve-3d',
-                                        width: window.innerWidth < 1280 ? '800px' : '1200px',
-                                        height: window.innerWidth < 1280 ? '300px' : '450px',
                                     }}
                                 >
                                     {cuboidFaces.map((face, index) => (
@@ -225,7 +223,7 @@ export default function MissionSection() {
                                             key={face.id}
                                             className="cuboid-face absolute w-full h-full border-[2px] md:border-[3px] border-black shadow-2xl"
                                             style={{
-                                                transform: `rotateY(${index * 90}deg) translateZ(${window.innerWidth < 1280 ? '400px' : '600px'})`,
+                                                transform: `rotateY(${index * 90}deg) translateZ(400px)`,
                                                 backfaceVisibility: 'hidden',
                                             }}
                                         >

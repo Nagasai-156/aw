@@ -52,7 +52,7 @@ export default function StatsSection() {
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className={`p-6 sm:p-8 border-black sm:border-l ${index === 0 || (index === 2 && window.innerWidth >= 640 && window.innerWidth < 1024) ? 'sm:border-l-0' : ''} ${index === 0 ? 'sm:border-l-0' : ''} border-2 sm:border-2 sm:border-t-0 sm:border-b-0 sm:border-r-0`}
+                            className={`p-6 sm:p-8 border-black sm:border-l ${index === 0 ? 'sm:border-l-0' : ''} border-2 sm:border-2 sm:border-t-0 sm:border-b-0 sm:border-r-0`}
                         >
                             {/* Logo & Link */}
                             <div className="flex items-start justify-between mb-12">
