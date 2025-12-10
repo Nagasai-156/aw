@@ -65,15 +65,15 @@ export default function FeaturesSection() {
     return (
         <section className="relative w-full bg-black">
             {/* Title */}
-            <div className="absolute top-12 left-0 right-0 z-10">
-                <div className="max-w-[1400px] mx-auto px-8 text-center">
-                    <div className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 text-[#00FF41]">
+            <div className="absolute top-6 sm:top-8 md:top-10 lg:top-12 left-0 right-0 z-10">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-3 sm:mb-4 text-[#00FF41]">
                         CORE FEATURES
                     </div>
-                    <h2 className="text-[48px] md:text-[64px] font-black text-white mb-4">
+                    <h2 className="text-[32px] sm:text-[40px] md:text-[52px] lg:text-[64px] font-black text-white mb-3 sm:mb-4">
                         Explore ArthaChain
                     </h2>
-                    <p className="text-[16px] text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-sm sm:text-[15px] md:text-[16px] text-gray-400 max-w-2xl mx-auto">
                         Click on any feature to discover how ArthaChain is revolutionizing blockchain technology
                     </p>
                 </div>

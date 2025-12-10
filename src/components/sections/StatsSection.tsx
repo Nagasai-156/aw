@@ -29,14 +29,14 @@ export default function StatsSection() {
     ];
 
     return (
-        <section className="relative w-full bg-[#FAFAFA] py-24 px-8">
+        <section className="relative w-full bg-[#FAFAFA] py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
-                <div className="mb-12">
-                    <div className="text-[11px] font-medium tracking-[0.15em] uppercase mb-6">
+                <div className="mb-8 md:mb-10 lg:mb-12">
+                    <div className="text-[10px] sm:text-[11px] font-medium tracking-[0.15em] uppercase mb-4 md:mb-6">
                         DRIVING RESULTS
                     </div>
-                    <h2 className="text-[52px] font-bold leading-[1.1] mb-8 max-w-[600px]">
+                    <h2 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-bold leading-[1.1] mb-6 md:mb-8 max-w-[600px]">
                         Outsized impact for the biggest brands in AI
                     </h2>
                     <button className="border border-black px-6 py-3 text-[13px] font-medium hover:bg-black hover:text-white transition-colors inline-flex items-center gap-2">
@@ -48,11 +48,11 @@ export default function StatsSection() {
                 </div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-4 gap-0 mb-20 mt-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-0 mb-12 md:mb-16 lg:mb-20 mt-8 md:mt-12 lg:mt-16">
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className={`p-8 border-l border-black ${index === 0 ? 'border-l-0' : ''}`}
+                            className={`p-6 sm:p-8 border-black sm:border-l ${index === 0 || (index === 2 && window.innerWidth >= 640 && window.innerWidth < 1024) ? 'sm:border-l-0' : ''} ${index === 0 ? 'sm:border-l-0' : ''} border-2 sm:border-2 sm:border-t-0 sm:border-b-0 sm:border-r-0`}
                         >
                             {/* Logo & Link */}
                             <div className="flex items-start justify-between mb-12">
@@ -70,7 +70,7 @@ export default function StatsSection() {
                             </div>
 
                             {/* Metric */}
-                            <div className="text-[72px] font-bold leading-none mb-4">
+                            <div className="text-[48px] sm:text-[56px] md:text-[64px] lg:text-[72px] font-bold leading-none mb-4">
                                 {stat.metric}
                             </div>
 
@@ -83,8 +83,8 @@ export default function StatsSection() {
                 </div>
 
                 {/* Testimonial */}
-                <div className="text-center max-w-[900px] mx-auto py-12">
-                    <blockquote className="text-[28px] font-normal leading-[1.4] mb-6">
+                <div className="text-center max-w-[900px] mx-auto py-8 md:py-10 lg:py-12">
+                    <blockquote className="text-[18px] sm:text-[22px] md:text-[26px] lg:text-[28px] font-normal leading-[1.4] mb-4 md:mb-6">
                         "Every new AI project starts with evals in Braintrust—it's a game changer."
                     </blockquote>
                     <div className="flex flex-col items-center gap-3">

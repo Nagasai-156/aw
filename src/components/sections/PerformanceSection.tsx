@@ -2,28 +2,28 @@
 
 export default function PerformanceSection() {
     return (
-        <section className="relative w-full bg-white py-24 px-8">
+        <section className="relative w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
             <div className="max-w-[1400px] mx-auto">
-                <div className="grid grid-cols-12 gap-16">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
                     {/* Left Column - Text Content */}
-                    <div className="col-span-5">
+                    <div className="lg:col-span-5">
                         {/* Label */}
                         <div className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-8 text-[#00FF41]">
                             UNMATCHED PERFORMANCE
                         </div>
 
                         {/* Main Heading */}
-                        <h2 className="text-[56px] font-bold leading-[1.05] mb-16 text-black">
+                        <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-bold leading-[1.05] mb-10 md:mb-12 lg:mb-16 text-black">
                             ArthaChain is built for blockchain scalability
                         </h2>
 
                         {/* Description */}
-                        <p className="text-[16px] leading-relaxed mb-8 text-gray-700">
+                        <p className="text-sm sm:text-[15px] md:text-[16px] leading-relaxed mb-6 md:mb-8 text-gray-700">
                             Traditional blockchains can't handle the demands of modern decentralized applications. ArthaChain is designed specifically for high-throughput DeFi, NFTs, and enterprise use cases. Execute, validate, and finalize transactions 100x faster with ArthaChain.
                         </p>
 
                         {/* CTA Button */}
-                        <button className="border border-black px-8 py-4 text-[13px] font-medium tracking-[0.02em] hover:bg-black hover:text-white transition-all duration-200 inline-flex items-center gap-2 mb-20">
+                        <button className="border border-black px-6 md:px-8 py-3 md:py-4 text-[13px] font-medium tracking-[0.02em] hover:bg-black hover:text-white transition-all duration-200 inline-flex items-center gap-2 mb-12 md:mb-16 lg:mb-20 w-full sm:w-auto justify-center sm:justify-start">
                             View benchmarks
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
@@ -32,7 +32,7 @@ export default function PerformanceSection() {
 
                         {/* Testimonial */}
                         <blockquote className="mb-8">
-                            <p className="text-[18px] leading-relaxed mb-6 text-gray-800">
+                            <p className="text-base sm:text-[17px] md:text-[18px] leading-relaxed mb-4 md:mb-6 text-gray-800">
                                 "ArthaChain has completely changed how our team builds DeFi products. We've been able to scale to millions of users by achieving transaction speeds in seconds that would previously take hours."
                             </p>
                             <div className="text-[11px] tracking-[0.08em] uppercase text-gray-600 mb-3">
@@ -58,12 +58,12 @@ export default function PerformanceSection() {
                     </div>
 
                     {/* Right Column - Performance Metrics */}
-                    <div className="col-span-7 flex flex-col justify-center gap-12">
+                    <div className="lg:col-span-7 flex flex-col justify-center gap-8 md:gap-10 lg:gap-12">
                         {/* Metric 1 */}
                         <div>
-                            <div className="text-[48px] font-bold leading-none mb-6 text-black">
+                            <div className="text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] font-bold leading-none mb-4 md:mb-6 text-black">
                                 100,000<span className="text-[#00FF41]">x</span>
-                                <span className="text-[20px] font-normal text-gray-600 ml-3">
+                                <span className="text-[16px] sm:text-[18px] md:text-[20px] font-normal text-gray-600 ml-2 md:ml-3 block sm:inline mt-2 sm:mt-0">
                                     higher transaction throughput
                                 </span>
                             </div>
