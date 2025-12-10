@@ -98,7 +98,7 @@ export default function Header() {
 
                                 {/* Dropdown Menu */}
                                 {item.dropdown && activeDropdown === item.label && (
-                                    <div className="absolute top-full left-0 mt-2 w-[280px] bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                                    <div className="absolute top-full left-0 mt-0 w-[280px] bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                                         {item.dropdown.map((subItem, index) => (
                                             <Link
                                                 key={index}
