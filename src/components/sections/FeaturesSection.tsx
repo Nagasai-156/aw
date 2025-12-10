@@ -63,7 +63,7 @@ const arthachainFeatures = [
 
 export default function FeaturesSection() {
     return (
-        <section className="relative w-full bg-black">
+        <section className="relative w-full bg-black overflow-hidden">
             {/* Title */}
             <div className="absolute top-6 sm:top-8 md:top-10 lg:top-12 left-0 right-0 z-10">
                 <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -210,10 +210,10 @@ export default function MissionSection() {
                     /* Desktop/Tablet: 3D Cuboid */
                     <>
                         <div className="h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
-                            <div className="perspective-container" style={{ perspective: '2500px' }}>
+                            <div className="perspective-container overflow-hidden" style={{ perspective: '2500px' }}>
                                 <div
                                     ref={cuboidRef}
-                                    className="cuboid-3d transition-transform duration-1000 ease-out w-[800px] xl:w-[1200px] h-[300px] xl:h-[450px]"
+                                    className="cuboid-3d transition-transform duration-1000 ease-out w-[min(90vw,600px)] lg:w-[800px] xl:w-[1200px] h-[250px] lg:h-[300px] xl:h-[450px]"
                                     style={{
                                         transformStyle: 'preserve-3d',
                                     }}
@@ -223,7 +223,7 @@ export default function MissionSection() {
                                             key={face.id}
                                             className="cuboid-face absolute w-full h-full border-[2px] md:border-[3px] border-black shadow-2xl"
                                             style={{
-                                                transform: `rotateY(${index * 90}deg) translateZ(400px)`,
+                                                transform: `rotateY(${index * 90}deg) translateZ(300px)`,
                                                 backfaceVisibility: 'hidden',
                                             }}
                                         >

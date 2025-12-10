@@ -117,8 +117,11 @@
     @apply border-border outline-ring/50;
   }
 
+  html,
   body {
     @apply bg-white text-foreground;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   /* Custom typography for exact match */
