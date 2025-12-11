@@ -5,52 +5,52 @@ import Link from 'next/link';
 
 export default function Hero() {
     return (
-        <section className="relative bg-white min-h-screen flex items-center">
+        <section className="relative bg-white min-h-screen flex items-center overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center pt-16 sm:pt-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-8 lg:gap-16 xl:gap-20 items-center pt-16 sm:pt-20 md:pt-24">
                     {/* Left Content */}
-                    <div className="space-y-6 sm:space-y-8 md:space-y-10">
-                        {/* Main Heading - EXACT match with responsive sizing */}
-                        <div className="space-y-[-6px] sm:space-y-[-8px] md:space-y-[-10px] lg:space-y-[-12px]">
-                            <h1 className="text-[60px] sm:text-[80px] md:text-[100px] lg:text-[120px] xl:text-[140px] leading-[1] font-black tracking-[-0.04em] select-none">
-                                <span className="block text-[#00FF41] mb-[-3px] sm:mb-[-4px] md:mb-[-5px] lg:mb-[-6px]">BUILD</span>
-                                <span className="block text-black mb-[-3px] sm:mb-[-4px] md:mb-[-5px] lg:mb-[-6px]">SCALE</span>
+                    <div className="space-y-6 sm:space-y-8 md:space-y-6 lg:space-y-10">
+                        {/* Main Heading - Optimized for tablet */}
+                        <div className="space-y-[-4px] sm:space-y-[-6px] md:space-y-[-8px] lg:space-y-[-10px] xl:space-y-[-12px]">
+                            <h1 className="text-[52px] sm:text-[72px] md:text-[64px] lg:text-[100px] xl:text-[120px] 2xl:text-[140px] leading-[0.95] font-black tracking-[-0.04em] select-none">
+                                <span className="block text-[#00FF41]">BUILD</span>
+                                <span className="block text-black">SCALE</span>
                                 <span className="block text-black">INNOVATE</span>
                             </h1>
                         </div>
 
-                        {/* Description - exact font size and color */}
-                        <p className="text-[#6B7280] text-sm sm:text-[15px] leading-[1.7] max-w-[460px] font-normal">
+                        {/* Description - optimized for tablet readability */}
+                        <p className="text-[#6B7280] text-sm sm:text-[15px] md:text-[14px] lg:text-[15px] leading-[1.7] max-w-[420px] lg:max-w-[460px] font-normal">
                             Join the ArthaChain Network — a next-generation Layer 1 blockchain
                             for developers and innovators to build, deploy, and scale decentralized applications.
                         </p>
 
-                        {/* CTA Buttons - exact sizing with responsive adjustments */}
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+                        {/* CTA Buttons - tablet optimized */}
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-3 lg:gap-4 pt-2">
                             <Button
                                 asChild
-                                className="bg-black text-white hover:bg-black/90 px-8 sm:px-10 py-5 sm:py-6 md:py-7 text-[13px] font-medium tracking-[0.02em] rounded-none h-auto w-full sm:w-auto"
+                                className="bg-black text-white hover:bg-black/90 px-6 sm:px-8 md:px-6 lg:px-10 py-4 sm:py-5 md:py-4 lg:py-6 text-[12px] sm:text-[13px] font-medium tracking-[0.02em] rounded-none h-auto w-full sm:w-auto"
                             >
                                 <Link href="#waitlist">START BUILDING</Link>
                             </Button>
                             <Button
                                 asChild
                                 variant="outline"
-                                className="border-[2px] border-black bg-white text-black hover:bg-black hover:text-white px-8 sm:px-10 py-5 sm:py-6 md:py-7 text-[13px] font-medium tracking-[0.02em] rounded-none h-auto transition-all duration-200 w-full sm:w-auto"
+                                className="border-[2px] border-black bg-white text-black hover:bg-black hover:text-white px-6 sm:px-8 md:px-6 lg:px-10 py-4 sm:py-5 md:py-4 lg:py-6 text-[12px] sm:text-[13px] font-medium tracking-[0.02em] rounded-none h-auto transition-all duration-200 w-full sm:w-auto"
                             >
                                 <Link href="#features">VIEW ECOSYSTEM</Link>
                             </Button>
                         </div>
                     </div>
 
-                    {/* Right 3D Cube */}
-                    <div className="relative flex items-center justify-center lg:justify-end order-first lg:order-last">
+                    {/* Right 3D Cube - optimized for tablet */}
+                    <div className="relative flex items-center justify-center md:justify-end order-first md:order-last">
                         {/* Floating Icon - top right */}
-                        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#00FF41] flex items-center justify-center z-10 hover:rotate-45 transition-transform duration-300">
+                        <div className="absolute top-0 right-0 sm:top-4 sm:right-4 md:top-0 md:right-0 lg:top-4 lg:right-4 w-10 h-10 sm:w-12 sm:h-12 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-[#00FF41] flex items-center justify-center z-10 hover:rotate-45 transition-transform duration-300">
                             <svg
                                 viewBox="0 0 24 24"
                                 fill="none"
-                                className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
+                                className="w-5 h-5 sm:w-6 sm:h-6 md:w-5 md:h-5 lg:w-6 lg:h-6"
                                 stroke="black"
                                 strokeWidth="2.5"
                                 strokeLinecap="square"
@@ -59,8 +59,8 @@ export default function Hero() {
                             </svg>
                         </div>
 
-                        {/* 3D Cube - Isometric gradient box */}
-                        <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[540px] aspect-square">
+                        {/* 3D Cube - Isometric gradient box - tablet optimized */}
+                        <div className="relative w-full max-w-[280px] sm:max-w-[360px] md:max-w-[320px] lg:max-w-[420px] xl:max-w-[500px] aspect-square">
                             <div
                                 className="w-full h-full relative overflow-hidden"
                                 style={{
@@ -100,7 +100,7 @@ export default function Hero() {
 
                                 {/* Center glow effect */}
                                 <div
-                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full"
+                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 md:w-20 md:h-20 lg:w-28 lg:h-28 rounded-full"
                                     style={{
                                         background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)',
                                         filter: 'blur(30px)',

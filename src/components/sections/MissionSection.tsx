@@ -91,7 +91,8 @@ export default function MissionSection() {
 
     useEffect(() => {
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024);
+            // Show simple cards only on mobile, show 3D cuboid on tablet and above
+            setIsMobile(window.innerWidth < 768);
         };
 
         checkMobile();
@@ -173,15 +174,15 @@ export default function MissionSection() {
             style={{ minHeight: isMobile ? 'auto' : '100vh' }}
         >
             <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-12 md:mb-16 lg:mb-24">
-                    <h2 className="text-[40px] sm:text-[56px] md:text-[68px] lg:text-[80px] font-black leading-[0.95] tracking-tight mb-6 md:mb-8">
+                <div className="mb-10 md:mb-12 lg:mb-20">
+                    <h2 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[72px] xl:text-[80px] font-black leading-[0.95] tracking-tight mb-5 md:mb-6">
                         <span className="text-[#00FF41]">THE ARTHA</span>
                         <span className="text-black">CHAIN</span>
                         <br />
                         <span className="text-[#00FF41]">MISS</span>
                         <span className="text-black">ION</span>
                     </h2>
-                    <p className="text-gray-500 text-sm sm:text-base max-w-xl leading-relaxed">
+                    <p className="text-gray-500 text-sm sm:text-[15px] md:text-base max-w-xl leading-relaxed">
                         ArthaChain Network is a cutting-edge Layer 1 blockchain designed to empower
                         developers and innovators in the decentralized ecosystem.
                     </p>
