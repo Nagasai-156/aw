@@ -4,7 +4,7 @@ import ArthaChainBentoCards from '@/components/ui/arthachain-bento-cards';
 
 export default function FeaturesPage() {
     return (
-        <main className="min-h-screen">
+        <main className="min-h-screen pt-20">
             {/* Orbital Timeline Features */}
             <FeaturesSection />
 
