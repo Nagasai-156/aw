@@ -1,273 +1,256 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import './MissionSection.css';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-interface CuboidFace {
-    id: string;
-    number: string;
-    title: string;
-    description: string;
-    bgColor: string;
-    iconComponent: React.ReactNode;
-}
-
-const cuboidFaces: CuboidFace[] = [
+const featureItems = [
     {
-        id: '01',
-        number: 'O1',
-        title: 'BUILD YOUR NETWORK IRL',
-        description: 'This value encourages action, experimentation, and learning from real-world practice rather than relying solely on theory.',
-        bgColor: '#00FF41',
-        iconComponent: (
-            <div className="text-black text-[60px] md:text-[80px] font-normal">
-                <div className="flex flex-col items-center gap-1">
-                    <div className="flex gap-2 md:gap-3">
-                        <span>┌</span>
-                        <span>┐</span>
-                    </div>
-                    <div className="text-[45px] md:text-[60px]">+</div>
-                    <div className="flex gap-2 md:gap-3">
-                        <span>└</span>
-                        <span>┘</span>
-                    </div>
-                </div>
-            </div>
-        ),
+        id: 1,
+        number: '01',
+        word: 'SPEED',
+        fullTitle: 'LIGHTNING FAST TPS',
+        description: 'Process over 1 million transactions per second with AI-optimized consensus. Sub-second finality means your users never wait.',
+        color: '#00FF41',
+        accent: 'rgba(0, 255, 65, 0.08)'
     },
     {
-        id: '02',
-        number: 'O2',
-        title: 'SHARING KNOWLEDGE',
-        description: 'This value encourages action, experimentation, and learning from real-world practice rather than relying solely on theory.',
-        bgColor: '#D1D5DB',
-        iconComponent: (
-            <div className="text-black text-[45px] md:text-[60px] font-black flex gap-2">
-                <span>|</span>
-                <span>||</span>
-                <span>|</span>
-            </div>
-        ),
+        id: 2,
+        number: '02',
+        word: 'SECURE',
+        fullTitle: 'QUANTUM-RESISTANT',
+        description: 'Post-quantum cryptography with lattice-based signatures. Your assets protected against future quantum computing threats.',
+        color: '#0066FF',
+        accent: 'rgba(0, 102, 255, 0.08)'
     },
     {
-        id: '03',
-        number: 'O3',
-        title: 'BUILD WITH OTHERS',
-        description: 'This value encourages action, experimentation, and learning from real-world practice rather than relying solely on theory.',
-        bgColor: '#E5E7EB',
-        iconComponent: (
-            <div className="text-black text-[45px] md:text-[60px] font-black">
-                <div className="flex items-center gap-1">
-                    <span>┌</span>
-                    <span className="text-[32px] md:text-[40px]">···</span>
-                    <span>┘</span>
-                </div>
-            </div>
-        ),
+        id: 3,
+        number: '03',
+        word: 'SCALE',
+        fullTitle: 'INFINITE SCALABILITY',
+        description: 'Sharded architecture with dynamic state partitioning. Scale from thousands to billions of users seamlessly.',
+        color: '#FF00E5',
+        accent: 'rgba(255, 0, 229, 0.08)'
     },
     {
-        id: '04',
-        number: 'O4',
-        title: 'CELEBRATE PROGRESS',
-        description: 'This value encourages action, experimentation, and learning from real-world practice rather than relying solely on theory.',
-        bgColor: '#A7F3D0',
-        iconComponent: (
-            <div className="text-black text-[60px] md:text-[80px] font-black flex items-end gap-1">
-                <span className="text-[32px] md:text-[40px]">.</span>
-                <span className="text-[40px] md:text-[50px]">▌</span>
-                <span className="text-[50px] md:text-[65px]">▌</span>
-                <span className="text-[60px] md:text-[80px]">▌</span>
-            </div>
-        ),
+        id: 4,
+        number: '04',
+        word: 'SMART',
+        fullTitle: 'AI-POWERED CONSENSUS',
+        description: 'Neural networks predict transaction patterns and dynamically optimize consensus parameters in real-time.',
+        color: '#FF6B00',
+        accent: 'rgba(255, 107, 0, 0.08)'
     },
 ];
 
 export default function MissionSection() {
-    const [currentFace, setCurrentFace] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isHovering, setIsHovering] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
-    const cuboidRef = useRef<HTMLDivElement>(null);
-    const lastWheelTimeRef = useRef(0);
 
+    // Auto-rotate when not hovering
     useEffect(() => {
-        const checkMobile = () => {
-            // Show simple cards only on mobile, show 3D cuboid on tablet and above
-            setIsMobile(window.innerWidth < 768);
-        };
+        if (isHovering) return;
+        const interval = setInterval(() => {
+            setActiveIndex((prev) => (prev + 1) % featureItems.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [isHovering]);
 
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    useEffect(() => {
-        if (isMobile) return;
-
-        let animating = false;
-
-        const handleWheel = (e: WheelEvent) => {
-            if (!sectionRef.current || animating) return;
-
-            const section = sectionRef.current;
-            const rect = section.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            const sectionVisible = rect.top < windowHeight && rect.bottom > 0;
-
-            if (!sectionVisible) return;
-
-            const now = Date.now();
-            if (now - lastWheelTimeRef.current < 700) return;
-
-            const scrollingDown = e.deltaY > 0;
-            const scrollingUp = e.deltaY < 0;
-
-            if (scrollingDown && currentFace < 3) {
-                e.preventDefault();
-                animating = true;
-                lastWheelTimeRef.current = now;
-
-                const nextFace = currentFace + 1;
-                setCurrentFace(nextFace);
-
-                if (cuboidRef.current) {
-                    cuboidRef.current.style.transform = `rotateY(-${nextFace * 90}deg)`;
-                }
-
-                setTimeout(() => {
-                    animating = false;
-                }, 700);
-            } else if (scrollingUp && currentFace > 0) {
-                e.preventDefault();
-                animating = true;
-                lastWheelTimeRef.current = now;
-
-                const nextFace = currentFace - 1;
-                setCurrentFace(nextFace);
-
-                if (cuboidRef.current) {
-                    cuboidRef.current.style.transform = `rotateY(-${nextFace * 90}deg)`;
-                }
-
-                setTimeout(() => {
-                    animating = false;
-                }, 700);
-            }
-        };
-
-        if (cuboidRef.current) {
-            cuboidRef.current.style.transform = `rotateY(-${currentFace * 90}deg)`;
-        }
-
-        window.addEventListener('wheel', handleWheel, { passive: false });
-
-        return () => {
-            window.removeEventListener('wheel', handleWheel);
-        };
-    }, [currentFace, isMobile]);
+    const activeItem = featureItems[activeIndex];
 
     return (
         <section
             ref={sectionRef}
-            className="relative w-full py-12 md:py-16 lg:py-20 bg-white"
-            style={{ minHeight: isMobile ? 'auto' : '100vh' }}
+            className="relative w-full min-h-screen bg-white overflow-hidden flex items-center"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
         >
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-10 md:mb-12 lg:mb-20">
-                    <h2 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[72px] xl:text-[80px] font-black leading-[0.95] tracking-tight mb-5 md:mb-6">
-                        <span className="text-[#00FF41]">THE ARTHA</span>
-                        <span className="text-black">CHAIN</span>
-                        <br />
-                        <span className="text-[#00FF41]">MISS</span>
-                        <span className="text-black">ION</span>
-                    </h2>
-                    <p className="text-gray-500 text-sm sm:text-[15px] md:text-base max-w-xl leading-relaxed">
-                        ArthaChain Network is a cutting-edge Layer 1 blockchain designed to empower
-                        developers and innovators in the decentralized ecosystem.
-                    </p>
-                </div>
+            {/* Dynamic Background Glow */}
+            <motion.div
+                className="absolute inset-0 opacity-40"
+                animate={{
+                    background: `radial-gradient(circle at 70% 50%, ${activeItem.accent} 0%, transparent 50%)`
+                }}
+                transition={{ duration: 1 }}
+            />
 
-                {/* Mobile: Simple Cards */}
-                {isMobile ? (
-                    <div className="space-y-6">
-                        {cuboidFaces.map((face) => (
-                            <div
-                                key={face.id}
-                                className="border-[2px] border-black shadow-lg overflow-hidden"
-                            >
-                                <div className="flex items-center justify-center h-32 sm:h-40" style={{ backgroundColor: face.bgColor }}>
-                                    {face.iconComponent}
-                                </div>
-                                <div className="bg-white p-6 sm:p-8">
-                                    <span className="text-2xl sm:text-3xl font-black">[ {face.number} ]</span>
-                                    <h3 className="text-xl sm:text-2xl font-black uppercase leading-tight mt-3 mb-2">{face.title}</h3>
-                                    <p className="text-gray-600 text-sm sm:text-[15px] leading-relaxed">{face.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    /* Desktop/Tablet: 3D Cuboid */
-                    <>
-                        <div className="h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
-                            <div className="perspective-container overflow-hidden" style={{ perspective: '2500px' }}>
-                                <div
-                                    ref={cuboidRef}
-                                    className="cuboid-3d transition-transform duration-1000 ease-out w-[min(90vw,600px)] lg:w-[800px] xl:w-[1200px] h-[250px] lg:h-[300px] xl:h-[450px]"
+            {/* Grid Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+            {/* Giant Background Number */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeItem.number}
+                        initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                        animate={{ opacity: 0.04, scale: 1, rotateY: 0 }}
+                        exit={{ opacity: 0, scale: 1.2, rotateY: 90 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="text-[40vw] md:text-[50vw] font-black text-black select-none leading-none"
+                        style={{ fontFamily: 'system-ui' }}
+                    >
+                        {activeItem.number}
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+
+            <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 w-full py-20">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    {/* Left Side - Interactive Word Display */}
+                    <div className="relative">
+                        {/* Section Label */}
+                        <motion.div
+                            className="flex items-center gap-4 mb-8"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <motion.div
+                                className="h-[2px] w-8"
+                                animate={{ backgroundColor: activeItem.color }}
+                                transition={{ duration: 0.5 }}
+                            />
+                            <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-black/40">KEY FEATURES</span>
+                        </motion.div>
+
+                        {/* Dynamic Word */}
+                        <div className="relative h-[200px] sm:h-[280px] md:h-[350px] lg:h-[400px] flex items-center">
+                            <AnimatePresence mode="wait">
+                                <motion.h2
+                                    key={activeItem.word}
+                                    initial={{ opacity: 0, y: 100, rotateX: -45 }}
+                                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                                    exit={{ opacity: 0, y: -100, rotateX: 45 }}
+                                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                    className="text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px] xl:text-[240px] font-black leading-[0.8] tracking-[-0.05em]"
                                     style={{
-                                        transformStyle: 'preserve-3d',
+                                        color: activeItem.color,
+                                        textShadow: `0 0 80px ${activeItem.accent}`
                                     }}
                                 >
-                                    {cuboidFaces.map((face, index) => (
-                                        <div
-                                            key={face.id}
-                                            className="cuboid-face absolute w-full h-full border-[2px] md:border-[3px] border-black shadow-2xl"
-                                            style={{
-                                                transform: `rotateY(${index * 90}deg) translateZ(300px)`,
-                                                backfaceVisibility: 'hidden',
-                                            }}
-                                        >
-                                            <div className="grid grid-cols-2 h-full">
-                                                <div className="flex items-center justify-center" style={{ backgroundColor: face.bgColor }}>
-                                                    {face.iconComponent}
-                                                </div>
-                                                <div className="bg-white p-6 md:p-10 lg:p-16 flex flex-col justify-center">
-                                                    <div className="space-y-3 md:space-y-4 lg:space-y-5">
-                                                        <span className="text-2xl md:text-3xl lg:text-[36px] font-black">[ {face.number} ]</span>
-                                                        <h3 className="text-xl md:text-2xl lg:text-[32px] font-black uppercase leading-tight">{face.title}</h3>
-                                                        <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed">{face.description}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                                    {activeItem.word}
+                                </motion.h2>
+                            </AnimatePresence>
                         </div>
 
-                        <div className="flex justify-center mt-8 gap-3 md:gap-4">
-                            {[0, 1, 2, 3].map((index) => (
+                        {/* Progress Dots */}
+                        <div className="flex gap-3 mt-8">
+                            {featureItems.map((item, index) => (
                                 <button
-                                    key={index}
-                                    onClick={() => {
-                                        setCurrentFace(index);
-                                        if (cuboidRef.current) {
-                                            cuboidRef.current.style.transform = `rotateY(-${index * 90}deg)`;
-                                        }
-                                    }}
-                                    className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 hover:scale-110"
-                                    style={{
-                                        backgroundColor: index === currentFace ? '#00FF41' : '#D1D5DB',
-                                        transform: index === currentFace ? 'scale(1.5)' : 'scale(1)',
-                                    }}
-                                    aria-label={`View mission ${index + 1}`}
-                                />
+                                    key={item.id}
+                                    onClick={() => setActiveIndex(index)}
+                                    className="relative group"
+                                >
+                                    <motion.div
+                                        className="w-3 h-3 rounded-full transition-all duration-300"
+                                        animate={{
+                                            backgroundColor: index === activeIndex ? activeItem.color : 'rgba(0,0,0,0.15)',
+                                            scale: index === activeIndex ? 1.3 : 1
+                                        }}
+                                    />
+                                    {index === activeIndex && (
+                                        <motion.div
+                                            layoutId="activeDot"
+                                            className="absolute inset-[-4px] rounded-full border-2"
+                                            style={{ borderColor: activeItem.color }}
+                                            transition={{ duration: 0.3 }}
+                                        />
+                                    )}
+                                </button>
                             ))}
                         </div>
-                    </>
-                )}
+                    </div>
+
+                    {/* Right Side - Content Cards Stack */}
+                    <div className="relative">
+                        <div className="space-y-4">
+                            {featureItems.map((item, index) => {
+                                const isActive = index === activeIndex;
+
+                                return (
+                                    <motion.div
+                                        key={item.id}
+                                        onClick={() => setActiveIndex(index)}
+                                        animate={{
+                                            opacity: isActive ? 1 : 0.4,
+                                            x: isActive ? 0 : 20,
+                                            scale: isActive ? 1 : 0.98,
+                                        }}
+                                        transition={{ duration: 0.4 }}
+                                        className={`relative p-6 sm:p-8 cursor-pointer transition-all duration-300 border-l-4`}
+                                        style={{
+                                            borderColor: isActive ? item.color : 'rgba(0,0,0,0.1)',
+                                            backgroundColor: isActive ? item.accent : 'transparent'
+                                        }}
+                                    >
+                                        {/* Number & Title Row */}
+                                        <div className="flex items-start gap-4 sm:gap-6 mb-4">
+                                            <span
+                                                className="text-[32px] sm:text-[40px] md:text-[48px] font-black leading-none transition-colors duration-300"
+                                                style={{ color: isActive ? item.color : 'rgba(0,0,0,0.2)' }}
+                                            >
+                                                {item.number}
+                                            </span>
+                                            <div>
+                                                <h3 className="text-lg sm:text-xl md:text-2xl font-black text-black uppercase tracking-tight">
+                                                    {item.fullTitle}
+                                                </h3>
+                                            </div>
+                                        </div>
+
+                                        {/* Description - Only show when active */}
+                                        <AnimatePresence>
+                                            {isActive && (
+                                                <motion.p
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="text-black/60 text-sm sm:text-base leading-relaxed pl-0 sm:pl-[56px] md:pl-[64px]"
+                                                >
+                                                    {item.description}
+                                                </motion.p>
+                                            )}
+                                        </AnimatePresence>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* CTA */}
+                        <motion.div
+                            className="mt-10 sm:mt-12 pl-0 sm:pl-4"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            <button
+                                className="group flex items-center gap-4 text-black/50 hover:text-black transition-colors"
+                            >
+                                <span className="text-[13px] sm:text-[14px] font-bold tracking-wider uppercase">Explore All Features</span>
+                                <motion.div
+                                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300"
+                                    style={{ backgroundColor: activeItem.color }}
+                                    whileHover={{ scale: 1.1 }}
+                                >
+                                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </motion.div>
+                            </button>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
+
+            {/* Bottom Accent Line */}
+            <motion.div
+                className="absolute bottom-0 left-0 right-0 h-[2px]"
+                animate={{
+                    background: `linear-gradient(90deg, transparent, ${activeItem.color}, transparent)`
+                }}
+                transition={{ duration: 0.5 }}
+            />
         </section>
     );
 }
