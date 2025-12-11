@@ -10,7 +10,7 @@ const techStack = [
         icon: Cpu,
         title: 'AI-Powered Consensus',
         description: 'Neural network-driven consensus mechanism that adapts to network conditions in real-time',
-        color: '#00FF41',
+        color: '#8c52ff',
         stats: ['99.9% Uptime', '1M+ TPS', '<1s Finality'],
     },
     {
@@ -18,7 +18,7 @@ const techStack = [
         icon: Shield,
         title: 'Quantum-Resistant Security',
         description: 'Post-quantum cryptography with lattice-based signatures for future-proof security',
-        color: '#00E0FF',
+        color: '#450693',
         stats: ['256-bit Security', 'Zero Breaches', 'Military Grade'],
     },
     {
@@ -26,7 +26,7 @@ const techStack = [
         icon: Database,
         title: 'Sharded Vector Database',
         description: 'Distributed storage system with automatic sharding and content addressing',
-        color: '#FF00E5',
+        color: '#ff4080',
         stats: ['Infinite Scale', 'Low Latency', 'IPFS Compatible'],
     },
     {
@@ -34,7 +34,7 @@ const techStack = [
         icon: Network,
         title: 'Multi-Layer Architecture',
         description: 'Modular design with separate consensus, execution, and data availability layers',
-        color: '#FFE500',
+        color: '#ffc502',
         stats: ['High Throughput', 'Low Cost', 'Composable'],
     },
     {
@@ -42,7 +42,7 @@ const techStack = [
         icon: Code,
         title: 'Smart Contract Engine',
         description: 'WebAssembly-based VM supporting multiple programming languages',
-        color: '#FF5500',
+        color: '#8c52ff',
         stats: ['Multi-Language', 'Gas Efficient', 'Secure by Default'],
     },
     {
@@ -50,7 +50,7 @@ const techStack = [
         icon: Zap,
         title: 'Lightning Fast Execution',
         description: 'Parallel transaction processing with optimistic execution and fraud proofs',
-        color: '#00FFAA',
+        color: '#ff4080',
         stats: ['Parallel Exec', 'Sub-second', 'Optimistic'],
     },
 ];
@@ -71,19 +71,19 @@ export default function TechnologyPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#00FF41]">
+                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#8c52ff]">
                             NEXT-GENERATION BLOCKCHAIN
                         </div>
                         <h1 className="text-[56px] sm:text-[80px] md:text-[100px] lg:text-[120px] xl:text-[140px] font-black leading-[0.9] mb-6 sm:mb-8">
                             <span className="text-white">TECH</span>
                             <br />
-                            <span className="text-[#00FF41]">STACK</span>
+                            <span className="text-[#8c52ff]">STACK</span>
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mb-8 sm:mb-12">
                             Built from the ground up with cutting-edge technology for unmatched performance, security, and scalability
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                            <button className="bg-[#00FF41] hover:bg-[#00DD35] text-black px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
+                            <button className="bg-[#8c52ff] hover:bg-[#7a45e0] text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
                                 VIEW WHITEPAPER
                             </button>
                             <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
@@ -99,7 +99,7 @@ export default function TechnologyPage() {
                 <div className="max-w-[1400px] mx-auto">
                     <div className="text-center mb-12 sm:mb-16 md:mb-20">
                         <h2 className="text-[40px] sm:text-[52px] md:text-[64px] lg:text-[72px] font-black mb-6">
-                            CORE <span className="text-[#00FF41]">TECHNOLOGIES</span>
+                            CORE <span className="text-[#ff4080]">TECHNOLOGIES</span>
                         </h2>
                         <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
                             Six pillars powering the future of decentralized infrastructure
@@ -182,15 +182,15 @@ export default function TechnologyPage() {
             <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white text-black">
                 <div className="max-w-[1400px] mx-auto">
                     <h2 className="text-[40px] sm:text-[52px] md:text-[64px] font-black text-center mb-12 sm:mb-16 md:mb-20">
-                        BY THE <span className="text-[#00FF41]">NUMBERS</span>
+                        BY THE <span className="text-[#8c52ff]">NUMBERS</span>
                     </h2>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                         {[
-                            { value: '1M+', label: 'Transactions/Sec', color: '#00FF41' },
-                            { value: '<1s', label: 'Block Finality', color: '#00E0FF' },
-                            { value: '99.9%', label: 'Network Uptime', color: '#FF00E5' },
-                            { value: '$0.0001', label: 'Avg Transaction Fee', color: '#FFE500' },
+                            { value: '1M+', label: 'Transactions/Sec', color: '#8c52ff' },
+                            { value: '<1s', label: 'Block Finality', color: '#450693' },
+                            { value: '99.9%', label: 'Network Uptime', color: '#ff4080' },
+                            { value: '$0.0001', label: 'Avg Transaction Fee', color: '#ffc502' },
                         ].map((metric, index) => (
                             <motion.div
                                 key={index}
@@ -219,7 +219,7 @@ export default function TechnologyPage() {
             <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-[1400px] mx-auto text-center">
                     <h2 className="text-[40px] sm:text-[52px] md:text-[64px] font-black mb-6 sm:mb-8">
-                        MULTI-LAYER <span className="text-[#00FF41]">ARCHITECTURE</span>
+                        MULTI-LAYER <span className="text-[#ffc502]">ARCHITECTURE</span>
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 sm:mb-16">
                         Modular design for maximum flexibility and scalability
@@ -227,9 +227,9 @@ export default function TechnologyPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                         {[
-                            { layer: 'LAYER 1', name: 'Consensus', items: ['Proof of Stake', 'AI Optimization', 'Fast Finality'] },
-                            { layer: 'LAYER 2', name: 'Execution', items: ['Wasm VM', 'Parallel Processing', 'Gas Efficiency'] },
-                            { layer: 'LAYER 3', name: 'Data Availability', items: ['Sharded Storage', 'IPFS Integration', 'Content Addressing'] },
+                            { layer: 'LAYER 1', name: 'Consensus', items: ['Proof of Stake', 'AI Optimization', 'Fast Finality'], color: '#8c52ff' },
+                            { layer: 'LAYER 2', name: 'Execution', items: ['Wasm VM', 'Parallel Processing', 'Gas Efficiency'], color: '#ff4080' },
+                            { layer: 'LAYER 3', name: 'Data Availability', items: ['Sharded Storage', 'IPFS Integration', 'Content Addressing'], color: '#ffc502' },
                         ].map((layer, index) => (
                             <motion.div
                                 key={index}
@@ -237,9 +237,13 @@ export default function TechnologyPage() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.2 }}
                                 viewport={{ once: true }}
-                                className="bg-white/5 border-2 border-white/10 p-6 sm:p-8 text-left hover:border-[#00FF41] transition-all duration-300"
+                                className="bg-white/5 border-2 border-white/10 p-6 sm:p-8 text-left transition-all duration-300"
+                                style={{ '--hover-color': layer.color } as React.CSSProperties}
                             >
-                                <div className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] text-[#00FF41] mb-3">
+                                <div
+                                    className="text-[10px] sm:text-[11px] font-bold tracking-[0.15em] mb-3"
+                                    style={{ color: layer.color }}
+                                >
                                     {layer.layer}
                                 </div>
                                 <h3 className="text-2xl sm:text-3xl font-black uppercase mb-6">
@@ -248,7 +252,10 @@ export default function TechnologyPage() {
                                 <ul className="space-y-3">
                                     {layer.items.map((item, i) => (
                                         <li key={i} className="flex items-center text-sm sm:text-base text-gray-400">
-                                            <span className="w-1.5 h-1.5 bg-[#00FF41] mr-3"></span>
+                                            <span
+                                                className="w-1.5 h-1.5 mr-3"
+                                                style={{ backgroundColor: layer.color }}
+                                            ></span>
                                             {item}
                                         </li>
                                     ))}

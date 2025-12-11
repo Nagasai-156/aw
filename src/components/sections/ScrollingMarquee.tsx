@@ -15,7 +15,7 @@ export default function ScrollingMarquee() {
     return (
         <section className="relative w-full overflow-hidden bg-black border-y border-white/10">
             {/* Top Gradient Line */}
-            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#00FF41] to-transparent opacity-60" />
+            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#8c52ff] to-transparent opacity-70" />
 
             {/* Scrolling Text Container */}
             <div className="relative w-full bg-black py-5 sm:py-6 md:py-8 overflow-hidden">
@@ -30,11 +30,11 @@ export default function ScrollingMarquee() {
                             {marqueeText.map((text, index) => (
                                 <React.Fragment key={`${setIndex}-${index}`}>
                                     {/* Decorative Star */}
-                                    <span className="text-[#00FF41] text-[20px] sm:text-[28px] md:text-[36px] shrink-0 opacity-80">✦</span>
+                                    <span className="text-[#ffc502] text-[20px] sm:text-[28px] md:text-[36px] shrink-0 opacity-90">✦</span>
 
                                     {/* Text */}
                                     <span
-                                        className="text-white/90 text-[24px] sm:text-[36px] md:text-[48px] lg:text-[56px] font-black tracking-[-0.02em] whitespace-nowrap uppercase shrink-0 hover:text-[#00FF41] transition-colors cursor-default"
+                                        className="text-white/90 text-[24px] sm:text-[36px] md:text-[48px] lg:text-[56px] font-black tracking-[-0.02em] whitespace-nowrap uppercase shrink-0 hover:text-[#ff4080] transition-colors cursor-default"
                                         style={{ fontWeight: 900 }}
                                     >
                                         {text}
@@ -47,7 +47,7 @@ export default function ScrollingMarquee() {
             </div>
 
             {/* Bottom Gradient Line */}
-            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#00FF41] to-transparent opacity-60" />
+            <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#ff4080] to-transparent opacity-70" />
         </section>
     );
 }

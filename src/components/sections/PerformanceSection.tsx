@@ -1,161 +1,154 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
+const metrics = [
+    {
+        value: '1M+',
+        label: 'TPS',
+        description: 'Transactions Per Second',
+        comparison: 'vs ~15 TPS on legacy chains',
+        color: '#8c52ff'
+    },
+    {
+        value: '<1s',
+        label: 'FINALITY',
+        description: 'Transaction Finality',
+        comparison: 'vs ~6 min on legacy chains',
+        color: '#ff4080'
+    },
+    {
+        value: '$0.0001',
+        label: 'AVG FEE',
+        description: 'Per Transaction',
+        comparison: 'vs ~$5 on legacy chains',
+        color: '#ffc502'
+    },
+    {
+        value: '99.99%',
+        label: 'UPTIME',
+        description: 'Network Reliability',
+        comparison: 'Enterprise-grade SLA',
+        color: '#450693'
+    }
+];
+
 export default function PerformanceSection() {
     return (
-        <section className="relative w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-[1400px] mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                    {/* Left Column - Text Content */}
-                    <div className="lg:col-span-5">
-                        {/* Label */}
-                        <div className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-8 text-[#00FF41]">
-                            UNMATCHED PERFORMANCE
-                        </div>
+        <section className="relative w-full bg-white py-16 sm:py-20 md:py-28 lg:py-36 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            {/* Subtle Grid Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-                        {/* Main Heading */}
-                        <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-bold leading-[1.05] mb-10 md:mb-12 lg:mb-16 text-black">
-                            ArthaChain is built for blockchain scalability
-                        </h2>
-
-                        {/* Description */}
-                        <p className="text-sm sm:text-[15px] md:text-[16px] leading-relaxed mb-6 md:mb-8 text-gray-700">
-                            Traditional blockchains can't handle the demands of modern decentralized applications. ArthaChain is designed specifically for high-throughput DeFi, NFTs, and enterprise use cases. Execute, validate, and finalize transactions 100x faster with ArthaChain.
-                        </p>
-
-                        {/* CTA Button */}
-                        <button className="border border-black px-6 md:px-8 py-3 md:py-4 text-[13px] font-medium tracking-[0.02em] hover:bg-black hover:text-white transition-all duration-200 inline-flex items-center gap-2 mb-12 md:mb-16 lg:mb-20 w-full sm:w-auto justify-center sm:justify-start">
-                            View benchmarks
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-                            </svg>
-                        </button>
-
-                        {/* Testimonial */}
-                        <blockquote className="mb-8">
-                            <p className="text-base sm:text-[17px] md:text-[18px] leading-relaxed mb-4 md:mb-6 text-gray-800">
-                                "ArthaChain has completely changed how our team builds DeFi products. We've been able to scale to millions of users by achieving transaction speeds in seconds that would previously take hours."
-                            </p>
-                            <div className="text-[11px] tracking-[0.08em] uppercase text-gray-600 mb-3">
-                                SARAH ZHANG, ENGINEERING LEAD AT DEFIBRIDGE
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 bg-black flex items-center justify-center">
-                                    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4" stroke="white" strokeWidth="2.5">
-                                        <path d="M12 2L12 22M2 12L22 12" />
-                                    </svg>
-                                </div>
-                                <span className="text-[14px] font-bold">DeFiBridge</span>
-                            </div>
-                        </blockquote>
-
-                        {/* Read Story Link */}
-                        <button className="text-[13px] font-medium hover:opacity-60 transition-opacity inline-flex items-center gap-1 border-b border-black pb-1">
-                            Read story
-                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                                <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-                            </svg>
-                        </button>
+            <div className="relative z-10 max-w-[1400px] mx-auto">
+                {/* Header */}
+                <motion.div
+                    className="text-center mb-12 sm:mb-16 md:mb-20"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="flex items-center justify-center gap-3 mb-6">
+                        <div className="h-[3px] w-8 bg-[#8c52ff]" />
+                        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-black/40">Unmatched Performance</span>
+                        <div className="h-[3px] w-8 bg-[#8c52ff]" />
                     </div>
 
-                    {/* Right Column - Performance Metrics */}
-                    <div className="lg:col-span-7 flex flex-col justify-center gap-8 md:gap-10 lg:gap-12">
-                        {/* Metric 1 */}
-                        <div>
-                            <div className="text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] font-bold leading-none mb-4 md:mb-6 text-black">
-                                100,000<span className="text-[#00FF41]">x</span>
-                                <span className="text-[16px] sm:text-[18px] md:text-[20px] font-normal text-gray-600 ml-2 md:ml-3 block sm:inline mt-2 sm:mt-0">
-                                    higher transaction throughput
-                                </span>
-                            </div>
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-4">
-                                    <div className="text-[11px] font-semibold tracking-[0.1em] uppercase w-32">
-                                        ARTHACHAIN
-                                    </div>
-                                    <div className="flex-1 h-2 bg-[#00FF41] relative">
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-bold text-black">
-                                            1,000,000 TPS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="text-[11px] font-semibold tracking-[0.1em] uppercase w-32 text-gray-400">
-                                        LEGACY CHAINS
-                                    </div>
-                                    <div className="flex-1 h-2 bg-gray-200 relative" style={{ width: '30%' }}>
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-medium text-gray-500">
-                                            ~10 TPS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <h2 className="text-[32px] sm:text-[44px] md:text-[56px] lg:text-[72px] font-black text-black leading-[1] tracking-[-0.03em] mb-4">
+                        Built For <span className="text-[#8c52ff]">Speed</span>
+                    </h2>
 
-                        {/* Metric 2 */}
-                        <div>
-                            <div className="text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] font-bold leading-none mb-4 md:mb-6 text-black">
-                                500<span className="text-[#00FF41]">x</span>
-                                <span className="text-[16px] sm:text-[18px] md:text-[20px] font-normal text-gray-600 ml-2 md:ml-3 block sm:inline mt-2 sm:mt-0">
-                                    faster finality time
-                                </span>
-                            </div>
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-4">
-                                    <div className="text-[11px] font-semibold tracking-[0.1em] uppercase w-32">
-                                        ARTHACHAIN
-                                    </div>
-                                    <div className="flex-1 h-2 bg-[#00FF41]" style={{ width: '25%' }}>
-                                        <div className="absolute right-[-80px] top-1/2 -translate-y-1/2 text-[11px] font-bold text-black whitespace-nowrap">
-                                            0.8 SEC
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="text-[11px] font-semibold tracking-[0.1em] uppercase w-32 text-gray-400">
-                                        LEGACY CHAINS
-                                    </div>
-                                    <div className="flex-1 h-2 bg-gray-200 relative">
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-medium text-gray-500">
-                                            ~400 SEC
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <p className="text-black/50 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+                        Experience blockchain performance that outpaces traditional networks by orders of magnitude
+                    </p>
+                </motion.div>
 
-                        {/* Metric 3 */}
-                        <div>
-                            <div className="text-[32px] sm:text-[36px] md:text-[40px] lg:text-[48px] font-bold leading-none mb-4 md:mb-6 text-black">
-                                50<span className="text-[#00FF41]">x</span>
-                                <span className="text-[16px] sm:text-[18px] md:text-[20px] font-normal text-gray-600 ml-2 md:ml-3 block sm:inline mt-2 sm:mt-0">
-                                    lower transaction cost
-                                </span>
-                            </div>
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-4">
-                                    <div className="text-[11px] font-semibold tracking-[0.1em] uppercase w-32">
-                                        ARTHACHAIN
-                                    </div>
-                                    <div className="flex-1 h-2 bg-[#00FF41]" style={{ width: '20%' }}>
-                                        <div className="absolute right-[-80px] top-1/2 -translate-y-1/2 text-[11px] font-bold text-black whitespace-nowrap">
-                                            $0.0001
-                                        </div>
-                                    </div>
+                {/* Metrics Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    {metrics.map((metric, index) => (
+                        <motion.div
+                            key={metric.label}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="group relative bg-white border-2 border-black/5 p-6 sm:p-8 hover:border-black/10 transition-all duration-300"
+                        >
+                            {/* Content */}
+                            <div className="relative z-10">
+                                {/* Value */}
+                                <div
+                                    className="text-[36px] sm:text-[44px] md:text-[52px] font-black leading-none mb-2"
+                                    style={{ color: metric.color }}
+                                >
+                                    {metric.value}
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="text-[11px] font-semibold tracking-[0.1em] uppercase w-32 text-gray-400">
-                                        LEGACY CHAINS
-                                    </div>
-                                    <div className="flex-1 h-2 bg-gray-200 relative">
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-medium text-gray-500">
-                                            ~$0.005
-                                        </div>
-                                    </div>
+
+                                {/* Label */}
+                                <div className="text-[11px] font-bold tracking-[0.2em] uppercase text-black/30 mb-4">
+                                    {metric.label}
+                                </div>
+
+                                {/* Divider */}
+                                <div
+                                    className="h-[3px] w-12 mb-4"
+                                    style={{ backgroundColor: metric.color }}
+                                />
+
+                                {/* Description */}
+                                <div className="text-black/70 text-sm font-medium mb-1">
+                                    {metric.description}
+                                </div>
+
+                                {/* Comparison */}
+                                <div className="text-black/40 text-xs">
+                                    {metric.comparison}
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    ))}
                 </div>
+
+                {/* Bottom Stats Row */}
+                <motion.div
+                    className="mt-12 sm:mt-16 md:mt-20 flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-16 lg:gap-24 border-t border-black/10 pt-10 sm:pt-12"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                >
+                    <div className="text-center">
+                        <div className="text-[28px] sm:text-[36px] md:text-[42px] font-black text-black">50K+</div>
+                        <div className="text-[10px] sm:text-[11px] font-medium tracking-[0.15em] uppercase text-black/40">Validators</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-[28px] sm:text-[36px] md:text-[42px] font-black text-black">200+</div>
+                        <div className="text-[10px] sm:text-[11px] font-medium tracking-[0.15em] uppercase text-black/40">dApps Built</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-[28px] sm:text-[36px] md:text-[42px] font-black text-black">$2B+</div>
+                        <div className="text-[10px] sm:text-[11px] font-medium tracking-[0.15em] uppercase text-black/40">TVL Secured</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-[28px] sm:text-[36px] md:text-[42px] font-black text-black">10M+</div>
+                        <div className="text-[10px] sm:text-[11px] font-medium tracking-[0.15em] uppercase text-black/40">Transactions</div>
+                    </div>
+                </motion.div>
+
+                {/* CTA */}
+                <motion.div
+                    className="mt-10 sm:mt-12 text-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                >
+                    <button className="group inline-flex items-center gap-3 bg-black text-white px-8 sm:px-12 py-4 sm:py-5 text-[13px] font-bold tracking-wider uppercase hover:bg-[#8c52ff] transition-colors duration-300">
+                        View Full Benchmarks
+                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </button>
+                </motion.div>
             </div>
         </section>
     );

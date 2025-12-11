@@ -125,13 +125,13 @@ export default function FAQPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#00FF41]">
+                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#8c52ff]">
                             FREQUENTLY ASKED QUESTIONS
                         </div>
                         <h1 className="text-[48px] sm:text-[72px] md:text-[100px] lg:text-[120px] font-black leading-[0.9] mb-6 sm:mb-8">
                             GOT
                             <br />
-                            <span className="text-[#00FF41]">QUESTIONS?</span>
+                            <span className="text-[#ffc502]">QUESTIONS?</span>
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto">
                             Find answers to common questions about ArthaChain
@@ -173,8 +173,8 @@ export default function FAQPage() {
                                             key={index}
                                             onClick={() => setActiveCategory(index)}
                                             className={`w-full text-left px-4 py-3 font-bold uppercase text-sm transition-all duration-200 border-2 ${activeCategory === index
-                                                    ? 'bg-black text-[#00FF41] border-black'
-                                                    : 'bg-white text-black border-black hover:bg-black hover:text-white'
+                                                ? 'bg-black text-[#8c52ff] border-black'
+                                                : 'bg-white text-black border-black hover:bg-black hover:text-white'
                                                 }`}
                                         >
                                             {cat.category}
@@ -256,13 +256,13 @@ export default function FAQPage() {
             <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black text-white">
                 <div className="max-w-[1400px] mx-auto text-center">
                     <h2 className="text-[40px] sm:text-[56px] md:text-[72px] font-black mb-6 sm:mb-8">
-                        STILL HAVE <span className="text-[#00FF41]">QUESTIONS?</span>
+                        STILL HAVE <span className="text-[#ff4080]">QUESTIONS?</span>
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12">
                         Can't find what you're looking for? Our team is here to help
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                        <button className="bg-[#00FF41] hover:bg-[#00DD35] text-black px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
+                        <button className="bg-[#8c52ff] hover:bg-[#ff4080] text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
                             CONTACT SUPPORT
                         </button>
                         <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
@@ -276,7 +276,7 @@ export default function FAQPage() {
             <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-[1400px] mx-auto">
                     <h2 className="text-[32px] sm:text-[40px] md:text-[48px] font-black text-center mb-12 sm:mb-16">
-                        HELPFUL <span className="text-[#00FF41]">RESOURCES</span>
+                        HELPFUL <span className="text-[#8c52ff]">RESOURCES</span>
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

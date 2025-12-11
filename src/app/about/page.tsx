@@ -8,25 +8,25 @@ const values = [
         icon: Target,
         title: 'INNOVATION FIRST',
         description: 'Pushing boundaries with AI-powered consensus and quantum-resistant security',
-        color: '#00FF41',
+        color: '#8c52ff',
     },
     {
         icon: Users,
         title: 'COMMUNITY DRIVEN',
         description: 'Built by developers, for developers, with the community at our core',
-        color: '#00E0FF',
+        color: '#450693',
     },
     {
         icon: Zap,
         title: 'PERFORMANCE',
         description: 'Uncompromising speed and scalability for the next billion users',
-        color: '#FF00E5',
+        color: '#ff4080',
     },
     {
         icon: Globe,
         title: 'GLOBAL IMPACT',
         description: 'Democratizing access to blockchain technology worldwide',
-        color: '#FFE500',
+        color: '#ffc502',
     },
 ];
 
@@ -38,10 +38,10 @@ const team = [
 ];
 
 const milestones = [
-    { year: '2023 Q1', event: 'Project Inception', description: 'Research and initial development' },
-    { year: '2023 Q3', event: 'Testnet Launch', description: 'Public testing phase begins' },
-    { year: '2024 Q1', event: 'Mainnet Beta', description: 'Limited mainnet deployment' },
-    { year: '2024 Q4', event: 'Full Launch', description: 'Public mainnet release' },
+    { year: '2023 Q1', event: 'Project Inception', description: 'Research and initial development', color: '#8c52ff' },
+    { year: '2023 Q3', event: 'Testnet Launch', description: 'Public testing phase begins', color: '#ff4080' },
+    { year: '2024 Q1', event: 'Mainnet Beta', description: 'Limited mainnet deployment', color: '#ffc502' },
+    { year: '2024 Q4', event: 'Full Launch', description: 'Public mainnet release', color: '#8c52ff' },
 ];
 
 export default function AboutPage() {
@@ -58,13 +58,13 @@ export default function AboutPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#00FF41]">
+                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#8c52ff]">
                             ABOUT ARTHACHAIN
                         </div>
                         <h1 className="text-[48px] sm:text-[72px] md:text-[100px] lg:text-[120px] xl:text-[140px] font-black leading-[0.9] mb-6 sm:mb-8">
                             BUILDING THE
                             <br />
-                            <span className="text-[#00FF41]">FUTURE</span>
+                            <span className="text-[#ff4080]">FUTURE</span>
                         </h1>
                         <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
                             We're on a mission to create the most advanced, scalable, and secure blockchain infrastructure for the decentralized future
@@ -82,7 +82,7 @@ export default function AboutPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 sm:mb-6 text-[#00FF41]">
+                            <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 sm:mb-6 text-[#8c52ff]">
                                 OUR MISSION
                             </div>
                             <h2 className="text-[40px] sm:text-[52px] md:text-[64px] font-black leading-[0.95] mb-6 sm:mb-8">
@@ -102,10 +102,10 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             className="relative"
                         >
-                            <div className="aspect-square bg-gradient-to-br from-[#00FF41] via-[#00E0FF] to-[#FF00E5] p-0.5">
+                            <div className="aspect-square bg-gradient-to-br from-[#8c52ff] via-[#ff4080] to-[#ffc502] p-0.5">
                                 <div className="w-full h-full bg-white flex items-center justify-center">
                                     <div className="text-center p-8 sm:p-12">
-                                        <div className="text-[64px] sm:text-[80px] md:text-[96px] font-black text-[#00FF41] mb-4">
+                                        <div className="text-[64px] sm:text-[80px] md:text-[96px] font-black text-[#8c52ff] mb-4">
                                             1M+
                                         </div>
                                         <div className="text-xl sm:text-2xl font-bold uppercase tracking-wider">
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 <div className="max-w-[1400px] mx-auto">
                     <div className="text-center mb-12 sm:mb-16 md:mb-20">
                         <h2 className="text-[40px] sm:text-[52px] md:text-[64px] font-black mb-6">
-                            OUR <span className="text-[#00FF41]">VALUES</span>
+                            OUR <span className="text-[#8c52ff]">VALUES</span>
                         </h2>
                         <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
                             The principles that guide every decision we make
@@ -167,7 +167,7 @@ export default function AboutPage() {
                 <div className="max-w-[1400px] mx-auto">
                     <div className="text-center mb-12 sm:mb-16 md:mb-20">
                         <h2 className="text-[40px] sm:text-[52px] md:text-[64px] font-black mb-6">
-                            MEET THE <span className="text-[#00FF41]">TEAM</span>
+                            MEET THE <span className="text-[#ff4080]">TEAM</span>
                         </h2>
                         <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
                             World-class experts from blockchain, AI, and cryptography
@@ -185,12 +185,12 @@ export default function AboutPage() {
                                 className="group border-2 border-black p-6 sm:p-8 hover:bg-black hover:text-white transition-all duration-300"
                             >
                                 {/* Placeholder Avatar */}
-                                <div className="w-full aspect-square bg-gradient-to-br from-[#00FF41] to-[#00E0FF] mb-6"></div>
+                                <div className="w-full aspect-square bg-gradient-to-br from-[#8c52ff] to-[#ff4080] mb-6"></div>
 
                                 <h3 className="text-xl sm:text-2xl font-black mb-2">
                                     {member.name}
                                 </h3>
-                                <div className="text-sm sm:text-base font-semibold uppercase tracking-wider text-[#00FF41] mb-3">
+                                <div className="text-sm sm:text-base font-semibold uppercase tracking-wider text-[#8c52ff] mb-3">
                                     {member.role}
                                 </div>
                                 <p className="text-sm text-gray-600 group-hover:text-gray-400">
@@ -207,7 +207,7 @@ export default function AboutPage() {
                 <div className="max-w-[1400px] mx-auto">
                     <div className="text-center mb-12 sm:mb-16 md:mb-20">
                         <h2 className="text-[40px] sm:text-[52px] md:text-[64px] font-black mb-6">
-                            OUR <span className="text-[#00FF41]">JOURNEY</span>
+                            OUR <span className="text-[#ffc502]">JOURNEY</span>
                         </h2>
                     </div>
 
@@ -222,11 +222,17 @@ export default function AboutPage() {
                                 className="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center"
                             >
                                 <div className="md:w-1/4">
-                                    <div className="text-2xl sm:text-3xl md:text-4xl font-black text-[#00FF41]">
+                                    <div
+                                        className="text-2xl sm:text-3xl md:text-4xl font-black"
+                                        style={{ color: milestone.color }}
+                                    >
                                         {milestone.year}
                                     </div>
                                 </div>
-                                <div className="md:w-3/4 border-l-4 border-[#00FF41] pl-6 md:pl-8">
+                                <div
+                                    className="md:w-3/4 border-l-4 pl-6 md:pl-8"
+                                    style={{ borderColor: milestone.color }}
+                                >
                                     <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase mb-3">
                                         {milestone.event}
                                     </h3>
@@ -244,13 +250,13 @@ export default function AboutPage() {
             <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black text-white">
                 <div className="max-w-[1400px] mx-auto text-center">
                     <h2 className="text-[40px] sm:text-[56px] md:text-[72px] lg:text-[88px] font-black mb-8 sm:mb-12">
-                        JOIN THE <span className="text-[#00FF41]">REVOLUTION</span>
+                        JOIN THE <span className="text-[#ff4080]">REVOLUTION</span>
                     </h2>
                     <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12">
                         Be part of the team building the future of blockchain
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                        <button className="bg-[#00FF41] hover:bg-[#00DD35] text-black px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
+                        <button className="bg-[#8c52ff] hover:bg-[#7a45e0] text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
                             VIEW CAREERS
                         </button>
                         <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">

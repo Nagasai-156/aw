@@ -24,14 +24,14 @@ export default function Footer() {
                     {/* CTA Section */}
                     <div className="mb-16 sm:mb-20 md:mb-24 lg:mb-32">
                         <h2 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-[1.1] mb-6 sm:mb-8 md:mb-10 max-w-[550px]">
-                            Bring structure to your<br />
-                            AI agent development
+                            Build the future with<br />
+                            ArthaChain
                         </h2>
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
-                            <button className="bg-[#5B5FED] hover:bg-[#4F46E5] text-white px-8 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-[14px] font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto">
-                                Sign up
+                            <button className="bg-[#8c52ff] hover:bg-[#ff4080] text-white px-8 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-[14px] font-bold uppercase transition-all duration-200 w-full sm:w-auto">
+                                Get Started
                             </button>
-                            <button className="bg-white hover:bg-gray-100 text-black px-8 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-[14px] font-semibold rounded-lg transition-all duration-200 w-full sm:w-auto">
+                            <button className="bg-white hover:bg-gray-100 text-black px-8 sm:px-10 py-3 sm:py-4 text-[13px] sm:text-[14px] font-bold uppercase transition-all duration-200 w-full sm:w-auto">
                                 Request a demo
                             </button>
                         </div>
@@ -42,12 +42,12 @@ export default function Footer() {
                         {/* Logo */}
                         <div className="sm:col-span-2 lg:col-span-3">
                             <div className="flex items-center gap-3">
-                                <div className="w-11 h-11 bg-white flex items-center justify-center flex-shrink-0">
+                                <div className="w-11 h-11 bg-[#8c52ff] flex items-center justify-center flex-shrink-0">
                                     <svg
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         className="w-7 h-7"
-                                        stroke="black"
+                                        stroke="white"
                                         strokeWidth="2.5"
                                         strokeLinecap="square"
                                     >
@@ -62,46 +62,46 @@ export default function Footer() {
 
                         {/* Resources */}
                         <div className="sm:col-span-1 lg:col-span-3">
-                            <h3 className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-7 text-gray-500">
+                            <h3 className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-7 text-[#8c52ff]">
                                 RESOURCES
                             </h3>
                             <ul className="space-y-4">
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Documentation</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Guides</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Whitepaper</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Changelog</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">For Developers</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Articles</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Documentation</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Guides</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Whitepaper</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Changelog</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">For Developers</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Articles</Link></li>
                             </ul>
                         </div>
 
                         {/* Company */}
                         <div className="sm:col-span-1 lg:col-span-3">
-                            <h3 className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-7 text-gray-500">
+                            <h3 className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-7 text-[#ff4080]">
                                 COMPANY
                             </h3>
                             <ul className="space-y-4">
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">About</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Blog</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Careers</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Contact us</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Privacy Policy</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Terms of Service</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">About</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Blog</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Careers</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Contact us</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Privacy Policy</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Terms of Service</Link></li>
                             </ul>
                         </div>
 
                         {/* Community */}
                         <div className="sm:col-span-2 lg:col-span-3">
-                            <h3 className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-7 text-gray-500">
+                            <h3 className="text-[11px] font-semibold tracking-[0.15em] uppercase mb-7 text-[#ffc502]">
                                 COMMUNITY
                             </h3>
                             <ul className="space-y-4">
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">GitHub</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Discord</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">Newsletter</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">X (Twitter)</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">YouTube</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-gray-400 transition-colors">LinkedIn</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">GitHub</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">Discord</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">Newsletter</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">X (Twitter)</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">YouTube</Link></li>
+                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">LinkedIn</Link></li>
                             </ul>
                         </div>
                     </div>

@@ -88,13 +88,13 @@ export default function BlogPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#00FF41]">
+                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#8c52ff]">
                             ARTHACHAIN BLOG
                         </div>
                         <h1 className="text-[48px] sm:text-[72px] md:text-[100px] lg:text-[120px] font-black leading-[0.9] mb-6 sm:mb-8">
                             INSIGHTS &
                             <br />
-                            <span className="text-[#00FF41]">UPDATES</span>
+                            <span className="text-[#ff4080]">UPDATES</span>
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto">
                             Latest news, technical deep-dives, and thought leadership from the ArthaChain team
@@ -112,8 +112,8 @@ export default function BlogPage() {
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
                                 className={`text-xs sm:text-sm font-bold uppercase tracking-wider px-4 sm:px-6 py-2 sm:py-3 whitespace-nowrap transition-all duration-200 ${selectedCategory === category
-                                        ? 'bg-black text-[#00FF41] border-2 border-black'
-                                        : 'bg-white text-black border-2 border-black hover:bg-black hover:text-white'
+                                    ? 'bg-black text-[#8c52ff] border-2 border-black'
+                                    : 'bg-white text-black border-2 border-black hover:bg-black hover:text-white'
                                     }`}
                             >
                                 {category}
@@ -127,14 +127,14 @@ export default function BlogPage() {
             {selectedCategory === 'All' && blogPosts.filter(p => p.featured).map((post) => (
                 <section key={post.id} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#FAFAFA]">
                     <div className="max-w-[1400px] mx-auto">
-                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#00FF41]">
+                        <div className="text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] uppercase mb-6 sm:mb-8 text-[#8c52ff]">
                             FEATURED POST
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            <div className="aspect-video bg-gradient-to-br from-[#00FF41] to-[#00E0FF]"></div>
+                            <div className="aspect-video bg-gradient-to-br from-[#8c52ff] to-[#ff4080]"></div>
                             <div className="flex flex-col justify-center">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <span className="text-xs sm:text-sm font-bold uppercase px-3 py-1.5 bg-black text-[#00FF41] border-2 border-black">
+                                    <span className="text-xs sm:text-sm font-bold uppercase px-3 py-1.5 bg-black text-[#8c52ff] border-2 border-black">
                                         {post.category}
                                     </span>
                                     <span className="text-xs sm:text-sm text-gray-600 flex items-center gap-1">
@@ -153,7 +153,7 @@ export default function BlogPage() {
                                         <User size={16} />
                                         {post.author}
                                     </div>
-                                    <button className="flex items-center gap-2 text-sm sm:text-base font-bold hover:text-[#00FF41] transition-colors">
+                                    <button className="flex items-center gap-2 text-sm sm:text-base font-bold hover:text-[#8c52ff] transition-colors">
                                         READ MORE <ArrowRight size={16} />
                                     </button>
                                 </div>
@@ -174,7 +174,7 @@ export default function BlogPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className="group border-2 border-black hover:shadow-[8px_8px_0px_0px_rgba(0,255,65,1)] transition-all duration-300 bg-white"
+                                className="group border-2 border-black hover:shadow-[8px_8px_0px_0px_#8c52ff] transition-all duration-300 bg-white"
                             >
                                 {/* Thumbnail */}
                                 <div className="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 border-b-2 border-black"></div>
@@ -183,14 +183,14 @@ export default function BlogPage() {
                                 <div className="p-6 sm:p-8">
                                     {/* Meta */}
                                     <div className="flex items-center gap-3 mb-4">
-                                        <span className="text-[10px] sm:text-[11px] font-bold uppercase px-2.5 py-1 bg-black text-[#00FF41]">
+                                        <span className="text-[10px] sm:text-[11px] font-bold uppercase px-2.5 py-1 bg-black text-[#8c52ff]">
                                             {post.category}
                                         </span>
                                         <span className="text-xs text-gray-600">{post.date}</span>
                                     </div>
 
                                     {/* Title */}
-                                    <h3 className="text-xl sm:text-2xl font-black leading-tight mb-3 sm:mb-4 group-hover:text-[#00FF41] transition-colors">
+                                    <h3 className="text-xl sm:text-2xl font-black leading-tight mb-3 sm:mb-4 group-hover:text-[#8c52ff] transition-colors">
                                         {post.title}
                                     </h3>
 
@@ -204,7 +204,7 @@ export default function BlogPage() {
                                         <div className="text-xs sm:text-sm text-gray-600">
                                             {post.readTime}
                                         </div>
-                                        <button className="flex items-center gap-2 text-xs sm:text-sm font-bold hover:text-[#00FF41] transition-colors uppercase">
+                                        <button className="flex items-center gap-2 text-xs sm:text-sm font-bold hover:text-[#8c52ff] transition-colors uppercase">
                                             READ <ArrowRight size={14} />
                                         </button>
                                     </div>
@@ -215,7 +215,7 @@ export default function BlogPage() {
 
                     {/* Load More */}
                     <div className="text-center mt-12 sm:mt-16">
-                        <button className="bg-black text-white hover:bg-[#00FF41] hover:text-black px-8 sm:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 border-2 border-black">
+                        <button className="bg-black text-white hover:bg-[#8c52ff] px-8 sm:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 border-2 border-black hover:border-[#8c52ff]">
                             LOAD MORE POSTS
                         </button>
                     </div>
@@ -226,7 +226,7 @@ export default function BlogPage() {
             <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black text-white">
                 <div className="max-w-[1400px] mx-auto text-center">
                     <h2 className="text-[40px] sm:text-[56px] md:text-[72px] font-black mb-6 sm:mb-8">
-                        STAY <span className="text-[#00FF41]">UPDATED</span>
+                        STAY <span className="text-[#ffc502]">UPDATED</span>
                     </h2>
                     <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12">
                         Get the latest updates, technical articles, and announcements delivered to your inbox
@@ -235,9 +235,9 @@ export default function BlogPage() {
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="flex-1 px-6 py-4 bg-white/10 border-2 border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-[#00FF41] transition-colors"
+                            className="flex-1 px-6 py-4 bg-white/10 border-2 border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-[#8c52ff] transition-colors"
                         />
-                        <button className="bg-[#00FF41] hover:bg-[#00DD35] text-black px-8 sm:px-12 py-4 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 whitespace-nowrap">
+                        <button className="bg-[#8c52ff] hover:bg-[#ff4080] text-white px-8 sm:px-12 py-4 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 whitespace-nowrap">
                             SUBSCRIBE
                         </button>
                     </div>

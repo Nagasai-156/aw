@@ -56,7 +56,7 @@ export default function Header() {
                 <nav className="flex items-center justify-between h-16 sm:h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 sm:w-11 sm:h-11 bg-black flex items-center justify-center group-hover:bg-[#00FF41] transition-colors">
+                        <div className="w-10 h-10 sm:w-11 sm:h-11 bg-black flex items-center justify-center group-hover:bg-[#8c52ff] transition-colors">
                             <svg
                                 viewBox="0 0 24 24"
                                 fill="none"
@@ -83,14 +83,14 @@ export default function Header() {
                                 onMouseLeave={() => setActiveDropdown(null)}
                             >
                                 {item.dropdown ? (
-                                    <button className="flex items-center gap-1 px-4 py-2 text-[13px] font-bold uppercase tracking-wide hover:text-[#00FF41] transition-colors">
+                                    <button className="flex items-center gap-1 px-4 py-2 text-[13px] font-bold uppercase tracking-wide hover:text-[#8c52ff] transition-colors">
                                         {item.label}
                                         <ChevronDown size={16} className={`transition-transform ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
                                     </button>
                                 ) : (
                                     <Link
                                         href={item.href || '#'}
-                                        className="px-4 py-2 text-[13px] font-bold uppercase tracking-wide hover:text-[#00FF41] transition-colors"
+                                        className="px-4 py-2 text-[13px] font-bold uppercase tracking-wide hover:text-[#8c52ff] transition-colors"
                                     >
                                         {item.label}
                                     </Link>
@@ -105,7 +105,7 @@ export default function Header() {
                                                 href={subItem.href}
                                                 target={subItem.external ? '_blank' : undefined}
                                                 rel={subItem.external ? 'noopener noreferrer' : undefined}
-                                                className="block px-6 py-4 border-b border-black last:border-b-0 hover:bg-black hover:text-[#00FF41] transition-colors group"
+                                                className="block px-6 py-4 border-b border-black last:border-b-0 hover:bg-black hover:text-[#8c52ff] transition-colors group"
                                             >
                                                 <div className="text-sm font-bold uppercase mb-1">
                                                     {subItem.label}
@@ -128,7 +128,7 @@ export default function Header() {
                     <div className="hidden lg:block">
                         <Link
                             href="#waitlist"
-                            className="inline-block bg-black text-white hover:bg-[#00FF41] hover:text-black px-6 py-3 text-[13px] font-bold uppercase tracking-wide transition-colors border-2 border-black"
+                            className="inline-block bg-[#8c52ff] text-white hover:bg-[#ff4080] px-6 py-3 text-[13px] font-bold uppercase tracking-wide transition-colors border-2 border-[#8c52ff] hover:border-[#ff4080]"
                         >
                             GET STARTED
                         </Link>
@@ -176,7 +176,7 @@ export default function Header() {
                                                         href={subItem.href}
                                                         target={subItem.external ? '_blank' : undefined}
                                                         rel={subItem.external ? 'noopener noreferrer' : undefined}
-                                                        className="block px-8 py-3 text-sm hover:bg-black hover:text-[#00FF41] transition-colors"
+                                                        className="block px-8 py-3 text-sm hover:bg-black hover:text-[#8c52ff] transition-colors"
                                                         onClick={() => setIsMobileMenuOpen(false)}
                                                     >
                                                         <div className="font-bold mb-0.5">
@@ -194,7 +194,7 @@ export default function Header() {
                                 ) : (
                                     <Link
                                         href={item.href || '#'}
-                                        className="block px-4 py-3 text-sm font-bold uppercase hover:bg-black hover:text-[#00FF41] transition-colors"
+                                        className="block px-4 py-3 text-sm font-bold uppercase hover:bg-black hover:text-[#8c52ff] transition-colors"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {item.label}
@@ -207,7 +207,7 @@ export default function Header() {
                         <div className="px-4 pt-4">
                             <Link
                                 href="#waitlist"
-                                className="block text-center bg-black text-white hover:bg-[#00FF41] hover:text-black px-6 py-3 text-sm font-bold uppercase transition-colors border-2 border-black"
+                                className="block text-center bg-[#8c52ff] text-white hover:bg-[#ff4080] px-6 py-3 text-sm font-bold uppercase transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 GET STARTED
