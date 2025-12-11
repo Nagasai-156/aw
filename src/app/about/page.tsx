@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Target, Users, Zap, Globe, Award, Rocket } from 'lucide-react';
+import { Target, Users, Zap, Globe } from 'lucide-react';
+import CTASection from '@/components/sections/CTASection';
 
 const values = [
     {
@@ -247,24 +248,7 @@ export default function AboutPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black text-white">
-                <div className="max-w-[1400px] mx-auto text-center">
-                    <h2 className="text-[40px] sm:text-[56px] md:text-[72px] lg:text-[88px] font-black mb-8 sm:mb-12">
-                        JOIN THE <span className="text-[#ff4080]">REVOLUTION</span>
-                    </h2>
-                    <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12">
-                        Be part of the team building the future of blockchain
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                        <button className="bg-[#8c52ff] hover:bg-[#7a45e0] text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
-                            VIEW CAREERS
-                        </button>
-                        <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200">
-                            CONTACT US
-                        </button>
-                    </div>
-                </div>
-            </section>
+            <CTASection />
         </main>
     );
 }

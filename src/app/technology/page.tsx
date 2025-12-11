@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Zap, Shield, Database, Network, Code } from 'lucide-react';
+import CTASection from '@/components/sections/CTASection';
 
 const techStack = [
     {
@@ -265,6 +266,9 @@ export default function TechnologyPage() {
                     </div>
                 </div>
             </section>
+
+            {/* CTA Section */}
+            <CTASection />
         </main>
     );
 }

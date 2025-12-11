@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import CTASection from '@/components/sections/CTASection';
 
 const faqCategories = [
     {
@@ -306,6 +307,9 @@ export default function FAQPage() {
                     </div>
                 </div>
             </section>
+
+            {/* CTA Section */}
+            <CTASection />
         </main>
     );
 }

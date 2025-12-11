@@ -77,9 +77,9 @@ export default function Hero() {
                         {/* Main Heading */}
                         <div className="space-y-[-2px]">
                             <h1 className="text-[42px] leading-[0.95] font-black tracking-[-0.04em] select-none">
-                                <span className="block bg-gradient-to-r from-[#8c52ff] via-[#ff4080] to-[#ffc502] bg-clip-text text-transparent">BUILD</span>
+                                <span className="block text-[#8c52ff]">BUILD</span>
                                 <span className="block text-white">SCALE</span>
-                                <span className="block text-white/60">INNOVATE</span>
+                                <span className="block text-[#ff4080]">INNOVATE</span>
                             </h1>
                         </div>
 
@@ -148,9 +148,9 @@ export default function Hero() {
                         {/* Main Heading */}
                         <div className="space-y-[-6px] md:space-y-[-8px] lg:space-y-[-10px] xl:space-y-[-12px]">
                             <h1 className="text-[64px] md:text-[56px] lg:text-[88px] xl:text-[110px] 2xl:text-[130px] leading-[0.95] font-black tracking-[-0.04em] select-none">
-                                <span className="block bg-gradient-to-r from-[#8c52ff] via-[#ff4080] to-[#ffc502] bg-clip-text text-transparent">BUILD</span>
+                                <span className="block text-[#8c52ff]">BUILD</span>
                                 <span className="block text-white">SCALE</span>
-                                <span className="block text-white/60">INNOVATE</span>
+                                <span className="block text-[#ff4080]">INNOVATE</span>
                             </h1>
                         </div>
 

@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
+import { Calendar, User, ArrowRight } from 'lucide-react';
+import CTASection from '@/components/sections/CTASection';
 
 const blogPosts = [
     {
@@ -222,27 +223,8 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            {/* Newsletter CTA */}
-            <section className="relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-black text-white">
-                <div className="max-w-[1400px] mx-auto text-center">
-                    <h2 className="text-[40px] sm:text-[56px] md:text-[72px] font-black mb-6 sm:mb-8">
-                        STAY <span className="text-[#ffc502]">UPDATED</span>
-                    </h2>
-                    <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12">
-                        Get the latest updates, technical articles, and announcements delivered to your inbox
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            className="flex-1 px-6 py-4 bg-white/10 border-2 border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-[#8c52ff] transition-colors"
-                        />
-                        <button className="bg-[#8c52ff] hover:bg-[#ff4080] text-white px-8 sm:px-12 py-4 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 whitespace-nowrap">
-                            SUBSCRIBE
-                        </button>
-                    </div>
-                </div>
-            </section>
+            {/* CTA Section */}
+            <CTASection />
         </main>
     );
 }

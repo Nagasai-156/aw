@@ -11,6 +11,7 @@ const navigationItems = [
     {
         label: 'Resources',
         dropdown: [
+            { label: 'Features', href: '/features', description: 'Explore ArthaChain capabilities' },
             { label: 'Blog', href: '/blog', description: 'Latest updates & insights' },
             { label: 'FAQ', href: '/faq', description: 'Common questions answered' },
             { label: 'Documentation', href: '/docs', description: 'Technical guides' },

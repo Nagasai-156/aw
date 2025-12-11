@@ -1,6 +1,7 @@
 import { FeaturesGrid } from '@/components/ui/features-grid';
 import FeaturesSection from '@/components/sections/FeaturesSection';
 import ArthaChainBentoCards from '@/components/ui/arthachain-bento-cards';
+import CTASection from '@/components/sections/CTASection';
 
 export default function FeaturesPage() {
     return (
@@ -13,6 +14,9 @@ export default function FeaturesPage() {
 
             {/* Bento Cards */}
             <ArthaChainBentoCards />
+
+            {/* CTA Section */}
+            <CTASection />
         </main>
     );
 }
