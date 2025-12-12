@@ -4,36 +4,110 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-const navigationItems = [
+interface NavDropdownItem {
+    label: string;
+    href: string;
+    description: string;
+    external?: boolean;
+}
+
+interface NavItem {
+    label: string;
+    href?: string;
+    icon?: string;
+    dropdown?: NavDropdownItem[];
+}
+
+
+const navigationItems: NavItem[] = [
     { label: 'Home', href: '/' },
-    { label: 'Technology', href: '/technology' },
-    { label: 'About', href: '/about' },
     {
-        label: 'Resources',
+        label: 'About ArthaChain',
+        icon: '🟣',
         dropdown: [
-            { label: 'Features', href: '/features', description: 'Explore ArthaChain capabilities' },
-            { label: 'Blog', href: '/blog', description: 'Latest updates & insights' },
-            { label: 'FAQ', href: '/faq', description: 'Common questions answered' },
-            { label: 'Documentation', href: '/docs', description: 'Technical guides' },
-            { label: 'Whitepaper', href: '/whitepaper', description: 'Deep technical dive' },
+            { label: 'About', href: '/about', description: 'Learn about our vision' },
+            { label: 'What is ArthaChain', href: '/about#what', description: 'Our story and purpose' },
+            { label: 'Mission & Vision', href: '/about#mission', description: 'Our goals and purpose' },
+            { label: 'Technology', href: '/technology', description: 'Technical foundation' },
+            { label: 'Contact Us', href: '#contact', description: 'Get in touch' },
+            { label: 'Press & Media', href: '#press', description: 'Media resources' },
+            { label: 'Brand Kit', href: '#brand', description: 'Logos and assets' },
         ],
     },
     {
-        label: 'Developers',
+        label: 'ArthaCore',
+        icon: '🟣',
         dropdown: [
-            { label: 'Get Started', href: '/developers', description: 'Begin building on ArthaChain' },
-            { label: 'API Reference', href: '/api', description: 'Complete API documentation' },
-            { label: 'SDKs & Tools', href: '/tools', description: 'Developer resources' },
-            { label: 'Testnet', href: '/testnet', description: 'Test your applications' },
+            { label: 'Technology', href: '/technology', description: 'Core protocol overview' },
+            { label: 'Architecture', href: '/technology#architecture', description: 'System design' },
+            { label: 'Dual-Chain System', href: '/technology#dual-chain', description: 'Two-layer approach' },
+            { label: 'Dual VM (EVM + WASM)', href: '/technology#vm', description: 'Virtual machines' },
+            { label: 'Consensus', href: '/technology#consensus', description: 'Agreement protocol' },
+            { label: 'Security Model', href: '/technology#security', description: 'Protection mechanisms' },
+            { label: 'Network Status', href: '#network-status', description: 'Live network stats' },
+            { label: 'Protocol Papers', href: '#protocol-papers', description: 'Technical documentation' },
+        ],
+    },
+    {
+        label: 'ArthaDev Hub',
+        icon: '⚫',
+        dropdown: [
+            { label: 'Docs', href: '#docs', description: 'Developer documentation' },
+            { label: 'SDKs', href: '#sdks', description: 'Software development kits' },
+            { label: 'Explorer', href: '#explorer', description: 'Blockchain explorer' },
+            { label: 'Testnet / Faucet', href: '#testnet', description: 'Test network access' },
+            { label: 'Validator Hub', href: '#validators', description: 'Run a validator' },
+            { label: 'Bounties & Grants', href: '#bounties', description: 'Funding opportunities' },
+            { label: 'Tutorials', href: '#tutorials', description: 'Step-by-step guides' },
+            { label: 'GitHub', href: 'https://github.com/arthachain', description: 'Source code', external: true },
+        ],
+    },
+    {
+        label: 'ArthaVerse',
+        icon: '💛',
+        dropdown: [
+            { label: 'Features', href: '/features', description: 'All ArthaChain features' },
+            { label: 'DID (Identity Layer)', href: '/features#did', description: 'Decentralized identity' },
+            { label: 'AI Suite', href: '/features#ai', description: 'AI-powered tools' },
+            { label: 'SocialFi', href: '/features#social', description: 'Social finance' },
+            { label: 'Enterprise', href: '/features#enterprise', description: 'Business solutions' },
+            { label: 'DeFi', href: '/features#defi', description: 'Decentralized finance' },
+            { label: 'Gaming / XR', href: '/features#gaming', description: 'Gaming & metaverse' },
+            { label: 'Use Cases', href: '/features#use-cases', description: 'Real-world applications' },
+        ],
+    },
+    {
+        label: 'Learn',
+        icon: '⚪',
+        dropdown: [
+            { label: 'Blog', href: '/blog', description: 'Latest updates & insights' },
+            { label: 'FAQ', href: '/faq', description: 'Common questions answered' },
+            { label: 'Whitepaper', href: '#whitepaper', description: 'Complete technical paper' },
+            { label: 'Roadmap', href: '#roadmap', description: 'Development timeline' },
+            { label: 'Beginner Guides', href: '#guides', description: 'Getting started' },
+            { label: 'Research', href: '#research', description: 'Academic papers' },
+            { label: 'E-books', href: '#ebooks', description: 'Educational resources' },
+            { label: 'Security Audits', href: '#audits', description: 'Security reports' },
         ],
     },
     {
         label: 'Community',
+        icon: '💗',
         dropdown: [
-            { label: 'Discord', href: 'https://discord.gg/arthachain', description: 'Join our community', external: true },
+            { label: 'FAQ', href: '/faq', description: 'Get your questions answered' },
+            { label: 'Blog', href: '/blog', description: 'Read our latest posts' },
+            { label: 'Artha Collective', href: '#collective', description: 'Join our community' },
+            { label: 'Ambassadors', href: '#ambassadors', description: 'Become an ambassador' },
+            { label: 'Campus Program', href: '#campus', description: 'University initiatives' },
+            { label: 'Events', href: '#events', description: 'Upcoming events' },
+            { label: 'Rewards', href: '#rewards', description: 'Earn rewards' },
+            { label: 'Careers', href: '#careers', description: 'Join the team' },
+            { label: 'Newsletter', href: '#newsletter', description: 'Stay updated' },
+            { label: 'Discord', href: 'https://discord.gg/arthachain', description: 'Join our Discord', external: true },
+            { label: 'X (Twitter)', href: 'https://twitter.com/arthachain', description: 'Follow us on X', external: true },
+            { label: 'Telegram', href: 'https://t.me/arthachain', description: 'Join Telegram group', external: true },
             { label: 'GitHub', href: 'https://github.com/arthachain', description: 'View source code', external: true },
-            { label: 'Forum', href: '/forum', description: 'Discussions & support' },
-            { label: 'Careers', href: '/careers', description: 'Join the team' },
+            { label: 'LinkedIn', href: 'https://linkedin.com/company/arthachain', description: 'Connect on LinkedIn', external: true },
         ],
     },
 ];
