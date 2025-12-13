@@ -236,27 +236,17 @@ export default function TimelineSection() {
                                         </Link>
                                     </div>
 
+
                                     {/* Visual Side */}
                                     <div className={`lg:col-span-4 ${isEven ? 'lg:order-3' : 'lg:order-2'}`}>
-                                        <div
-                                            className="relative aspect-[4/3] overflow-hidden"
-                                            style={{ backgroundColor: `${item.color}15` }}
-                                        >
-                                            {/* Decorative Pattern */}
-                                            <div
-                                                className="absolute inset-0 opacity-10"
-                                                style={{
-                                                    backgroundImage: `radial-gradient(circle at 30% 30%, ${item.color} 0%, transparent 50%), radial-gradient(circle at 70% 70%, ${item.color} 0%, transparent 50%)`,
-                                                }}
-                                            />
-
-                                            {/* Mascot Image for AI-POWERED CONSENSUS (01) */}
+                                        <div className="relative aspect-[4/3] overflow-hidden bg-transparent">
+                                            {/* Mascot Images */}
                                             {item.id === '01' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
                                                     <motion.img
                                                         src="/images/arthachain-mascot.png"
                                                         alt="ArthaChain AI Mascot"
-                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        className="w-[120%] h-[120%] object-contain"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}
                                                         viewport={{ once: true }}
@@ -269,7 +259,7 @@ export default function TimelineSection() {
                                                     <motion.img
                                                         src="/images/mascot-security.png"
                                                         alt="ArthaChain Security Mascot"
-                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        className="w-[120%] h-[120%] object-contain"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}
                                                         viewport={{ once: true }}
@@ -282,7 +272,7 @@ export default function TimelineSection() {
                                                     <motion.img
                                                         src="/images/mascot-identity.png"
                                                         alt="ArthaChain Identity Mascot"
-                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        className="w-[120%] h-[120%] object-contain"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}
                                                         viewport={{ once: true }}
@@ -295,7 +285,20 @@ export default function TimelineSection() {
                                                     <motion.img
                                                         src="/images/mascot-scale.png"
                                                         alt="ArthaChain Scalability Mascot"
-                                                        className="w-full h-full object-cover"
+                                                        className="w-[120%] h-[120%] object-contain"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : item.id === '05' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-performance.png"
+                                                        alt="ArthaChain Performance Mascot"
+                                                        className="w-[120%] h-[120%] object-contain"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}
                                                         viewport={{ once: true }}
@@ -308,7 +311,7 @@ export default function TimelineSection() {
                                                     <motion.img
                                                         src="/images/mascot-storage.png"
                                                         alt="ArthaChain Storage Mascot"
-                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        className="w-[120%] h-[120%] object-contain"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}
                                                         viewport={{ once: true }}
@@ -321,7 +324,7 @@ export default function TimelineSection() {
                                                     <motion.img
                                                         src="/images/mascot-dualvm.png"
                                                         alt="ArthaChain Dual-VM Mascot"
-                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        className="w-[120%] h-[120%] object-contain"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}
                                                         viewport={{ once: true }}
@@ -334,7 +337,7 @@ export default function TimelineSection() {
                                                     <motion.img
                                                         src="/images/mascot-network.png"
                                                         alt="ArthaChain Network Mascot"
-                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        className="w-[120%] h-[120%] object-contain"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}
                                                         viewport={{ once: true }}
@@ -342,30 +345,33 @@ export default function TimelineSection() {
                                                         whileHover={{ scale: 1.05 }}
                                                     />
                                                 </div>
-                                            ) : (
-                                                /* Icon Large for other items */
+                                            ) : item.id === '09' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <Icon
-                                                        size={80}
-                                                        className="sm:w-24 sm:h-24"
-                                                        style={{ color: `${item.color}30` }}
+                                                    <motion.img
+                                                        src="/images/mascot-interop.png"
+                                                        alt="ArthaChain Interoperability Mascot"
+                                                        className="w-[120%] h-[120%] object-contain"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
                                                     />
                                                 </div>
-                                            )}
-
-                                            {/* Number Overlay */}
-                                            <div className="absolute bottom-3 right-4">
-                                                <span
-                                                    className="text-[48px] sm:text-[56px] font-black"
-                                                    style={{ color: item.color }}
-                                                >
-                                                    {item.id}
-                                                </span>
-                                            </div>
-
-                                            {/* Corner Accents */}
-                                            <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2" style={{ borderColor: item.color }} />
-                                            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2" style={{ borderColor: item.color }} />
+                                            ) : item.id === '10' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-developer.png"
+                                                        alt="ArthaChain Developer Mascot"
+                                                        className="w-[120%] h-[120%] object-contain"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : null}
                                         </div>
                                     </div>
                                 </div>
