@@ -26,12 +26,12 @@ const navigationItems: NavItem[] = [
         icon: '🟣',
         dropdown: [
             { label: 'About', href: '/about', description: 'Learn about our vision' },
-            { label: 'What is ArthaChain', href: '/about#what', description: 'Our story and purpose' },
-            { label: 'Mission & Vision', href: '/about#mission', description: 'Our goals and purpose' },
+            { label: 'What is ArthaChain', href: '/what', description: 'Discover the platform' },
+            { label: 'Mission & Vision', href: '/mission', description: 'Our goals and purpose' },
             { label: 'Technology', href: '/technology', description: 'Technical foundation' },
-            { label: 'Contact Us', href: '#contact', description: 'Get in touch' },
-            { label: 'Press & Media', href: '#press', description: 'Media resources' },
-            { label: 'Brand Kit', href: '#brand', description: 'Logos and assets' },
+            { label: 'Contact Us', href: '/contact', description: 'Get in touch' },
+            { label: 'Press & Media', href: '/press', description: 'Media resources' },
+            { label: 'Brand Kit', href: '/brand', description: 'Logos and assets' },
         ],
     },
     {
@@ -39,26 +39,26 @@ const navigationItems: NavItem[] = [
         icon: '🟣',
         dropdown: [
             { label: 'Technology', href: '/technology', description: 'Core protocol overview' },
-            { label: 'Architecture', href: '/technology#architecture', description: 'System design' },
-            { label: 'Dual-Chain System', href: '/technology#dual-chain', description: 'Two-layer approach' },
-            { label: 'Dual VM (EVM + WASM)', href: '/technology#vm', description: 'Virtual machines' },
-            { label: 'Consensus', href: '/technology#consensus', description: 'Agreement protocol' },
-            { label: 'Security Model', href: '/technology#security', description: 'Protection mechanisms' },
-            { label: 'Network Status', href: '#network-status', description: 'Live network stats' },
-            { label: 'Protocol Papers', href: '#protocol-papers', description: 'Technical documentation' },
+            { label: 'Architecture', href: '/core/architecture', description: 'System design' },
+            { label: 'Dual-Chain System', href: '/core/dual-chain', description: 'Two-layer approach' },
+            { label: 'Dual VM (EVM + WASM)', href: '/core/dual-vm', description: 'Virtual machines' },
+            { label: 'Consensus', href: '/core/consensus', description: 'Agreement protocol' },
+            { label: 'Security Model', href: '/core/security', description: 'Protection mechanisms' },
+            { label: 'Network Status', href: '/core/network-status', description: 'Live network stats' },
+            { label: 'Protocol Papers', href: '/core/papers', description: 'Technical documentation' },
         ],
     },
     {
         label: 'ArthaDev Hub',
         icon: '⚫',
         dropdown: [
-            { label: 'Docs', href: '#docs', description: 'Developer documentation' },
-            { label: 'SDKs', href: '#sdks', description: 'Software development kits' },
-            { label: 'Explorer', href: '#explorer', description: 'Blockchain explorer' },
-            { label: 'Testnet / Faucet', href: '#testnet', description: 'Test network access' },
-            { label: 'Validator Hub', href: '#validators', description: 'Run a validator' },
-            { label: 'Bounties & Grants', href: '#bounties', description: 'Funding opportunities' },
-            { label: 'Tutorials', href: '#tutorials', description: 'Step-by-step guides' },
+            { label: 'Docs', href: '/dev/docs', description: 'Developer documentation' },
+            { label: 'SDKs', href: '/dev/sdks', description: 'Software development kits' },
+            { label: 'Explorer', href: '/dev/explorer', description: 'Blockchain explorer' },
+            { label: 'Testnet / Faucet', href: '/dev/testnet', description: 'Test network access' },
+            { label: 'Validator Hub', href: '/dev/validators', description: 'Run a validator' },
+            { label: 'Bounties & Grants', href: '/dev/bounties', description: 'Funding opportunities' },
+            { label: 'Tutorials', href: '/dev/tutorials', description: 'Step-by-step guides' },
             { label: 'GitHub', href: 'https://github.com/arthachain', description: 'Source code', external: true },
         ],
     },
@@ -67,13 +67,13 @@ const navigationItems: NavItem[] = [
         icon: '💛',
         dropdown: [
             { label: 'Features', href: '/features', description: 'All ArthaChain features' },
-            { label: 'DID (Identity Layer)', href: '/features#did', description: 'Decentralized identity' },
-            { label: 'AI Suite', href: '/features#ai', description: 'AI-powered tools' },
-            { label: 'SocialFi', href: '/features#social', description: 'Social finance' },
-            { label: 'Enterprise', href: '/features#enterprise', description: 'Business solutions' },
-            { label: 'DeFi', href: '/features#defi', description: 'Decentralized finance' },
-            { label: 'Gaming / XR', href: '/features#gaming', description: 'Gaming & metaverse' },
-            { label: 'Use Cases', href: '/features#use-cases', description: 'Real-world applications' },
+            { label: 'DID (Identity Layer)', href: '/features/did', description: 'Decentralized identity' },
+            { label: 'AI Suite', href: '/features/ai', description: 'AI-powered tools' },
+            { label: 'SocialFi', href: '/features/socialfi', description: 'Social finance' },
+            { label: 'Enterprise', href: '/features/enterprise', description: 'Business solutions' },
+            { label: 'DeFi', href: '/features/defi', description: 'Decentralized finance' },
+            { label: 'Gaming / XR', href: '/features/gaming', description: 'Gaming & metaverse' },
+            { label: 'Use Cases', href: '/features/use-cases', description: 'Real-world applications' },
         ],
     },
     {
@@ -94,15 +94,13 @@ const navigationItems: NavItem[] = [
         label: 'Community',
         icon: '💗',
         dropdown: [
-            { label: 'FAQ', href: '/faq', description: 'Get your questions answered' },
-            { label: 'Blog', href: '/blog', description: 'Read our latest posts' },
-            { label: 'Artha Collective', href: '#collective', description: 'Join our community' },
-            { label: 'Ambassadors', href: '#ambassadors', description: 'Become an ambassador' },
-            { label: 'Campus Program', href: '#campus', description: 'University initiatives' },
-            { label: 'Events', href: '#events', description: 'Upcoming events' },
-            { label: 'Rewards', href: '#rewards', description: 'Earn rewards' },
-            { label: 'Careers', href: '#careers', description: 'Join the team' },
-            { label: 'Newsletter', href: '#newsletter', description: 'Stay updated' },
+            { label: 'Artha Collective', href: '/community/collective', description: 'Join our community' },
+            { label: 'Ambassadors', href: '/community/ambassadors', description: 'Become an ambassador' },
+            { label: 'Campus Program', href: '/community/campus', description: 'University initiatives' },
+            { label: 'Events', href: '/community/events', description: 'Upcoming events' },
+            { label: 'Rewards', href: '/community/rewards', description: 'Earn rewards' },
+            { label: 'Careers', href: '/community/careers', description: 'Join the team' },
+            { label: 'Newsletter', href: '/community/newsletter', description: 'Stay updated' },
             { label: 'Discord', href: 'https://discord.gg/arthachain', description: 'Join our Discord', external: true },
             { label: 'X (Twitter)', href: 'https://twitter.com/arthachain', description: 'Follow us on X', external: true },
             { label: 'Telegram', href: 'https://t.me/arthachain', description: 'Join Telegram group', external: true },
@@ -171,28 +169,42 @@ export default function Header() {
                                     </Link>
                                 )}
 
-                                {/* Dropdown Menu */}
+                                {/* Mega Menu Dropdown */}
                                 {item.dropdown && activeDropdown === item.label && (
-                                    <div className="absolute top-full left-0 mt-0 w-[280px] bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                                        {item.dropdown.map((subItem, index) => (
-                                            <Link
-                                                key={index}
-                                                href={subItem.href}
-                                                target={subItem.external ? '_blank' : undefined}
-                                                rel={subItem.external ? 'noopener noreferrer' : undefined}
-                                                className="block px-6 py-4 border-b border-black last:border-b-0 hover:bg-black hover:text-[#8c52ff] transition-colors group"
-                                            >
-                                                <div className="text-sm font-bold uppercase mb-1">
-                                                    {subItem.label}
-                                                    {subItem.external && (
-                                                        <span className="ml-1 text-xs">↗</span>
-                                                    )}
-                                                </div>
-                                                <div className="text-xs text-gray-600 group-hover:text-gray-300">
-                                                    {subItem.description}
-                                                </div>
-                                            </Link>
-                                        ))}
+                                    <div className={`absolute top-full mt-0 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
+                                        // Right-align for ArthaVerse, Learn, and Community (last 3 items)
+                                        ['ArthaVerse', 'Learn', 'Community'].includes(item.label)
+                                            ? (item.dropdown.length > 8 ? 'w-[800px] right-0' :
+                                                item.dropdown.length > 4 ? 'w-[600px] right-0' :
+                                                    'w-[400px] right-0')
+                                            : (item.dropdown.length > 8 ? 'w-[800px] left-0' :
+                                                item.dropdown.length > 4 ? 'w-[600px] left-0' :
+                                                    'w-[400px] left-0')
+                                        }`}>
+                                        <div className={`grid ${item.dropdown.length > 8 ? 'grid-cols-3' :
+                                            item.dropdown.length > 4 ? 'grid-cols-2' :
+                                                'grid-cols-1'
+                                            } gap-0`}>
+                                            {item.dropdown.map((subItem, index) => (
+                                                <Link
+                                                    key={index}
+                                                    href={subItem.href}
+                                                    target={subItem.external ? '_blank' : undefined}
+                                                    rel={subItem.external ? 'noopener noreferrer' : undefined}
+                                                    className="group px-6 py-4 border-b border-r border-black/10 last:border-b-0 hover:bg-black hover:text-white transition-all duration-200"
+                                                >
+                                                    <div className="text-sm font-bold uppercase mb-1 flex items-center gap-2">
+                                                        {subItem.label}
+                                                        {subItem.external && (
+                                                            <span className="text-xs">↗</span>
+                                                        )}
+                                                    </div>
+                                                    <div className="text-xs text-gray-600 group-hover:text-gray-300 line-clamp-2">
+                                                        {subItem.description}
+                                                    </div>
+                                                </Link>
+                                            ))}
+                                        </div>
                                     </div>
                                 )}
                             </div>

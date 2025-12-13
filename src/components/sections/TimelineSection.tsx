@@ -209,14 +209,30 @@ export default function TimelineSection() {
                                                 }}
                                             />
 
-                                            {/* Icon Large */}
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <Icon
-                                                    size={80}
-                                                    className="sm:w-24 sm:h-24"
-                                                    style={{ color: `${item.color}30` }}
-                                                />
-                                            </div>
+                                            {/* Mascot Image for AI-POWERED CONSENSUS (01) */}
+                                            {item.id === '01' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/arthachain-mascot.png"
+                                                        alt="ArthaChain AI Mascot"
+                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                /* Icon Large for other items */
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <Icon
+                                                        size={80}
+                                                        className="sm:w-24 sm:h-24"
+                                                        style={{ color: `${item.color}30` }}
+                                                    />
+                                                </div>
+                                            )}
 
                                             {/* Number Overlay */}
                                             <div className="absolute bottom-3 right-4">
