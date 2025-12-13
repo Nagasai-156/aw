@@ -4,12 +4,15 @@ import React from 'react';
 
 export default function ScrollingMarquee() {
     const marqueeText = [
-        'BLOCKCHAIN VALIDATORS',
-        'SMART CONTRACT DEVELOPERS',
-        'DAPP BUILDERS',
-        'WEB3 INNOVATORS',
-        'CRYPTO ENTHUSIASTS',
-        'DEFI CREATORS',
+        'AI-NATIVE BLOCKCHAIN',
+        'DUAL-CHAIN ARCHITECTURE',
+        'EVM + WASM',
+        'PRESS START TO BUILD',
+        'REAL-TIME FINALITY',
+        'NEXT-GEN SCALABILITY',
+        'DECENTRALIZED IDENTITY',
+        'POWER-UP YOUR DAPPS',
+        'BUILT FOR DEVELOPERS',
     ];
 
     return (

@@ -85,26 +85,8 @@ export default function Hero() {
 
                         {/* Description */}
                         <p className="text-white/60 text-[13px] leading-[1.7] max-w-[320px] font-normal mx-auto">
-                            Join the ArthaChain Network — empowering developers to build and scale decentralized applications.
+                            The AI-Native Dual-Chain Blockchain built for real-world scale, developers, and next-gen decentralized applications.
                         </p>
-
-                        {/* Stats Row */}
-                        <div className="flex justify-center gap-5">
-                            <div className="text-center">
-                                <div className="text-[22px] font-black text-[#8c52ff]">1M+</div>
-                                <div className="text-[9px] text-white/50 uppercase tracking-wider">TPS</div>
-                            </div>
-                            <div className="w-px bg-white/10" />
-                            <div className="text-center">
-                                <div className="text-[22px] font-black text-white">&lt;1s</div>
-                                <div className="text-[9px] text-white/50 uppercase tracking-wider">Finality</div>
-                            </div>
-                            <div className="w-px bg-white/10" />
-                            <div className="text-center">
-                                <div className="text-[22px] font-black text-white">99.9%</div>
-                                <div className="text-[9px] text-white/50 uppercase tracking-wider">Uptime</div>
-                            </div>
-                        </div>
 
                         {/* CTA Buttons */}
                         <div className="flex flex-col gap-3 pt-2">
@@ -156,27 +138,8 @@ export default function Hero() {
 
                         {/* Description */}
                         <p className="text-white/60 text-[15px] md:text-[14px] lg:text-[16px] leading-[1.8] max-w-[480px] lg:max-w-[520px] font-normal">
-                            Join the ArthaChain Network — a next-generation Layer 1 blockchain
-                            empowering developers to build, deploy, and scale decentralized applications with unprecedented speed and security.
+                            The AI-Native Dual-Chain Blockchain built for real-world scale, developers, and next-gen decentralized applications.
                         </p>
-
-                        {/* Stats Row */}
-                        <div className="flex gap-8 md:gap-6 lg:gap-10">
-                            <div>
-                                <div className="text-[28px] md:text-[24px] lg:text-[32px] font-black text-[#8c52ff]">1M+</div>
-                                <div className="text-[11px] text-white/50 uppercase tracking-wider">TPS</div>
-                            </div>
-                            <div className="w-px bg-white/10" />
-                            <div>
-                                <div className="text-[28px] md:text-[24px] lg:text-[32px] font-black text-white">&lt;1s</div>
-                                <div className="text-[11px] text-white/50 uppercase tracking-wider">Finality</div>
-                            </div>
-                            <div className="w-px bg-white/10" />
-                            <div>
-                                <div className="text-[28px] md:text-[24px] lg:text-[32px] font-black text-white">99.9%</div>
-                                <div className="text-[11px] text-white/50 uppercase tracking-wider">Uptime</div>
-                            </div>
-                        </div>
 
                         {/* CTA Buttons */}
                         <div className="flex flex-row gap-4 md:gap-3 lg:gap-4 pt-2">
@@ -247,9 +210,22 @@ export default function Hero() {
                         </div>
 
                         {/* Floating Badge */}
-                        <div className="absolute bottom-2 md:bottom-0 lg:bottom-4 left-4 md:left-0 lg:left-8 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-2.5">
-                            <div className="text-[10px] text-white/50 uppercase tracking-wider mb-0.5">Powered by</div>
-                            <div className="text-[13px] font-bold text-white">AI-Driven Consensus</div>
+                        <div className="absolute bottom-2 md:bottom-0 lg:bottom-4 left-4 md:left-0 lg:left-8 bg-black/80 backdrop-blur-md border border-white/10 px-5 py-4">
+                            <div className="text-[10px] text-white/50 uppercase tracking-wider mb-2">Powered by</div>
+                            <div className="space-y-1.5">
+                                <div className="text-[12px] font-bold text-white flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-[#8c52ff] rounded-full"></span>
+                                    AI-Driven Consensus
+                                </div>
+                                <div className="text-[12px] font-bold text-white flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-[#ffc502] rounded-full"></span>
+                                    Dual VM Execution (EVM + WASM)
+                                </div>
+                                <div className="text-[12px] font-bold text-white flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 bg-[#ff4080] rounded-full"></span>
+                                    Decentralized Identity Layer (DID)
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 </div>

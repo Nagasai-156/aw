@@ -2,70 +2,111 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Zap, Shield, Layers, Brain, Fingerprint, Database } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Layers, Brain, Fingerprint, Database, Box, Users, Globe, Code } from 'lucide-react';
 
 const featuresData = [
     {
         id: '01',
         title: 'AI-POWERED CONSENSUS',
         subtitle: 'Neural Network Optimization',
-        description: 'Our revolutionary AI engine predicts transaction patterns and dynamically adjusts consensus parameters. Machine learning algorithms continuously optimize network performance for maximum throughput.',
-        link: { text: 'Explore AI Engine', href: '/technology' },
+        description: "ArthaChain uses a self-learning consensus layer powered by predictive machine learning models. The neural engine anticipates congestion, optimizes validator paths, and rebalances load in real-time, making the chain faster, smarter, and always adaptive.",
+        link: { text: 'Explore AI Engine', href: '/features/ai' },
         icon: Brain,
-        color: '#450693',
-        highlights: ['Predictive routing', 'Auto-optimization', 'Real-time learning'],
+        color: '#7c3aed',
+        highlights: ['Predictive Routing', 'Auto-Optimization', 'Real-Time Learning'],
     },
     {
         id: '02',
         title: 'QUANTUM-RESISTANT SECURITY',
         subtitle: 'Future-Proof Protection',
-        description: 'Built with post-quantum cryptography using lattice-based signatures. Your assets are protected against both current threats and future quantum computing attacks with military-grade encryption.',
-        link: { text: 'Learn About Security', href: '/technology' },
+        description: 'Built on NIST-approved post-quantum cryptography using lattice-based signature schemes (Dilithium-5 & ML-DSA-87). Your assets remain protected from both classical and next-era quantum attacks.',
+        link: { text: 'Learn About Security', href: '/core/security' },
         icon: Shield,
         color: '#8c52ff',
-        highlights: ['256-bit encryption', 'Zero-knowledge proofs', 'Multi-sig support'],
+        highlights: ['256-bit Post-Quantum Encryption', 'Zero-Knowledge Proofs', 'Multi-Sig & MPC Security'],
     },
     {
         id: '03',
         title: 'DECENTRALIZED IDENTITY',
         subtitle: 'Self-Sovereign Control',
-        description: 'Integrated DID system gives users complete control over their digital identity. Verifiable credentials, privacy-preserving authentication, and seamless cross-platform identity portability.',
-        link: { text: 'Discover DID', href: '/technology' },
+        description: "ArthaChain features a native DID protocol enabling self-sovereign identity, verifiable credentials, and cross-chain/cross-platform authentication. Users own their identity, not platforms.",
+        link: { text: 'Discover DID', href: '/features/did' },
         icon: Fingerprint,
         color: '#ff4080',
-        highlights: ['Self-sovereign', 'Verifiable credentials', 'Privacy-first'],
+        highlights: ['Self-Sovereign Identity', 'Verifiable Credentials', 'Privacy-Preserving Authentication'],
     },
     {
         id: '04',
         title: 'INFINITE SCALABILITY',
         subtitle: 'Dynamic Sharding Architecture',
-        description: 'Revolutionary sharding technology with dynamic state partitioning. Scale from thousands to billions of users seamlessly without compromising speed or decentralization.',
-        link: { text: 'View Architecture', href: '/technology' },
+        description: "ArthaChain's hybrid sharding + DAG architecture enables unlimited horizontal scaling. State partitions grow automatically with demand, allowing the network to expand from thousands to billions of users without bottlenecks.",
+        link: { text: 'View Architecture', href: '/core/architecture' },
         icon: Layers,
         color: '#ffc502',
-        highlights: ['Auto-sharding', 'Linear scaling', 'No bottlenecks'],
+        highlights: ['Auto-Sharding', 'Linear Scaling', 'Zero Bottlenecks'],
     },
     {
         id: '05',
         title: 'LIGHTNING PERFORMANCE',
         subtitle: '1M+ Transactions Per Second',
-        description: 'Achieve unprecedented throughput with sub-second finality. Our optimized consensus mechanism processes over 1 million transactions per second while maintaining full decentralization.',
+        description: 'Multi-threaded execution, DAG-parallel processing, and the dual-VM system deliver 1,000,000+ TPS with sub-second finality while maintaining full decentralization and security.',
         link: { text: 'See Benchmarks', href: '/technology' },
         icon: Zap,
-        color: '#450693',
-        highlights: ['<1s finality', '1M+ TPS', '$0.001 per tx'],
+        color: '#7c3aed',
+        highlights: ['Sub-Second Finality', '1M+ TPS', '$0.001 Cost Per Transaction'],
     },
     {
         id: '06',
         title: 'DECENTRALIZED STORAGE',
         subtitle: 'SVDB Vector Database',
-        description: 'Sharded Vector Database for scalable decentralized storage. Content addressing, erasure coding, and IPFS integration provide reliable, permanent data availability for your applications.',
+        description: 'ArthaChain includes a native SVDB (Sharded Vector Database) enabling ultra-fast search, vector embeddings, decentralized indexing, and permanent content addressing.',
         link: { text: 'Explore Storage', href: '/technology' },
         icon: Database,
         color: '#8c52ff',
-        highlights: ['Vector storage', 'IPFS integrated', 'Permanent data'],
+        highlights: ['Vector Storage for AI Apps', 'No External Dependency', 'Permanent, Redundant Data'],
+    },
+    {
+        id: '07',
+        title: 'DUAL-VM ARCHITECTURE',
+        subtitle: 'EVM + WASM Support',
+        description: 'Developers can deploy using Solidity (EVM) or Rust/AssemblyScript (WASM) on the same network. Smart contracts run in parallel, enabling multi-language interoperability and higher execution throughput.',
+        link: { text: 'Explore VMs', href: '/core/dual-vm' },
+        icon: Box,
+        color: '#ff4080',
+        highlights: ['Full EVM Compatibility', 'WASM Native Runtime', 'Parallel Contract Execution'],
+    },
+    {
+        id: '08',
+        title: 'OPEN NODE NETWORK',
+        subtitle: 'Validator Freedom',
+        description: 'ArthaChain removes barriers. Anyone can run a node with no staking or lock-ins required. The network decentralizes automatically as more nodes join.',
+        link: { text: 'Run a Node', href: '/dev/validators' },
+        icon: Users,
+        color: '#ffc502',
+        highlights: ['No Staking Required', 'Open Participation', 'Auto-Scaling Validator Network'],
+    },
+    {
+        id: '09',
+        title: 'NATIVE INTEROPERABILITY',
+        subtitle: 'Cross-Chain Connectivity',
+        description: 'Built with a cross-chain messaging layer connecting EVM chains, WASM chains, rollups, and future networks. Move assets, identities, and proofs seamlessly.',
+        link: { text: 'Explore Interop', href: '/technology' },
+        icon: Globe,
+        color: '#7c3aed',
+        highlights: ['Cross-Chain Messaging', 'Bridges Without Middlemen', 'Unified Identity Across Chains'],
+    },
+    {
+        id: '10',
+        title: 'DEVELOPER-FIRST TOOLING',
+        subtitle: 'Built for Builders',
+        description: 'SDKs, APIs, on-chain debugging, localnet tools, faucet automation, vector DB integration, and AI-assisted smart contract tools.',
+        link: { text: 'Start Building', href: '/dev' },
+        icon: Code,
+        color: '#8c52ff',
+        highlights: ['Rust, Solidity, TypeScript SDKs', 'Self-evolving Smart Contracts', 'AI Smart Contract Generator'],
     },
 ];
+
 
 export default function TimelineSection() {
     return (
@@ -74,7 +115,7 @@ export default function TimelineSection() {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
 
             {/* Subtle Orbs */}
-            <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#450693]/8 rounded-full blur-[120px]" />
+            <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#7c3aed]/8 rounded-full blur-[120px]" />
             <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-[#8c52ff]/6 rounded-full blur-[100px]" />
 
             <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
@@ -215,6 +256,84 @@ export default function TimelineSection() {
                                                     <motion.img
                                                         src="/images/arthachain-mascot.png"
                                                         alt="ArthaChain AI Mascot"
+                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : item.id === '02' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-security.png"
+                                                        alt="ArthaChain Security Mascot"
+                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : item.id === '03' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-identity.png"
+                                                        alt="ArthaChain Identity Mascot"
+                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : item.id === '04' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-scale.png"
+                                                        alt="ArthaChain Scalability Mascot"
+                                                        className="w-full h-full object-cover"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : item.id === '06' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-storage.png"
+                                                        alt="ArthaChain Storage Mascot"
+                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : item.id === '07' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-dualvm.png"
+                                                        alt="ArthaChain Dual-VM Mascot"
+                                                        className="w-full h-full object-contain p-4 sm:p-6"
+                                                        initial={{ scale: 0.8, opacity: 0 }}
+                                                        whileInView={{ scale: 1, opacity: 1 }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                    />
+                                                </div>
+                                            ) : item.id === '08' ? (
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <motion.img
+                                                        src="/images/mascot-network.png"
+                                                        alt="ArthaChain Network Mascot"
                                                         className="w-full h-full object-contain p-4 sm:p-6"
                                                         initial={{ scale: 0.8, opacity: 0 }}
                                                         whileInView={{ scale: 1, opacity: 1 }}

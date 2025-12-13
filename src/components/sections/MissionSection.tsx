@@ -11,39 +11,45 @@ const features = [
         num: '01',
         word: 'SPEED',
         title: 'LIGHTNING FAST TPS',
-        stat: '1M+',
-        label: 'Transactions/Sec',
-        desc: 'AI-optimized consensus achieving unprecedented transaction throughput with sub-second finality. Built for real-world applications demanding instant confirmation.',
+        stat: '∞',
+        label: 'TPS',
+        sublabel: 'Native sharding + DAG-based parallel processing',
+        desc: "ArthaChain's dual-VM architecture (EVM + WASM), paired with our AI-optimized consensus, delivers extreme throughput with sub-second finality. Built for real-world, high-volume applications demanding instant confirmation.",
+        ctaDesc: 'Experience the next generation of blockchain speed.',
         icon: Zap,
-        color: '#450693',
-        bg: '#45069312',
-        highlights: ['Sub-second finality', 'AI optimization', 'Real-time processing'],
+        color: '#7c3aed',
+        bg: '#7c3aed20',
+        highlights: ['Sub-Second Finality', 'AI Optimization', 'Real-Time Processing'],
     },
     {
         id: 2,
         num: '02',
         word: 'SECURE',
-        title: 'QUANTUM RESISTANT',
-        stat: '256-BIT',
-        label: 'Post-Quantum',
-        desc: 'Lattice-based cryptography protecting assets against future quantum computing threats. Military-grade security with zero-knowledge proofs.',
+        title: 'QUANTUM-RESISTANT',
+        stat: 'POST-QUANTUM',
+        label: '256-bit',
+        sublabel: 'Military-grade protection',
+        desc: 'Protected with NIST-approved, Level-5 post-quantum cryptography. ArthaChain employs lattice-based signatures and zero-knowledge layers to secure the network against both classical and future quantum attacks.',
+        ctaDesc: 'Future-proof security for global scale.',
         icon: Shield,
         color: '#8c52ff',
-        bg: '#8c52ff12',
-        highlights: ['Quantum-proof', 'Zero knowledge', 'Military grade'],
+        bg: '#8c52ff15',
+        highlights: ['NIST Level 5 PQ-Security', '256-bit Quantum-Resistant', 'Dilithium-5 / ML-DSA-87', 'Zero-Knowledge Privacy'],
     },
     {
         id: 3,
         num: '03',
         word: 'SCALE',
         title: 'INFINITE SCALABILITY',
-        stat: 'UNLIMITED',
-        label: 'Users Globally',
-        desc: 'Dynamic sharding architecture that grows seamlessly with network demand. From thousands to billions of users without performance degradation.',
+        stat: '∞',
+        label: 'Users',
+        sublabel: 'Throughput • Expansion',
+        desc: "ArthaChain's dynamic auto-sharding expands horizontally as demand increases. From thousands to billions of users, the network maintains consistent performance with true linear scaling.",
+        ctaDesc: 'Scale your applications without limits.',
         icon: Layers,
         color: '#ff4080',
-        bg: '#ff408012',
-        highlights: ['Auto-sharding', 'Linear scaling', 'Global reach'],
+        bg: '#ff408015',
+        highlights: ['Auto-Sharding', 'Linear Scaling', 'Global Reach'],
     },
     {
         id: 4,
@@ -51,14 +57,17 @@ const features = [
         word: 'SMART',
         title: 'AI-POWERED ENGINE',
         stat: '24/7',
-        label: 'Neural Active',
-        desc: 'Machine learning algorithms continuously optimizing network performance. Predictive resource allocation and intelligent load balancing.',
+        label: 'Neural Engine',
+        sublabel: 'Active',
+        desc: "ArthaChain's neural engine continuously monitors network conditions, predicts congestion, and auto-optimizes consensus performance. The chain becomes smarter, faster, and more efficient with every block.",
+        ctaDesc: 'Experience intelligent blockchain performance.',
         icon: Brain,
         color: '#ffc502',
-        bg: '#ffc50212',
-        highlights: ['ML optimization', 'Predictive AI', 'Auto-tuning'],
+        bg: '#ffc50215',
+        highlights: ['ML Optimization', 'Predictive AI', 'Auto-Tuning'],
     },
 ];
+
 
 export default function MissionSection() {
     const [active, setActive] = useState(0);
@@ -111,7 +120,7 @@ export default function MissionSection() {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
 
             {/* Subtle Orbs */}
-            <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#450693]/8 rounded-full blur-[120px]" />
+            <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#7c3aed]/8 rounded-full blur-[120px]" />
             <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-[#8c52ff]/6 rounded-full blur-[100px]" />
 
             <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
@@ -124,7 +133,7 @@ export default function MissionSection() {
                     viewport={{ once: true }}
                 >
                     <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-5">
-                        <span className="w-2 h-2 rounded-full bg-[#450693] animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-[#7c3aed] animate-pulse" />
                         <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/60">
                             Core Technology Stack
                         </span>
@@ -211,8 +220,7 @@ export default function MissionSection() {
                                     </div>
 
                                     <h3
-                                        className="text-[52px] sm:text-[68px] md:text-[84px] lg:text-[96px] font-black leading-[0.85] tracking-[-0.04em] mb-5"
-                                        style={{ color: f.color }}
+                                        className="text-[52px] sm:text-[68px] md:text-[84px] lg:text-[96px] font-black leading-[0.85] tracking-[-0.04em] mb-5 text-white"
                                     >
                                         {f.word}
                                     </h3>
@@ -248,31 +256,22 @@ export default function MissionSection() {
                                         <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2" style={{ borderColor: f.color }} />
                                         <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2" style={{ borderColor: f.color }} />
 
-                                        <div className="text-center mb-6">
+                                        <div className="text-center mb-4">
                                             <div
                                                 className="text-[48px] sm:text-[64px] font-black leading-none mb-2"
                                                 style={{ color: f.color }}
                                             >
                                                 {f.stat}
                                             </div>
-                                            <div className="text-white/40 text-[10px] font-bold tracking-[0.2em] uppercase">
+                                            <div className="text-white/60 text-[12px] font-bold tracking-[0.15em] uppercase">
                                                 {f.label}
                                             </div>
                                         </div>
 
-                                        {/* Mini Stats */}
-                                        <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/10">
-                                            <div className="text-center">
-                                                <div className="text-white font-black text-lg">99.9%</div>
-                                                <div className="text-white/30 text-[9px] uppercase tracking-wider">Uptime</div>
-                                            </div>
-                                            <div className="text-center">
-                                                <div className="text-white font-black text-lg">&lt;1s</div>
-                                                <div className="text-white/30 text-[9px] uppercase tracking-wider">Finality</div>
-                                            </div>
-                                            <div className="text-center">
-                                                <div className="text-white font-black text-lg">$0.001</div>
-                                                <div className="text-white/30 text-[9px] uppercase tracking-wider">Per Tx</div>
+                                        {/* Sublabel */}
+                                        <div className="pt-4 border-t border-white/10 text-center">
+                                            <div className="text-white/40 text-[11px] font-medium">
+                                                {f.sublabel}
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +284,7 @@ export default function MissionSection() {
                                             {f.title}
                                         </h4>
                                         <p className="text-white/40 text-xs leading-relaxed mb-4">
-                                            Experience the next generation of blockchain technology.
+                                            {f.ctaDesc}
                                         </p>
 
                                         <Link
