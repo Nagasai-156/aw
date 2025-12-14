@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Brain, Zap, Shield, Layers, Fingerprint, Database, Globe, Code, Cpu, TrendingUp } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FeatureCard } from '@/components/ui/grid-feature-cards';
@@ -51,9 +52,9 @@ const features = [
 
 export default function AdvancedGridFeaturesSection() {
     return (
-        <section className="relative w-full bg-white py-20 md:py-32 overflow-hidden">
+        <section className="relative w-full bg-black py-10 md:py-14 overflow-hidden">
             {/* Enhanced Animated Background Grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e0e0e0_1px,transparent_1px),linear-gradient(to_bottom,#e0e0e0_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-60" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
 
             {/* Solid Color Orbs (no gradients) */}
             <motion.div
@@ -87,6 +88,7 @@ export default function AdvancedGridFeaturesSection() {
             />
 
             <div className="relative z-10 mx-auto w-full max-w-[1400px] space-y-12 px-4 sm:px-6 lg:px-8">
+                {/* Header Section */}
                 <AnimatedContainer className="mx-auto max-w-4xl text-center space-y-6">
                     {/* Enhanced Badge */}
                     <motion.div
@@ -98,14 +100,14 @@ export default function AdvancedGridFeaturesSection() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8c52ff] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#8c52ff]"></span>
                         </span>
-                        <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-black/70">
+                        <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-white/70">
                             Developer Resources
                         </span>
                     </motion.div>
 
                     {/* Title with solid colors */}
                     <h2 className="text-[36px] sm:text-[48px] md:text-[60px] lg:text-[68px] font-black tracking-tight text-balance leading-[1.05]">
-                        <span className="text-black">
+                        <span className="text-white">
                             Built for{' '}
                         </span>
                         <span className="text-[#8c52ff]">
@@ -114,33 +116,45 @@ export default function AdvancedGridFeaturesSection() {
                     </h2>
 
                     {/* Enhanced Description */}
-                    <p className="text-black/60 text-base sm:text-lg md:text-xl tracking-wide text-balance max-w-3xl mx-auto leading-relaxed font-medium">
+                    <p className="text-white/60 text-base sm:text-lg md:text-xl tracking-wide text-balance max-w-3xl mx-auto leading-relaxed font-medium">
                         Everything you need to start building on ArthaChain.{' '}
                         <span className="text-[#8c52ff] font-semibold">From comprehensive SDKs to AI-powered tools</span>, we've got you covered.
                     </p>
-
-                    {/* Stats */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 pt-4">
-                        <div className="text-center">
-                            <div className="text-2xl md:text-3xl font-black text-[#8c52ff]">4+</div>
-                            <div className="text-xs text-black/50 font-medium uppercase tracking-wider">SDKs</div>
-                        </div>
-                        <div className="w-px h-8 bg-black/10" />
-                        <div className="text-center">
-                            <div className="text-2xl md:text-3xl font-black text-[#ff4080]">100%</div>
-                            <div className="text-xs text-black/50 font-medium uppercase tracking-wider">Open Source</div>
-                        </div>
-                        <div className="w-px h-8 bg-black/10" />
-                        <div className="text-center">
-                            <div className="text-2xl md:text-3xl font-black text-[#ffc502]">24/7</div>
-                            <div className="text-xs text-black/50 font-medium uppercase tracking-wider">Support</div>
-                        </div>
-                    </div>
                 </AnimatedContainer>
+
+                {/* Two Column Layout: Code + Stats */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+                    {/* Left Side - Code Typing Effect */}
+                    <div className="order-2 lg:order-1">
+                        <CodeTypingEffect />
+                    </div>
+
+                    {/* Right Side - Terminal Stats */}
+                    <div className="order-1 lg:order-2 flex flex-col justify-center gap-4">
+                        <TerminalStat
+                            label="SDKs Available"
+                            value="4+"
+                            color="#8c52ff"
+                            delay={0}
+                        />
+                        <TerminalStat
+                            label="Open Source Packages"
+                            value="100%"
+                            color="#ff4080"
+                            delay={0.2}
+                        />
+                        <TerminalStat
+                            label="Developer Support"
+                            value="24/7"
+                            color="#ffc502"
+                            delay={0.4}
+                        />
+                    </div>
+                </div>
 
                 <AnimatedContainer
                     delay={0.3}
-                    className="grid grid-cols-1 divide-black/[0.08] divide-x divide-y divide-dashed border-2 border-dashed border-black/[0.08] sm:grid-cols-2 lg:grid-cols-3 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl shadow-black/5"
+                    className="grid grid-cols-1 divide-white/[0.1] divide-x divide-y divide-dashed border-2 border-dashed border-white/[0.1] sm:grid-cols-2 lg:grid-cols-3 bg-white/[0.03] backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl shadow-black/40"
                 >
                     {features.map((feature, i) => (
                         <FeatureCard key={i} feature={feature} index={i} />
@@ -149,7 +163,7 @@ export default function AdvancedGridFeaturesSection() {
 
                 {/* Enhanced Bottom CTA Section */}
                 <AnimatedContainer delay={0.5} className="text-center pt-8 space-y-6">
-                    <p className="text-black/50 text-sm font-medium">
+                    <p className="text-white/50 text-sm font-medium">
                         Join thousands of developers building the future of blockchain
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
@@ -171,7 +185,7 @@ export default function AdvancedGridFeaturesSection() {
                         </motion.a>
                         <motion.a
                             href="/dev/sdks"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-black/5 text-black border-2 border-black/10 hover:border-[#8c52ff]/30 text-sm font-bold tracking-wide rounded-full transition-all duration-300"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/15 text-white border-2 border-white/20 hover:border-[#8c52ff]/50 text-sm font-bold tracking-wide rounded-full transition-all duration-300"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.98 }}
                         >
@@ -206,6 +220,152 @@ function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationPr
             className={className}
         >
             {children}
+        </motion.div>
+    );
+}
+
+// Terminal-Style Stat Component
+function TerminalStat({ label, value, color, delay }: { label: string; value: string; color: string; delay: number }) {
+    const [displayValue, setDisplayValue] = React.useState('');
+    const [showCursor, setShowCursor] = React.useState(true);
+
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            let currentIndex = 0;
+            const interval = setInterval(() => {
+                if (currentIndex <= value.length) {
+                    setDisplayValue(value.slice(0, currentIndex));
+                    currentIndex++;
+                } else {
+                    clearInterval(interval);
+                    setShowCursor(false);
+                }
+            }, 100);
+
+            return () => clearInterval(interval);
+        }, delay * 1000);
+
+        return () => clearTimeout(timer);
+    }, [value, delay]);
+
+    return (
+        <motion.div
+            className="relative flex items-center gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/10 font-mono"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay, duration: 0.5 }}
+        >
+            <div className="flex items-center gap-2">
+                <span className="text-white/40 text-sm">$</span>
+                <span className="text-white/60 text-sm">{label}:</span>
+            </div>
+            <div className="flex-1 flex items-center gap-1">
+                <span
+                    className="text-lg md:text-xl font-bold"
+                    style={{ color }}
+                >
+                    {displayValue}
+                </span>
+                {showCursor && (
+                    <motion.span
+                        className="inline-block w-2 h-5 ml-1"
+                        style={{ backgroundColor: color }}
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ duration: 0.8, repeat: Infinity }}
+                    />
+                )}
+            </div>
+            <div className="absolute -right-1 -bottom-1 w-8 h-8 blur-xl opacity-50" style={{ backgroundColor: color }} />
+        </motion.div>
+    );
+}
+
+// Code Typing Effect Component
+function CodeTypingEffect() {
+    const codeLines = [
+        'import { ArthaChain } from "@arthachain/sdk";',
+        '',
+        'const chain = new ArthaChain({',
+        '  network: "mainnet",',
+        '  ai: { enabled: true }',
+        '});',
+        '',
+        'await chain.deploy({',
+        '  contract: MyNFT,',
+        '  gas: "auto"',
+        '});'
+    ];
+
+    const [displayedLines, setDisplayedLines] = React.useState<string[]>([]);
+    const [currentLineIndex, setCurrentLineIndex] = React.useState(0);
+    const [currentCharIndex, setCurrentCharIndex] = React.useState(0);
+
+    React.useEffect(() => {
+        if (currentLineIndex >= codeLines.length) {
+            // Reset after showing all lines
+            const resetTimer = setTimeout(() => {
+                setDisplayedLines([]);
+                setCurrentLineIndex(0);
+                setCurrentCharIndex(0);
+            }, 3000);
+            return () => clearTimeout(resetTimer);
+        }
+
+        const currentLine = codeLines[currentLineIndex];
+
+        if (currentCharIndex < currentLine.length) {
+            const charTimer = setTimeout(() => {
+                setDisplayedLines(prev => {
+                    const newLines = [...prev];
+                    if (!newLines[currentLineIndex]) {
+                        newLines[currentLineIndex] = '';
+                    }
+                    newLines[currentLineIndex] = currentLine.slice(0, currentCharIndex + 1);
+                    return newLines;
+                });
+                setCurrentCharIndex(prev => prev + 1);
+            }, 50);
+            return () => clearTimeout(charTimer);
+        } else {
+            // Move to next line
+            const lineTimer = setTimeout(() => {
+                setCurrentLineIndex(prev => prev + 1);
+                setCurrentCharIndex(0);
+            }, 200);
+            return () => clearTimeout(lineTimer);
+        }
+    }, [currentLineIndex, currentCharIndex]);
+
+    return (
+        <motion.div
+            className="h-full p-3 sm:p-4 md:p-6 rounded-lg bg-black/60 border border-[#8c52ff]/20 backdrop-blur-sm font-mono text-[10px] sm:text-xs shadow-xl flex flex-col"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+        >
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 pb-2 border-b border-white/5">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#ff4080]" />
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#ffc502]" />
+                <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#8c52ff]" />
+                <span className="text-white/40 ml-1 sm:ml-2 text-[9px] sm:text-[10px]">deploy.ts</span>
+            </div>
+            <div className="space-y-0.5 sm:space-y-1 overflow-x-auto flex-1">
+                {displayedLines.map((line, i) => (
+                    <div key={i} className="flex items-start gap-1.5 sm:gap-2">
+                        <span className="text-white/20 select-none w-4 sm:w-6 text-right flex-shrink-0 text-[9px] sm:text-[10px]">{i + 1}</span>
+                        <span className="text-[#8c52ff]/90 break-all sm:break-normal">{line}</span>
+                        {i === currentLineIndex && (
+                            <motion.span
+                                className="inline-block w-1 h-3 sm:w-1.5 sm:h-4 bg-[#8c52ff] flex-shrink-0"
+                                animate={{ opacity: [1, 0, 1] }}
+                                transition={{ duration: 0.8, repeat: Infinity }}
+                            />
+                        )}
+                    </div>
+                ))}
+            </div>
         </motion.div>
     );
 }

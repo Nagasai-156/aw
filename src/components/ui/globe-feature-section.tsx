@@ -70,7 +70,7 @@ export function Globe({
 
     const onRender = useCallback(
         (state: Record<string, unknown>) => {
-            if (!pointerInteracting.current) phi += 0.005;
+            if (!pointerInteracting.current) phi += 0.008; // Faster auto-rotation
             state.phi = phi + r;
             state.width = width * 2;
             state.height = width * 2;
@@ -133,39 +133,46 @@ export function Globe({
 
 export default function GlobeFeatureSection() {
     return (
-        <section className="relative w-full max-w-[1400px] mx-auto overflow-hidden rounded-3xl bg-black border border-zinc-800 shadow-2xl px-6 py-16 md:px-16 md:py-24">
+        <section className="relative w-full max-w-[1400px] mx-auto overflow-hidden rounded-3xl bg-black border border-zinc-800 shadow-2xl">
             {/* Background Glow */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8c52ff]/20 rounded-full blur-[150px]" />
 
-            <div className="flex flex-col-reverse items-center justify-between gap-10 md:flex-row">
-                <div className="z-10 max-w-xl text-left">
-                    <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-6">
+            {/* Responsive: Mobile = single column (perfect), Desktop = 2 columns */}
+            <div className="flex flex-col-reverse lg:flex-row lg:min-h-[600px]">
+
+                {/* LEFT HALF - Content */}
+                <div className="z-10 w-full lg:w-1/2 flex flex-col justify-center px-6 py-12 md:px-12 md:py-16 text-center lg:text-left">
+                    <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-5 w-fit mx-auto lg:mx-0">
                         <span className="w-2 h-2 rounded-full bg-[#ffc502] animate-pulse" />
-                        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/60">
+                        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/70">
                             The Vision
                         </span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-[1.1] mb-5">
                         Autonomous World
                     </h1>
-                    <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-8">
-                        A new internet where applications <span className="text-[#8c52ff] font-medium">evolve</span>, <span className="text-[#ff4080] font-medium">learn</span>, and <span className="text-[#ffc502] font-medium">scale</span> without limits.
+                    <p className="text-base md:text-lg text-white/60 font-normal leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
+                        A new internet where applications <span className="text-[#8c52ff] font-semibold">evolve</span>, <span className="text-[#ff4080] font-semibold">learn</span>, and <span className="text-[#ffc502] font-semibold">scale</span> without limits.
                     </p>
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <Link href="/about">
-                            <Button className="inline-flex items-center gap-2 rounded-full bg-[#8c52ff] hover:bg-[#7c3aed] px-6 py-3 text-sm font-semibold text-white transition">
+                            <Button className="inline-flex items-center gap-2 rounded-full bg-[#8c52ff] hover:bg-[#7c3aed] px-6 py-2.5 text-sm font-bold text-white transition-colors">
                                 Explore the Vision <ArrowRight className="h-4 w-4" />
                             </Button>
                         </Link>
                         <Link href="/dev">
-                            <Button className="rounded-full bg-transparent border border-zinc-600 text-white hover:bg-zinc-800 px-6 py-3 text-sm font-semibold">
+                            <Button className="rounded-full bg-transparent border-2 border-white/20 text-white hover:bg-white/5 px-6 py-2.5 text-sm font-bold transition-colors">
                                 Start Building
                             </Button>
                         </Link>
                     </div>
                 </div>
-                <div className="relative h-[300px] md:h-[400px] w-full max-w-xl">
-                    <Globe className="absolute -bottom-10 md:-bottom-20 -right-10 md:-right-40 scale-125 md:scale-150" />
+
+                {/* RIGHT HALF - Globe (CENTERED) */}
+                <div className="relative w-full lg:w-1/2 h-[400px] md:h-[500px] lg:h-auto flex items-center justify-center py-12 lg:py-0">
+                    <div className="relative w-full h-full max-w-[600px] lg:max-w-[500px] flex items-center justify-center">
+                        <Globe className="w-full h-full" />
+                    </div>
                 </div>
             </div>
         </section>

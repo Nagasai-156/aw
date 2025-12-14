@@ -5,7 +5,7 @@ import { StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation"
 
 export default function SparklesSection() {
     return (
-        <section className="relative w-full bg-black py-10 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center overflow-hidden">
+        <section className="relative w-full bg-black py-6 sm:py-8 md:py-10 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center overflow-hidden">
             <StaggerContainer className="max-w-[1400px] mx-auto w-full flex flex-col items-center">
                 {/* Main Heading */}
                 <StaggerItem>
@@ -15,12 +15,16 @@ export default function SparklesSection() {
                 </StaggerItem>
 
                 {/* Sparkles Container - Reduced Height */}
-                <StaggerItem className="w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl h-20 sm:h-24 md:h-28 relative -mt-2">
-                    {/* Gradient Lines */}
+                <StaggerItem className="w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl h-20 sm:h-24 md:h-28 relative -mt-16">
+                    {/* Surface/Ground Effect - Top gradient lines */}
                     <div className="absolute inset-x-10 sm:inset-x-16 md:inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#8c52ff] to-transparent h-[2px] w-3/4 blur-sm mx-auto left-0 right-0" />
                     <div className="absolute inset-x-10 sm:inset-x-16 md:inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#8c52ff] to-transparent h-px w-3/4 mx-auto left-0 right-0" />
                     <div className="absolute inset-x-20 sm:inset-x-40 md:inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#ffc502] to-transparent h-[5px] w-1/4 blur-sm mx-auto left-0 right-0" />
                     <div className="absolute inset-x-20 sm:inset-x-40 md:inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#ffc502] to-transparent h-px w-1/4 mx-auto left-0 right-0" />
+
+                    {/* Glowing surface reflection effect */}
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent w-full" />
+                    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent w-full blur-[2px]" />
 
                     {/* Sparkles Core */}
                     <SparklesCore

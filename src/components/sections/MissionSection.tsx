@@ -123,7 +123,7 @@ export default function MissionSection() {
             <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#7c3aed]/8 rounded-full blur-[120px]" />
             <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-[#8c52ff]/6 rounded-full blur-[100px]" />
 
-            <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
+            <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
 
                 {/* Header */}
                 <motion.div

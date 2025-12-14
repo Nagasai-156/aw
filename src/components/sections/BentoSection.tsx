@@ -129,7 +129,7 @@ export default function BentoSection() {
             <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60" />
 
             {/* Main Content */}
-            <div className="relative z-10 mx-auto max-w-[1400px] border-x border-zinc-800/50 py-16 px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto max-w-[1400px] border-x border-zinc-800/50 py-8 px-4 sm:px-6 lg:px-8">
 
                 {/* Section Heading */}
                 <motion.div

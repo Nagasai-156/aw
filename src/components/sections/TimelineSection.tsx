@@ -118,7 +118,7 @@ export default function TimelineSection() {
             <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#7c3aed]/8 rounded-full blur-[120px]" />
             <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-[#8c52ff]/6 rounded-full blur-[100px]" />
 
-            <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
+            <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
 
                 {/* Header */}
                 <motion.div
@@ -141,7 +141,7 @@ export default function TimelineSection() {
                     </p>
                 </motion.div>
 
-                {/* Features List */}
+                {/* Features List with Particle Trails */}
                 <div className="space-y-0">
                     {featuresData.map((item, index) => {
                         const Icon = item.icon;
@@ -150,24 +150,69 @@ export default function TimelineSection() {
                         return (
                             <motion.div
                                 key={item.id}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-50px' }}
-                                transition={{ duration: 0.5, delay: index * 0.05 }}
-                                className="border-t border-white/10 py-12 sm:py-16"
+                                initial={{ opacity: 0, y: 60, scale: 0.95 }}
+                                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                viewport={{ once: true, margin: '-100px' }}
+                                transition={{
+                                    duration: 0.7,
+                                    delay: index * 0.1,
+                                    ease: [0.25, 0.46, 0.45, 0.94]
+                                }}
+                                className="border-t border-white/10 py-12 sm:py-16 relative group"
                             >
+                                {/* Particle Trail Container */}
+                                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                                    {[...Array(8)].map((_, i) => (
+                                        <motion.div
+                                            key={i}
+                                            className="absolute w-1 h-1 rounded-full"
+                                            style={{
+                                                background: item.color,
+                                                left: `${10 + i * 10}%`,
+                                                top: '50%'
+                                            }}
+                                            initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                                            whileInView={{
+                                                opacity: [0, 1, 0],
+                                                scale: [0, 1.5, 0],
+                                                x: [0, (i - 4) * 30, (i - 4) * 60],
+                                                y: [0, -40 + Math.sin(i) * 20, -80 + Math.sin(i) * 40]
+                                            }}
+                                            viewport={{ once: true }}
+                                            transition={{
+                                                duration: 1.5,
+                                                delay: index * 0.1 + i * 0.1,
+                                                ease: "easeOut"
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+
                                 <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center`}>
 
                                     {/* Number + Icon Side */}
                                     <div className={`lg:col-span-2 ${isEven ? 'lg:order-1' : 'lg:order-1'}`}>
-                                        <div className="flex items-center gap-4 lg:flex-col lg:items-start">
-                                            {/* Big Number */}
-                                            <span
-                                                className="text-[64px] sm:text-[80px] lg:text-[100px] font-black leading-none"
+                                        <div className="flex items-center gap-4 lg:flex-col lg:items-start relative">
+                                            {/* Big Number with Glow */}
+                                            <motion.span
+                                                className="text-[64px] sm:text-[80px] lg:text-[100px] font-black leading-none relative"
                                                 style={{ color: `${item.color}40` }}
+                                                initial={{ opacity: 0, rotateY: -90 }}
+                                                whileInView={{ opacity: 1, rotateY: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{
+                                                    duration: 0.8,
+                                                    delay: index * 0.1 + 0.2
+                                                }}
                                             >
                                                 {item.id}
-                                            </span>
+                                                <span
+                                                    className="absolute inset-0 blur-xl"
+                                                    style={{ color: item.color, opacity: 0.3 }}
+                                                >
+                                                    {item.id}
+                                                </span>
+                                            </motion.span>
                                         </div>
                                     </div>
 

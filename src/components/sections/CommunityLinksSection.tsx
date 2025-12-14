@@ -7,7 +7,7 @@ import { Users, MessageCircle, Code2, Sparkles } from "lucide-react";
 
 export default function CommunityLinksSection() {
     return (
-        <section className="relative w-full bg-black py-20 md:py-32 overflow-hidden">
+        <section className="relative w-full bg-black py-10 md:py-14 overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
@@ -68,12 +68,12 @@ export default function CommunityLinksSection() {
                 >
                     <div className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#8c52ff]/30 transition-colors">
                         <Users className="w-8 h-8 text-[#8c52ff] mx-auto mb-3" />
-                        <div className="text-3xl font-black text-white mb-1">50K+</div>
+                        <div className="text-3xl font-black text-white mb-1">1000+</div>
                         <div className="text-xs text-white/50 uppercase tracking-wider">Community Members</div>
                     </div>
                     <div className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#ff4080]/30 transition-colors">
                         <Code2 className="w-8 h-8 text-[#ff4080] mx-auto mb-3" />
-                        <div className="text-3xl font-black text-white mb-1">1000+</div>
+                        <div className="text-3xl font-black text-white mb-1">50+</div>
                         <div className="text-xs text-white/50 uppercase tracking-wider">Developers</div>
                     </div>
                     <div className="text-center p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:border-[#ffc502]/30 transition-colors">
@@ -99,19 +99,6 @@ export default function CommunityLinksSection() {
                     <div className="rounded-3xl overflow-hidden shadow-2xl shadow-[#8c52ff]/10 border-2 border-[#8c52ff]/20">
                         <ClipPathLinks />
                     </div>
-                </motion.div>
-
-                {/* Bottom Text */}
-                <motion.div
-                    className="text-center pt-8"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                    <p className="text-white/50 text-sm font-medium">
-                        Hover over any link to reveal our interactive animation ✨
-                    </p>
                 </motion.div>
             </div>
         </section>

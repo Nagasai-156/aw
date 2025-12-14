@@ -16,7 +16,8 @@ type FeatureCardPorps = React.ComponentProps<'div'> & {
 };
 
 export function FeatureCard({ feature, className, index, ...props }: FeatureCardPorps) {
-    const p = genRandomPattern();
+    // Use index as seed for deterministic but unique patterns per card
+    const p = genRandomPattern(index !== undefined ? index * 1000 + 123 : undefined);
 
     const CardContent = () => (
         <>
@@ -34,37 +35,33 @@ export function FeatureCard({ feature, className, index, ...props }: FeatureCard
                 </div>
             </div>
 
-            {/* Solid color overlay on hover */}
-            <div className="absolute inset-0 bg-[#8c52ff]/0 opacity-0 group-hover:bg-[#8c52ff]/3 group-hover:opacity-100 transition-all duration-500" />
+            {/* Removed hover overlay */}
 
-            {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-12 h-12 border-l-2 border-t-2 border-transparent group-hover:border-[#8c52ff]/40 transition-all duration-300" />
-            <div className="absolute bottom-0 right-0 w-12 h-12 border-r-2 border-b-2 border-transparent group-hover:border-[#ff4080]/40 transition-all duration-300" />
+            {/* Removed corner accents */}
 
             {/* Icon with enhanced styling */}
             <div className="relative z-10 mb-6 inline-flex items-center justify-center">
-                <div className="absolute inset-0 bg-[#8c52ff]/10 blur-xl scale-0 group-hover:scale-100 transition-transform duration-500 rounded-full" />
-                <div className="relative p-3 rounded-xl bg-black/5 group-hover:bg-[#8c52ff]/10 transition-all duration-300 border border-black/5 group-hover:border-[#8c52ff]/30 group-hover:shadow-lg group-hover:shadow-[#8c52ff]/10">
-                    <feature.icon className="size-6 text-black/70 group-hover:text-[#8c52ff] transition-colors duration-300" strokeWidth={1.5} aria-hidden />
+                <div className="relative p-3 rounded-xl bg-white/5 border border-white/10">
+                    <feature.icon className="size-6 text-white/70" strokeWidth={1.5} aria-hidden />
                 </div>
             </div>
 
             {/* Content */}
             <div className="relative z-10 space-y-3">
-                <h3 className="text-base md:text-lg font-bold text-black group-hover:text-[#8c52ff] transition-colors duration-300">
+                <h3 className="text-base md:text-lg font-bold text-white">
                     {feature.title}
                 </h3>
-                <p className="text-black/60 text-xs md:text-sm font-normal leading-relaxed group-hover:text-black/70 transition-colors duration-300">
+                <p className="text-white/60 text-xs md:text-sm font-normal leading-relaxed">
                     {feature.description}
                 </p>
             </div>
 
-            {/* CTA with arrow animation */}
+            {/* CTA with arrow */}
             {feature.cta && (
-                <div className="relative z-10 mt-6 flex items-center gap-2 text-xs md:text-sm font-semibold text-[#8c52ff] group-hover:text-[#7a45e0] transition-colors duration-300">
+                <div className="relative z-10 mt-6 flex items-center gap-2 text-xs md:text-sm font-semibold text-[#8c52ff]">
                     <span>{feature.cta}</span>
                     <svg
-                        className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                        className="w-4 h-4"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -81,14 +78,9 @@ export function FeatureCard({ feature, className, index, ...props }: FeatureCard
             <Link
                 href={feature.href}
                 className={cn(
-                    'relative overflow-hidden p-8 group',
-                    'hover:bg-white',
-                    'transition-all duration-500',
-                    'hover:shadow-xl hover:shadow-[#8c52ff]/5',
-                    'hover:scale-[1.02] hover:z-10',
+                    'relative overflow-hidden p-8',
                     className
                 )}
-                {...props}
             >
                 <CardContent />
             </Link>
@@ -131,10 +123,22 @@ function GridPattern({
     );
 }
 
-function genRandomPattern(length?: number): number[][] {
+// Seeded random number generator for deterministic patterns
+function seededRandom(seed: number): () => number {
+    let value = seed;
+    return () => {
+        value = (value * 9301 + 49297) % 233280;
+        return value / 233280;
+    };
+}
+
+function genRandomPattern(seed?: number, length?: number): number[][] {
+    const actualSeed = seed ?? 12345; // Default seed
     length = length ?? 5;
+    const rng = seededRandom(actualSeed);
+
     return Array.from({ length }, () => [
-        Math.floor(Math.random() * 4) + 7, // random x between 7 and 10
-        Math.floor(Math.random() * 6) + 1, // random y between 1 and 6
+        Math.floor(rng() * 4) + 7, // random x between 7 and 10
+        Math.floor(rng() * 6) + 1, // random y between 1 and 6
     ]);
 }

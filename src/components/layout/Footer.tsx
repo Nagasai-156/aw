@@ -1,10 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
+import { FlickeringGrid, useMediaQuery } from '@/components/ui/flickering-grid';
 
 export default function Footer() {
+    const tablet = useMediaQuery("(max-width: 1024px)");
+
     return (
-        <footer className="relative w-full bg-black text-white overflow-hidden">
+        <footer className="relative w-full bg-black text-white overflow-hidden pb-0">
             {/* Vertical Bars Decoration */}
             <div className="absolute top-0 left-0 right-0 h-20 sm:h-24 md:h-32 bg-white overflow-hidden">
                 <div className="max-w-[1600px] mx-auto h-full flex items-end gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6 lg:px-8">
@@ -66,12 +70,23 @@ export default function Footer() {
                                 RESOURCES
                             </h3>
                             <ul className="space-y-4">
-                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Documentation</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Guides</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Whitepaper</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Changelog</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">For Developers</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#8c52ff] transition-colors">Articles</Link></li>
+                                {[
+                                    { title: 'Documentation', href: '/docs' },
+                                    { title: 'Guides', href: '/guides' },
+                                    { title: 'Whitepaper', href: '#' },
+                                    { title: 'Changelog', href: '#' },
+                                    { title: 'For Developers', href: '/dev' },
+                                    { title: 'Articles', href: '#' }
+                                ].map((link, i) => (
+                                    <li key={i} className="group inline-flex cursor-pointer items-center justify-start gap-1">
+                                        <Link href={link.href} className="text-[15px] hover:text-[#8c52ff] transition-colors">
+                                            {link.title}
+                                        </Link>
+                                        <div className="flex size-4 items-center justify-center border border-white/20 rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                                            <ChevronRight className="h-4 w-4" />
+                                        </div>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
@@ -81,12 +96,23 @@ export default function Footer() {
                                 COMPANY
                             </h3>
                             <ul className="space-y-4">
-                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">About</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Blog</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Careers</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Contact us</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Privacy Policy</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ff4080] transition-colors">Terms of Service</Link></li>
+                                {[
+                                    { title: 'About', href: '/about' },
+                                    { title: 'Blog', href: '#' },
+                                    { title: 'Careers', href: '#' },
+                                    { title: 'Contact us', href: '/community' },
+                                    { title: 'Privacy Policy', href: '#' },
+                                    { title: 'Terms of Service', href: '#' }
+                                ].map((link, i) => (
+                                    <li key={i} className="group inline-flex cursor-pointer items-center justify-start gap-1">
+                                        <Link href={link.href} className="text-[15px] hover:text-[#ff4080] transition-colors">
+                                            {link.title}
+                                        </Link>
+                                        <div className="flex size-4 items-center justify-center border border-white/20 rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                                            <ChevronRight className="h-4 w-4" />
+                                        </div>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 
@@ -96,12 +122,23 @@ export default function Footer() {
                                 COMMUNITY
                             </h3>
                             <ul className="space-y-4">
-                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">GitHub</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">Discord</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">Newsletter</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">X (Twitter)</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">YouTube</Link></li>
-                                <li><Link href="#" className="text-[15px] hover:text-[#ffc502] transition-colors">LinkedIn</Link></li>
+                                {[
+                                    { title: 'GitHub', href: '#' },
+                                    { title: 'Discord', href: '#' },
+                                    { title: 'Newsletter', href: '#' },
+                                    { title: 'X (Twitter)', href: '#' },
+                                    { title: 'YouTube', href: '#' },
+                                    { title: 'LinkedIn', href: '#' }
+                                ].map((link, i) => (
+                                    <li key={i} className="group inline-flex cursor-pointer items-center justify-start gap-1">
+                                        <Link href={link.href} className="text-[15px] hover:text-[#ffc502] transition-colors">
+                                            {link.title}
+                                        </Link>
+                                        <div className="flex size-4 items-center justify-center border border-white/20 rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                                            <ChevronRight className="h-4 w-4" />
+                                        </div>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -116,6 +153,23 @@ export default function Footer() {
                             COPYRIGHT ©2025 ARTHACHAIN NETWORK, INC
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {/* Flickering Grid Animation */}
+            <div className="w-full h-48 md:h-64 relative mt-24 z-0">
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black z-10 from-40%" />
+                <div className="absolute inset-0 mx-6">
+                    <FlickeringGrid
+                        text={tablet ? "ARTHACHAIN" : "ARTHACHAIN NETWORK"}
+                        fontSize={tablet ? 60 : 90}
+                        className="h-full w-full"
+                        squareSize={2}
+                        gridGap={tablet ? 2 : 3}
+                        color="#8c52ff"
+                        maxOpacity={0.3}
+                        flickerChance={0.1}
+                    />
                 </div>
             </div>
         </footer>

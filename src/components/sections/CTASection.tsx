@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function CTASection() {
     return (
-        <section className="relative w-full bg-black py-20 sm:py-28 md:py-36 lg:py-44 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section className="relative w-full bg-black py-10 sm:py-14 md:py-16 lg:py-18 px-4 sm:px-6 lg:px-8 overflow-hidden">
             {/* Animated Background Grid - Same as Hero */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
 
@@ -75,32 +75,6 @@ export default function CTASection() {
                     >
                         Join Discord
                     </Link>
-                </motion.div>
-
-                {/* Stats Strip */}
-                <motion.div
-                    className="flex flex-wrap justify-center gap-6 sm:gap-10 md:gap-16 lg:gap-20 border-t border-white/10 pt-10 sm:pt-12"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                >
-                    <div className="text-center">
-                        <div className="text-[24px] sm:text-[32px] font-black text-[#8c52ff]">50K+</div>
-                        <div className="text-[10px] font-medium tracking-[0.15em] uppercase text-white/40">Developers</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-[24px] sm:text-[32px] font-black text-[#ff4080]">200+</div>
-                        <div className="text-[10px] font-medium tracking-[0.15em] uppercase text-white/40">Projects</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-[24px] sm:text-[32px] font-black text-[#ffc502]">$2B+</div>
-                        <div className="text-[10px] font-medium tracking-[0.15em] uppercase text-white/40">TVL</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-[24px] sm:text-[32px] font-black text-white">24/7</div>
-                        <div className="text-[10px] font-medium tracking-[0.15em] uppercase text-white/40">Support</div>
-                    </div>
                 </motion.div>
             </div>
         </section>
