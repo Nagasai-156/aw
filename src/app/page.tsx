@@ -1,5 +1,8 @@
 import Hero from '@/components/sections/Hero';
 import ScrollingMarquee from '@/components/sections/ScrollingMarquee';
+import AdvancedGridFeaturesSection from '@/components/sections/AdvancedGridFeaturesSection';
+import ValidatorSection from '@/components/sections/ValidatorSection';
+import CommunityLinksSection from '@/components/sections/CommunityLinksSection';
 import MissionSection from '@/components/sections/MissionSection';
 import TimelineSection from '@/components/sections/TimelineSection';
 import BentoSection from '@/components/sections/BentoSection';
@@ -16,6 +19,9 @@ export default function Home() {
       <TimelineSection />
       <BentoSection />
       <GlobeSection />
+      <AdvancedGridFeaturesSection />
+      <ValidatorSection />
+      <CommunityLinksSection />
       <CTASection />
       <SparklesSection />
     </main>

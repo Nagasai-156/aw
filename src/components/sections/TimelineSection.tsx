@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import ScrollAnimation from '@/components/ui/scroll-animation';
 import { ArrowRight, Zap, Shield, Layers, Brain, Fingerprint, Database, Box, Users, Globe, Code } from 'lucide-react';
 
 const featuresData = [
@@ -106,7 +107,6 @@ const featuresData = [
         highlights: ['Rust, Solidity, TypeScript SDKs', 'Self-evolving Smart Contracts', 'AI Smart Contract Generator'],
     },
 ];
-
 
 export default function TimelineSection() {
     return (
@@ -236,140 +236,109 @@ export default function TimelineSection() {
                                         </Link>
                                     </div>
 
-
                                     {/* Visual Side */}
                                     <div className={`lg:col-span-4 ${isEven ? 'lg:order-3' : 'lg:order-2'}`}>
-                                        <div className="relative aspect-[4/3] overflow-hidden bg-transparent">
+                                        <div className="relative aspect-square scale-125 bg-transparent">
                                             {/* Mascot Images */}
                                             {item.id === '01' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/arthachain-mascot.png"
-                                                        alt="ArthaChain AI Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/arthachain-mascot.png"
+                                                            alt="ArthaChain AI Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '02' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-security.png"
-                                                        alt="ArthaChain Security Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-security.png"
+                                                            alt="ArthaChain Security Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '03' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-identity.png"
-                                                        alt="ArthaChain Identity Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-identity.png"
+                                                            alt="ArthaChain Identity Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '04' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-scale.png"
-                                                        alt="ArthaChain Scalability Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-scale.png"
+                                                            alt="ArthaChain Scalability Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '05' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-performance.png"
-                                                        alt="ArthaChain Performance Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-performance.png"
+                                                            alt="ArthaChain Performance Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '06' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-storage.png"
-                                                        alt="ArthaChain Storage Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-storage.png"
+                                                            alt="ArthaChain Storage Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '07' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-dualvm.png"
-                                                        alt="ArthaChain Dual-VM Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-dualvm.png"
+                                                            alt="ArthaChain Dual-VM Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '08' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-network.png"
-                                                        alt="ArthaChain Network Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-network.png"
+                                                            alt="ArthaChain Network Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '09' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-interop.png"
-                                                        alt="ArthaChain Interoperability Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-interop.png"
+                                                            alt="ArthaChain Interoperability Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : item.id === '10' ? (
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <motion.img
-                                                        src="/images/mascot-developer.png"
-                                                        alt="ArthaChain Developer Mascot"
-                                                        className="w-[120%] h-[120%] object-contain"
-                                                        initial={{ scale: 0.8, opacity: 0 }}
-                                                        whileInView={{ scale: 1, opacity: 1 }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                                        whileHover={{ scale: 1.05 }}
-                                                    />
+                                                    <ScrollAnimation direction={isEven ? 'left' : 'right'} className="w-full h-full flex items-center justify-center">
+                                                        <img
+                                                            src="/images/mascot-developer.png"
+                                                            alt="ArthaChain Developer Mascot"
+                                                            className="w-[250%] h-[250%] object-contain"
+                                                        />
+                                                    </ScrollAnimation>
                                                 </div>
                                             ) : null}
                                         </div>

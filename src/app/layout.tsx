@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google"; // Changed from Inter
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import PreFooter from "@/components/layout/PreFooter";
 import Footer from "@/components/layout/Footer";
 
-const inter = Inter({
+// Configure Space Grotesk
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${spaceGrotesk.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <Header />
         {children}
         <PreFooter />
