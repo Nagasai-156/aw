@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google"; // Changed from Inter
 import "./globals.css";
 import Header from "@/components/layout/Header";
-import PreFooter from "@/components/layout/PreFooter";
 import Footer from "@/components/layout/Footer";
 
 // Configure Space Grotesk
@@ -27,7 +26,6 @@ export default function RootLayout({
       <body className={`${spaceGrotesk.variable} font-sans antialiased overflow-x-hidden`} suppressHydrationWarning>
         <Header />
         {children}
-        <PreFooter />
         <Footer />
       </body>
     </html>

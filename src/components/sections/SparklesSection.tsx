@@ -5,17 +5,17 @@ import { StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation"
 
 export default function SparklesSection() {
     return (
-        <section className="relative w-full bg-black py-6 sm:py-8 md:py-10 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center overflow-hidden">
+        <section className="relative w-full bg-black py-6 sm:py-8 md:py-10 px-4 sm:px-6 lg:px-8 pb-0 flex flex-col items-center justify-center overflow-hidden">
             <StaggerContainer className="max-w-[1400px] mx-auto w-full flex flex-col items-center">
                 {/* Main Heading */}
                 <StaggerItem>
-                    <h1 className="text-[56px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[180px] font-black text-center text-white relative z-20 mb-0">
+                    <h1 className="text-[56px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[180px] font-black text-center text-white relative z-20 mb-4 sm:mb-0">
                         ARTHACHAIN
                     </h1>
                 </StaggerItem>
 
                 {/* Sparkles Container - Reduced Height */}
-                <StaggerItem className="w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl h-20 sm:h-24 md:h-28 relative -mt-16">
+                <StaggerItem className="w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl h-20 sm:h-24 md:h-28 relative -mt-4 sm:-mt-16">
                     {/* Surface/Ground Effect - Top gradient lines */}
                     <div className="absolute inset-x-10 sm:inset-x-16 md:inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#8c52ff] to-transparent h-[2px] w-3/4 blur-sm mx-auto left-0 right-0" />
                     <div className="absolute inset-x-10 sm:inset-x-16 md:inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#8c52ff] to-transparent h-px w-3/4 mx-auto left-0 right-0" />
