@@ -132,9 +132,14 @@ export default function DualChainPage() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
                 <StaggerContainer className="w-full relative z-10">
-                    <div className="grid md:grid-cols-12 gap-0">
-                        {/* Left - Content */}
-                        <div className="md:col-span-9 p-16">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
+                        {/* Right - Large Number (shows first on mobile) */}
+                        <div className="md:col-span-3 md:order-2 bg-[#ff4080] flex items-center justify-center p-12">
+                            <div className="text-[15rem] font-black text-white leading-none">2</div>
+                        </div>
+
+                        {/* Left - Content (shows second on mobile) */}
+                        <div className="md:col-span-9 md:order-1 p-16">
                             <StaggerItem>
                                 <div className="mb-12">
                                     <h2 className="text-7xl font-black mb-4">ArthaFlow</h2>
@@ -188,28 +193,23 @@ export default function DualChainPage() {
                                 </div>
                             </StaggerItem>
                         </div>
-
-                        {/* Right - Large Number */}
-                        <div className="md:col-span-3 bg-[#ff4080] flex items-center justify-center p-12">
-                            <div className="text-[15rem] font-black text-white leading-none">2</div>
-                        </div>
                     </div>
                 </StaggerContainer>
             </section>
 
             {/* SYNCHRONIZATION - Bento Grid */}
-            <section className="py-32 px-6 bg-white relative">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-white relative">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
                 <StaggerContainer className="max-w-7xl mx-auto relative z-10">
                     <StaggerItem>
-                        <div className="mb-20">
-                            <h2 className="text-7xl font-black mb-6">Perfect Synchronization</h2>
-                            <p className="text-2xl text-gray-600">Two chains. Same heartbeat.</p>
+                        <div className="mb-10 sm:mb-16 md:mb-20">
+                            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6">Perfect Synchronization</h2>
+                            <p className="text-lg sm:text-xl md:text-2xl text-gray-600">Two chains. Same heartbeat.</p>
                         </div>
                     </StaggerItem>
 
-                    <div className="grid md:grid-cols-3 gap-px bg-black">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-black">
                         {[
                             { icon: Shield, text: 'Same Validators', color: '#8c52ff' },
                             { icon: Brain, text: 'Same Consensus', color: '#ff4080' },
@@ -221,9 +221,9 @@ export default function DualChainPage() {
                             const Icon = item.icon;
                             return (
                                 <StaggerItem key={i}>
-                                    <div className="bg-white p-12 h-full flex flex-col items-center justify-center text-center">
-                                        <Icon className="w-16 h-16 mb-6" style={{ color: item.color }} />
-                                        <p className="text-xl font-black">{item.text}</p>
+                                    <div className="bg-white p-8 sm:p-10 md:p-12 h-full flex flex-col items-center justify-center text-center">
+                                        <Icon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-4 sm:mb-6" style={{ color: item.color }} />
+                                        <p className="text-base sm:text-lg md:text-xl font-black">{item.text}</p>
                                     </div>
                                 </StaggerItem>
                             );
@@ -231,22 +231,22 @@ export default function DualChainPage() {
                     </div>
 
                     <StaggerItem>
-                        <div className="mt-20 bg-black text-white p-16">
-                            <h3 className="text-4xl font-black mb-12 text-center">How It Works</h3>
-                            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                        <div className="mt-10 sm:mt-16 md:mt-20 bg-black text-white p-8 sm:p-12 md:p-16">
+                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-8 sm:mb-10 md:mb-12 text-center">How It Works</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 max-w-5xl mx-auto">
                                 {[
                                     { step: 'User signs in', chain: 'ArthaFlow', detail: 'DID verified', color: '#ff4080' },
                                     { step: 'Transaction sent', chain: 'ArthaCore', detail: 'Balance updated', color: '#8c52ff' },
                                     { step: 'Data saved', chain: 'ArthaFlow', detail: 'Embeddings stored', color: '#ff4080' },
                                     { step: 'Query executed', chain: 'ArthaFlow', detail: 'Vector retrieved', color: '#ff4080' }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex gap-6">
-                                        <div className="text-6xl font-black opacity-20" style={{ color: item.color }}>
+                                    <div key={i} className="flex gap-4 sm:gap-6">
+                                        <div className="text-4xl sm:text-5xl md:text-6xl font-black opacity-20 flex-shrink-0" style={{ color: item.color }}>
                                             {i + 1}
                                         </div>
                                         <div>
-                                            <p className="text-2xl font-black mb-2">{item.step}</p>
-                                            <p className="text-lg text-gray-400">{item.chain}: {item.detail}</p>
+                                            <p className="text-lg sm:text-xl md:text-2xl font-black mb-1 sm:mb-2">{item.step}</p>
+                                            <p className="text-sm sm:text-base md:text-lg text-gray-400">{item.chain}: {item.detail}</p>
                                         </div>
                                     </div>
                                 ))}

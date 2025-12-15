@@ -24,7 +24,7 @@ export default function ValidatorSection() {
     const benefits = [
         { icon: CheckCircle2, title: 'No Staking Required', desc: 'Run a validator node without locking up any tokens', color: '#8c52ff' },
         { icon: Shield, title: 'No Lock-in Period', desc: 'Start and stop anytime with complete freedom', color: '#ff4080' },
-        { icon: Network, title: 'Permissionless Access', desc: 'Anyone can join — truly decentralized network', color: '#ffc502' },
+        { icon: Network, title: 'Permissionless Access', desc: 'Anyone can join this truly decentralized network', color: '#ffc502' },
     ];
 
     return (

@@ -55,39 +55,39 @@ export default function CoreTechnologyPage() {
             </section>
 
             {/* ARCHITECTURE OVERVIEW - LAYERED STACK */}
-            <section className="py-32 px-6 bg-white relative">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-white relative">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
                 <StaggerContainer className="max-w-7xl mx-auto relative z-10">
                     <StaggerItem>
-                        <div className="text-center mb-20">
-                            <h2 className="text-7xl md:text-9xl font-black mb-8">The Protocol Stack</h2>
-                            <p className="text-3xl text-gray-600">11 layers working in perfect harmony</p>
+                        <div className="text-center mb-10 sm:mb-16 md:mb-20">
+                            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-black mb-4 sm:mb-6 md:mb-8 px-2">The Protocol Stack</h2>
+                            <p className="text-lg sm:text-2xl md:text-3xl text-gray-600 px-4">11 layers working in perfect harmony</p>
                         </div>
                     </StaggerItem>
 
                     {/* Stats Banner */}
                     <StaggerItem>
-                        <div className="bg-black text-white p-16 mb-20">
-                            <div className="grid md:grid-cols-3 gap-12 text-center">
+                        <div className="bg-black text-white p-6 sm:p-10 md:p-16 mb-10 sm:mb-16 md:mb-20">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 md:gap-12 text-center">
                                 <div>
-                                    <div className="text-8xl font-black mb-4 text-[#8c52ff]">∞</div>
-                                    <p className="text-2xl font-bold">Infinite Scalability</p>
+                                    <div className="text-6xl sm:text-7xl md:text-8xl font-black mb-3 sm:mb-4 text-[#8c52ff]">∞</div>
+                                    <p className="text-base sm:text-xl md:text-2xl font-bold">Infinite Scalability</p>
                                 </div>
                                 <div>
-                                    <div className="text-8xl font-black mb-4 text-[#ff4080]">&lt;1s</div>
-                                    <p className="text-2xl font-bold">Sub-Second Finality</p>
+                                    <div className="text-6xl sm:text-7xl md:text-8xl font-black mb-3 sm:mb-4 text-[#ff4080]">&lt;1s</div>
+                                    <p className="text-base sm:text-xl md:text-2xl font-bold">Sub-Second Finality</p>
                                 </div>
                                 <div>
-                                    <div className="text-8xl font-black mb-4 text-[#ffc502]">0%</div>
-                                    <p className="text-2xl font-bold">Zero Reorg Risk</p>
+                                    <div className="text-6xl sm:text-7xl md:text-8xl font-black mb-3 sm:mb-4 text-[#ffc502]">0%</div>
+                                    <p className="text-base sm:text-xl md:text-2xl font-bold">Zero Reorg Risk</p>
                                 </div>
                             </div>
                         </div>
                     </StaggerItem>
 
                     {/* Layered Stack Visualization */}
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                         {[
                             // Layer 1 - Foundation (widest)
                             [
@@ -117,29 +117,29 @@ export default function CoreTechnologyPage() {
                             ]
                         ].map((layer, layerIndex) => (
                             <StaggerItem key={layerIndex}>
-                                <div className={`grid gap-4 ${layer.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'
+                                <div className={`grid gap-3 sm:gap-4 ${layer.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : layer.length === 3 ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3' : 'grid-cols-1'
                                     }`}>
                                     {layer.map((component, i) => {
                                         const Icon = component.icon;
                                         return (
                                             <div
                                                 key={i}
-                                                className="group bg-black text-white p-10 hover:scale-105 transition-all duration-300 cursor-pointer border-l-8"
+                                                className="group bg-black text-white p-6 sm:p-8 md:p-10 hover:scale-105 transition-all duration-300 cursor-pointer border-l-4 sm:border-l-8"
                                                 style={{ borderLeftColor: component.color }}
                                             >
-                                                <div className="flex items-center gap-4 mb-6">
+                                                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                                                     <div
-                                                        className="w-16 h-16 flex items-center justify-center flex-shrink-0"
+                                                        className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center flex-shrink-0"
                                                         style={{ backgroundColor: component.color }}
                                                     >
-                                                        <span className="text-3xl font-black text-black">{component.num}</span>
+                                                        <span className="text-2xl sm:text-3xl font-black text-black">{component.num}</span>
                                                     </div>
-                                                    <Icon className="w-12 h-12" style={{ color: component.color }} />
+                                                    <Icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" style={{ color: component.color }} />
                                                 </div>
-                                                <h3 className="text-2xl font-black mb-3" style={{ color: component.color }}>
+                                                <h3 className="text-xl sm:text-2xl font-black mb-2 sm:mb-3" style={{ color: component.color }}>
                                                     {component.title}
                                                 </h3>
-                                                <p className="text-gray-400 text-lg">{component.desc}</p>
+                                                <p className="text-gray-400 text-sm sm:text-base md:text-lg">{component.desc}</p>
                                             </div>
                                         );
                                     })}
@@ -150,11 +150,11 @@ export default function CoreTechnologyPage() {
 
                     {/* Bottom Statement */}
                     <StaggerItem>
-                        <div className="mt-16 bg-black text-white p-16 text-center">
-                            <p className="text-4xl font-black mb-4">
+                        <div className="mt-8 sm:mt-12 md:mt-16 bg-black text-white p-8 sm:p-12 md:p-16 text-center">
+                            <p className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 sm:mb-4">
                                 Modular. Independent. Synchronized.
                             </p>
-                            <p className="text-2xl text-gray-400">
+                            <p className="text-base sm:text-xl md:text-2xl text-gray-400">
                                 Each layer operates autonomously yet integrates seamlessly
                             </p>
                         </div>
@@ -163,29 +163,29 @@ export default function CoreTechnologyPage() {
             </section>
 
             {/* CONSENSUS - DUAL BRAIN LAYOUT */}
-            <section className="py-32 px-6 bg-black text-white relative overflow-hidden">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-black text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
                 <StaggerContainer className="max-w-7xl mx-auto relative z-10">
                     <StaggerItem>
-                        <div className="text-center mb-20">
-                            <h2 className="text-7xl md:text-8xl font-black mb-8">Hybrid Consensus</h2>
-                            <p className="text-3xl text-gray-400">Intelligence + Security</p>
+                        <div className="text-center mb-10 sm:mb-16 md:mb-20">
+                            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 md:mb-8 px-2">Hybrid Consensus</h2>
+                            <p className="text-lg sm:text-2xl md:text-3xl text-gray-400">Intelligence + Security</p>
                         </div>
                     </StaggerItem>
 
-                    <div className="grid md:grid-cols-2 gap-1 bg-white mb-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 bg-white mb-10 sm:mb-12 md:mb-16">
                         {/* SVCP */}
                         <StaggerItem>
-                            <div className="bg-black p-16 h-full">
-                                <div className="mb-12">
-                                    <div className="w-32 h-32 bg-[#8c52ff] flex items-center justify-center mb-8">
-                                        <Brain className="w-20 h-20 text-white" />
+                            <div className="bg-black p-8 sm:p-12 md:p-16 h-full">
+                                <div className="mb-8 sm:mb-10 md:mb-12">
+                                    <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-[#8c52ff] flex items-center justify-center mb-6 sm:mb-8">
+                                        <Brain className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-white" />
                                     </div>
-                                    <h3 className="text-6xl font-black mb-4 text-[#8c52ff]">SVCP</h3>
-                                    <p className="text-2xl text-gray-400">AI-Powered Leader Selection</p>
+                                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-black mb-3 sm:mb-4 text-[#8c52ff]">SVCP</h3>
+                                    <p className="text-lg sm:text-xl md:text-2xl text-gray-400">AI-Powered Leader Selection</p>
                                 </div>
-                                <div className="space-y-4">
+                                <div className="space-y-3 sm:space-y-4">
                                     {[
                                         'NodeScore (0.0-1.0)',
                                         'Device health metrics',
@@ -194,9 +194,9 @@ export default function CoreTechnologyPage() {
                                         'Weighted lottery selection',
                                         'Zero staking required'
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 text-lg">
-                                            <div className="w-8 h-8 rounded-full bg-[#8c52ff] flex items-center justify-center flex-shrink-0">
-                                                <span className="text-sm font-black text-black">{i + 1}</span>
+                                        <div key={i} className="flex items-center gap-3 sm:gap-4 text-sm sm:text-base md:text-lg">
+                                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#8c52ff] flex items-center justify-center flex-shrink-0">
+                                                <span className="text-xs sm:text-sm font-black text-black">{i + 1}</span>
                                             </div>
                                             <span>{item}</span>
                                         </div>
@@ -207,28 +207,28 @@ export default function CoreTechnologyPage() {
 
                         {/* Quantum-SVBFT */}
                         <StaggerItem>
-                            <div className="bg-black p-16 h-full">
-                                <div className="mb-12">
-                                    <div className="w-32 h-32 bg-[#ff4080] flex items-center justify-center mb-8">
-                                        <Shield className="w-20 h-20 text-white" />
+                            <div className="bg-black p-8 sm:p-12 md:p-16 h-full">
+                                <div className="mb-8 sm:mb-10 md:mb-12">
+                                    <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-[#ff4080] flex items-center justify-center mb-6 sm:mb-8">
+                                        <Shield className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-white" />
                                     </div>
-                                    <h3 className="text-6xl font-black mb-4 text-[#ff4080]">Quantum-SVBFT</h3>
-                                    <p className="text-2xl text-gray-400">Deterministic Finality</p>
+                                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-black mb-3 sm:mb-4 text-[#ff4080]">Quantum-SVBFT</h3>
+                                    <p className="text-lg sm:text-xl md:text-2xl text-gray-400">Deterministic Finality</p>
                                 </div>
-                                <div className="space-y-8">
+                                <div className="space-y-6 sm:space-y-8">
                                     {[
                                         { phase: 'PREPARE', desc: 'Block validation' },
                                         { phase: 'PRE-COMMIT', desc: '+2/3 validator agreement' },
                                         { phase: 'COMMIT', desc: 'Permanent & irreversible' }
                                     ].map((step, i) => (
                                         <div key={i}>
-                                            <div className="flex items-center gap-4 mb-2">
-                                                <div className="w-12 h-12 border-4 border-[#ff4080] flex items-center justify-center">
-                                                    <span className="text-xl font-black">{i + 1}</span>
+                                            <div className="flex items-center gap-3 sm:gap-4 mb-2">
+                                                <div className="w-10 h-10 sm:w-12 sm:h-12 border-3 sm:border-4 border-[#ff4080] flex items-center justify-center">
+                                                    <span className="text-lg sm:text-xl font-black">{i + 1}</span>
                                                 </div>
-                                                <h4 className="text-2xl font-black text-[#ff4080]">{step.phase}</h4>
+                                                <h4 className="text-xl sm:text-2xl font-black text-[#ff4080]">{step.phase}</h4>
                                             </div>
-                                            <p className="text-gray-400 ml-16">{step.desc}</p>
+                                            <p className="text-gray-400 ml-13 sm:ml-16 text-sm sm:text-base">{step.desc}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -237,8 +237,8 @@ export default function CoreTechnologyPage() {
                     </div>
 
                     <StaggerItem>
-                        <div className="bg-[#ffc502] text-black p-16 text-center">
-                            <p className="text-5xl font-black">
+                        <div className="bg-[#ffc502] text-black p-8 sm:p-12 md:p-16 text-center">
+                            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
                                 Intelligence selects. Quantum secures. Math guarantees.
                             </p>
                         </div>
@@ -248,22 +248,22 @@ export default function CoreTechnologyPage() {
 
             {/* DUAL VM - SPLIT COMPARISON */}
             <section className="bg-white">
-                <div className="grid md:grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* EVM */}
-                    <div className="bg-white p-20 border-r border-black/10">
+                    <div className="bg-white p-8 sm:p-12 md:p-16 lg:p-20 border-r-0 md:border-r border-black/10">
                         <StaggerContainer>
                             <StaggerItem>
-                                <div className="mb-12">
-                                    <div className="w-24 h-24 bg-[#8c52ff] flex items-center justify-center mb-8">
-                                        <Code2 className="w-16 h-16 text-white" />
+                                <div className="mb-8 sm:mb-10 md:mb-12">
+                                    <div className="w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24 bg-[#8c52ff] flex items-center justify-center mb-6 sm:mb-8">
+                                        <Code2 className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
                                     </div>
-                                    <h2 className="text-7xl font-black mb-4">EVM</h2>
-                                    <p className="text-3xl text-gray-600">Ethereum Compatibility</p>
+                                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black mb-3 sm:mb-4">EVM</h2>
+                                    <p className="text-xl sm:text-2xl md:text-3xl text-gray-600">Ethereum Compatibility</p>
                                 </div>
                             </StaggerItem>
 
                             <StaggerItem>
-                                <div className="space-y-6 mb-12">
+                                <div className="space-y-4 sm:space-y-5 md:space-y-6 mb-8 sm:mb-10 md:mb-12">
                                     {[
                                         'Full Solidity support',
                                         'Standard gas schedule',
@@ -272,37 +272,37 @@ export default function CoreTechnologyPage() {
                                         'JSON-RPC interface',
                                         'All EVM opcodes'
                                     ].map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-4">
-                                            <CheckCircle2 className="w-8 h-8 text-[#8c52ff]" />
-                                            <span className="text-xl font-bold">{feature}</span>
+                                        <div key={i} className="flex items-center gap-3 sm:gap-4">
+                                            <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#8c52ff] flex-shrink-0" />
+                                            <span className="text-base sm:text-lg md:text-xl font-bold">{feature}</span>
                                         </div>
                                     ))}
                                 </div>
                             </StaggerItem>
 
                             <StaggerItem>
-                                <div className="bg-black text-white p-8">
-                                    <p className="text-2xl font-bold text-[#8c52ff]">Parallel execution enabled</p>
+                                <div className="bg-black text-white p-6 sm:p-7 md:p-8">
+                                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-[#8c52ff]">Parallel execution enabled</p>
                                 </div>
                             </StaggerItem>
                         </StaggerContainer>
                     </div>
 
                     {/* WASM */}
-                    <div className="bg-white p-20">
+                    <div className="bg-white p-8 sm:p-12 md:p-16 lg:p-20">
                         <StaggerContainer>
                             <StaggerItem>
-                                <div className="mb-12">
-                                    <div className="w-24 h-24 bg-[#ff4080] flex items-center justify-center mb-8">
-                                        <Zap className="w-16 h-16 text-white" />
+                                <div className="mb-8 sm:mb-10 md:mb-12 text-center">
+                                    <div className="w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24 bg-[#ff4080] flex items-center justify-center mb-6 sm:mb-8 mx-auto">
+                                        <Zap className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
                                     </div>
-                                    <h2 className="text-7xl font-black mb-4">WASM</h2>
-                                    <p className="text-3xl text-gray-600">Native Performance</p>
+                                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black mb-3 sm:mb-4">WASM</h2>
+                                    <p className="text-xl sm:text-2xl md:text-3xl text-gray-600">Native Performance</p>
                                 </div>
                             </StaggerItem>
 
                             <StaggerItem>
-                                <div className="space-y-6 mb-12">
+                                <div className="space-y-4 sm:space-y-5 md:space-y-6 mb-8 sm:mb-10 md:mb-12">
                                     {[
                                         'Rust & AssemblyScript',
                                         'Near-native speed',
@@ -311,17 +311,17 @@ export default function CoreTechnologyPage() {
                                         'AI-optimized runtime',
                                         'Direct state access'
                                     ].map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-4">
-                                            <CheckCircle2 className="w-8 h-8 text-[#ff4080]" />
-                                            <span className="text-xl font-bold">{feature}</span>
+                                        <div key={i} className="flex items-center gap-3 sm:gap-4">
+                                            <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ff4080] flex-shrink-0" />
+                                            <span className="text-base sm:text-lg md:text-xl font-bold">{feature}</span>
                                         </div>
                                     ))}
                                 </div>
                             </StaggerItem>
 
                             <StaggerItem>
-                                <div className="bg-black text-white p-8">
-                                    <p className="text-2xl font-bold text-[#ff4080]">Perfect for AI agents</p>
+                                <div className="bg-black text-white p-6 sm:p-7 md:p-8">
+                                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-[#ff4080]">Perfect for AI agents</p>
                                 </div>
                             </StaggerItem>
                         </StaggerContainer>
@@ -329,21 +329,21 @@ export default function CoreTechnologyPage() {
                 </div>
 
                 {/* Unified State */}
-                <div className="bg-black text-white py-20 px-6">
+                <div className="bg-black text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
                     <StaggerContainer className="max-w-6xl mx-auto">
                         <StaggerItem>
                             <div className="text-center">
-                                <h3 className="text-5xl font-black mb-8">Unified State Layer</h3>
-                                <p className="text-3xl text-gray-400 mb-12">Both VMs share one Merkle root</p>
-                                <div className="grid md:grid-cols-4 gap-6">
+                                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 sm:mb-8">Unified State Layer</h3>
+                                <p className="text-xl sm:text-2xl md:text-3xl text-gray-400 mb-8 sm:mb-10 md:mb-12">Both VMs share one Merkle root</p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
                                     {[
                                         'Cross-VM calls',
                                         'Shared storage',
                                         'Unified gas',
                                         'One address space'
                                     ].map((feature, i) => (
-                                        <div key={i} className="bg-white text-black p-8">
-                                            <p className="text-xl font-black">{feature}</p>
+                                        <div key={i} className="bg-white text-black p-6 sm:p-7 md:p-8">
+                                            <p className="text-lg sm:text-xl font-black">{feature}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -354,37 +354,37 @@ export default function CoreTechnologyPage() {
             </section>
 
             {/* SHARDING - VISUAL SCALE */}
-            <section className="py-32 px-6 bg-white relative">
+            <section className="py-12 sm:py-20 md:py-32 px-4 sm:px-6 bg-white relative">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
                 <StaggerContainer className="max-w-7xl mx-auto relative z-10">
                     <StaggerItem>
-                        <div className="text-center mb-20">
-                            <h2 className="text-7xl md:text-8xl font-black mb-8">Dynamic Sharding</h2>
-                            <p className="text-3xl text-gray-600">Infinite Horizontal Scaling</p>
+                        <div className="text-center mb-10 sm:mb-16 md:mb-20">
+                            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 md:mb-8 px-2">Dynamic Sharding</h2>
+                            <p className="text-lg sm:text-2xl md:text-3xl text-gray-600">Infinite Horizontal Scaling</p>
                         </div>
                     </StaggerItem>
 
                     <StaggerItem>
-                        <div className="bg-black text-white p-20 mb-12">
-                            <div className="grid md:grid-cols-3 gap-12 text-center">
+                        <div className="bg-black text-white p-8 sm:p-12 md:p-16 lg:p-20 mb-8 sm:mb-10 md:mb-12">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 md:gap-12 text-center">
                                 <div>
-                                    <div className="text-9xl font-black mb-4 text-[#8c52ff]">10K</div>
-                                    <p className="text-2xl font-bold">TPS per shard</p>
+                                    <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-3 sm:mb-4 text-[#8c52ff]">10K</div>
+                                    <p className="text-lg sm:text-xl md:text-2xl font-bold">TPS per shard</p>
                                 </div>
                                 <div>
-                                    <div className="text-9xl font-black mb-4 text-[#ff4080]">∞</div>
-                                    <p className="text-2xl font-bold">Total shards</p>
+                                    <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-3 sm:mb-4 text-[#ff4080]">∞</div>
+                                    <p className="text-lg sm:text-xl md:text-2xl font-bold">Total shards</p>
                                 </div>
                                 <div>
-                                    <div className="text-9xl font-black mb-4 text-[#ffc502]">2-5s</div>
-                                    <p className="text-2xl font-bold">Cross-shard time</p>
+                                    <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-3 sm:mb-4 text-[#ffc502] whitespace-nowrap">2-5s</div>
+                                    <p className="text-lg sm:text-xl md:text-2xl font-bold">Cross-shard time</p>
                                 </div>
                             </div>
                         </div>
                     </StaggerItem>
 
-                    <div className="grid md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                         <StaggerItem>
                             <div className="border-4 border-black p-12 h-full">
                                 <h3 className="text-4xl font-black mb-8 text-[#8c52ff]">Auto-Split</h3>

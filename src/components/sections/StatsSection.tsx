@@ -85,7 +85,7 @@ export default function StatsSection() {
                 {/* Testimonial - tablet optimized */}
                 <div className="text-center max-w-[900px] mx-auto py-6 md:py-8 lg:py-12">
                     <blockquote className="text-[16px] sm:text-[20px] md:text-[22px] lg:text-[28px] font-normal leading-[1.4] mb-4 md:mb-5">
-                        "Every decentralized project should start with ArthaChain—it's a game changer."
+                        "Every decentralized project should start with ArthaChain. It's a game changer."
                     </blockquote>
                     <div className="flex flex-col items-center gap-2 sm:gap-3">
                         <div className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase font-medium">

@@ -64,7 +64,7 @@ const navigationItems: NavItem[] = [
         label: 'ArthaVerse',
         icon: '💛',
         dropdown: [
-            { label: 'Features', href: '/features', description: 'All ArthaChain features' },
+            { label: 'Features', href: '/arthaverse/features', description: 'All ArthaChain features' },
             { label: 'DID (Identity Layer)', href: '/features/did', description: 'Decentralized identity' },
             { label: 'AI Suite', href: '/features/ai', description: 'AI-powered tools' },
             { label: 'SocialFi', href: '/features/socialfi', description: 'Social finance' },

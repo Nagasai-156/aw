@@ -9,7 +9,7 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen bg-white">
 
-            {/* SECTION 1 — HERO */}
+            {/* SECTION 1 - HERO */}
             <section className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden">
                 {/* Animated Grid Background */}
                 <div className="absolute inset-0 opacity-10">
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* SECTION 2 — WHO WE ARE */}
+            {/* SECTION 2 - WHO WE ARE */}
             <section className="py-20 px-6 bg-white">
                 <StaggerContainer className="max-w-6xl mx-auto">
                     <StaggerItem>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                                     We are not just building technology.
                                 </p>
                                 <p className="text-xl leading-relaxed">
-                                    We are building a <span className="text-[#ff4080]">new digital civilization</span> — powered by intelligence, purpose, and decentralization.
+                                    We are building a <span className="text-[#ff4080]">new digital civilization</span> powered by intelligence, purpose, and decentralization.
                                 </p>
                             </div>
                         </StaggerItem>
@@ -104,7 +104,7 @@ export default function AboutPage() {
                 </StaggerContainer>
             </section>
 
-            {/* SECTION 3 — THE DIIGOO STORY */}
+            {/* SECTION 3 - THE DIIGOO STORY */}
             <section className="relative py-20 px-6 bg-black text-white overflow-hidden">
                 {/* Grid Background */}
                 <div className="absolute inset-0 opacity-5">
@@ -248,7 +248,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* SECTION 4 — WHY WE BUILT ARTHACHAIN */}
+            {/* SECTION 4 - WHY WE BUILT ARTHACHAIN */}
             <section className="relative py-20 px-6 bg-white overflow-hidden">
                 {/* Grid Background - Light Mode */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
@@ -447,7 +447,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* SECTION 5 — WHAT MAKES ARTHACHAIN DIFFERENT */}
+            {/* SECTION 5 - WHAT MAKES ARTHACHAIN DIFFERENT */}
             <section className="relative py-20 px-6 bg-black text-white overflow-hidden">
                 {/* Grid Background - Dark Mode */}
                 <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -539,7 +539,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* SECTION 6 — OUR PHILOSOPHY */}
+            {/* SECTION 6 - OUR PHILOSOPHY */}
             <section className="relative py-20 px-6 bg-black text-white overflow-hidden">
                 {/* Grid Background */}
                 <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -630,7 +630,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* SECTION 7 — COMMITMENT */}
+            {/* SECTION 7 - COMMITMENT */}
             <section className="relative py-20 px-6 bg-white overflow-hidden">
                 {/* Grid Background - Light Mode */}
                 <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
@@ -699,7 +699,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* SECTION 9 — TIMELINE */}
+            {/* SECTION 9 - TIMELINE */}
             <section className="relative py-20 px-6 bg-black text-white overflow-hidden">
                 {/* Grid Background - Dark Mode */}
                 <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -768,7 +768,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* SECTION 10 — EXPLORE CTA */}
+            {/* SECTION 10 - EXPLORE CTA */}
             <section className="relative py-32 px-6 bg-black text-white overflow-hidden border-t border-white/10">
                 {/* Grid Pattern Match */}
                 <div className="absolute inset-0 opacity-[0.1] pointer-events-none">

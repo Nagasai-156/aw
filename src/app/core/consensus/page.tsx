@@ -170,7 +170,7 @@ export default function ConsensusPage() {
                     <StaggerItem>
                         <div className="mb-16">
                             <div className="border-l-8 border-[#8c52ff] pl-8 mb-8">
-                                <h3 className="text-4xl font-black mb-4">Weighted Lottery — Leader Selection</h3>
+                                <h3 className="text-4xl font-black mb-4">Weighted Lottery: Leader Selection</h3>
                             </div>
 
                             <div className="bg-black text-white p-12">
