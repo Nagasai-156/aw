@@ -1,328 +1,509 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Shield, Users, Cpu, Clock, ArrowRight, ChevronDown, Vote, Brain, Check, Zap } from 'lucide-react';
-import { useRef } from 'react';
+import { ArrowRight, Brain, Shield, Zap, Cpu, Network, Lock, Gauge, GitBranch, Layers } from 'lucide-react';
+import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-animation';
 
 export default function ConsensusPage() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 0.2], [0, -30]);
-
-    const consensusPhases = [
-        {
-            phase: 'PROPOSAL',
-            time: '100ms',
-            description: 'Block producer proposes new block with ordered transactions',
-            details: ['AI selects optimal producer', 'Transactions ordered by priority', 'State root calculated'],
-        },
-        {
-            phase: 'ATTESTATION',
-            time: '150ms',
-            description: 'Validators verify and sign the proposed block',
-            details: ['Parallel verification', 'BLS signature aggregation', 'Fraud proof checking'],
-        },
-        {
-            phase: 'AGGREGATION',
-            time: '100ms',
-            description: 'Signatures collected and threshold reached',
-            details: ['2/3+ validator agreement', 'Single aggregated signature', 'Proof generation'],
-        },
-        {
-            phase: 'FINALITY',
-            time: '50ms',
-            description: 'Block becomes irreversible and state is committed',
-            details: ['Instant finality', 'No reorgs possible', 'Settlement chain update'],
-        },
-    ];
-
     return (
-        <div ref={containerRef} className="min-h-screen">
-            {/* HERO */}
-            <section className="relative min-h-screen bg-black flex items-center overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+        <div className="min-h-screen bg-white selection:bg-[#ffc502] selection:text-black">
 
-                <motion.div
-                    className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#ff4080]/15 rounded-full blur-[150px]"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 8, repeat: Infinity }}
-                />
+            {/* HERO - Bold Statement */}
+            <section className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
-                <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full text-center">
-                    <motion.div style={{ y }}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-8"
-                        >
-                            <Vote className="w-4 h-4 text-[#ff4080]" />
-                            <span className="text-[12px] font-medium text-white/80 tracking-wider uppercase">Agreement Protocol</span>
-                        </motion.div>
-
-                        <div className="overflow-hidden">
-                            <motion.h1 className="text-[56px] sm:text-[80px] lg:text-[120px] font-black leading-[0.85] tracking-[-0.04em]">
-                                <motion.span
-                                    className="block text-white"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                >
-                                    AI-POWERED
-                                </motion.span>
-                                <motion.span
-                                    className="block text-[#ff4080]"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.1 }}
-                                >
-                                    CONSENSUS
-                                </motion.span>
-                            </motion.h1>
+                <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h1 className="text-7xl md:text-9xl font-black mb-12 leading-tight">
+                            Quantum-SVBFT<br />
+                            <span className="text-[#8c52ff]">with SVCP Selection</span>
+                        </h1>
+                        <p className="text-3xl md:text-4xl font-bold mb-16 max-w-4xl mx-auto leading-tight">
+                            Intelligence selects.<br />
+                            Quantum secures.
+                        </p>
+                        <div className="inline-block border-4 border-white p-12">
+                            <p className="text-2xl font-bold">
+                                No other L1 uses this model.
+                            </p>
                         </div>
-
-                        <motion.p
-                            className="text-white/50 text-lg sm:text-xl max-w-3xl mx-auto mt-8 mb-12"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                        >
-                            Revolutionary proof-of-stake consensus optimized by machine learning. Sub-second finality with maximum decentralization.
-                        </motion.p>
-
-                        {/* Key Stats */}
-                        <motion.div
-                            className="flex flex-wrap justify-center gap-8 lg:gap-16 mb-12"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                        >
-                            {[
-                                { value: '0.4s', label: 'Finality', color: '#ff4080' },
-                                { value: '10K+', label: 'Validators', color: '#8c52ff' },
-                                { value: '99.99%', label: 'Uptime', color: '#ffc502' },
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, scale: 0.5 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.7 + i * 0.1, type: "spring" }}
-                                    className="text-center"
-                                >
-                                    <div className="text-4xl lg:text-5xl font-black" style={{ color: stat.color }}>{stat.value}</div>
-                                    <div className="text-white/40 text-sm uppercase tracking-wider">{stat.label}</div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
                     </motion.div>
                 </div>
-
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <ChevronDown className="text-white/40 w-8 h-8" />
-                </motion.div>
             </section>
 
-            {/* CONSENSUS PHASES - Timeline */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* THE PROBLEM - Large Text Block */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-20"
-                    >
-                        <span className="text-sm font-bold text-[#ff4080] uppercase tracking-widest mb-4 block">The Process</span>
-                        <h2 className="text-[48px] lg:text-[72px] font-black text-black">
-                            Consensus <span className="text-[#ff4080]">Phases</span>
-                        </h2>
-                        <p className="text-black/50 text-xl mt-4">From proposal to finality in 400 milliseconds</p>
-                    </motion.div>
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-12">Why Hybrid Consensus?</h2>
+                        </div>
+                    </StaggerItem>
 
-                    {/* Timeline */}
-                    <div className="relative">
-                        {/* Progress Line */}
-                        <div className="absolute left-8 top-0 bottom-0 w-1 bg-black/10 hidden lg:block" />
+                    <StaggerItem>
+                        <div className="bg-black text-white p-16 mb-12">
+                            <p className="text-3xl font-bold mb-8">Most blockchains force one mechanism to do everything:</p>
+                            <div className="grid md:grid-cols-2 gap-8 text-xl">
+                                <div>Choose the leader</div>
+                                <div>Produce the block</div>
+                                <div>Secure finality</div>
+                                <div>Prevent attacks</div>
+                            </div>
+                        </div>
+                    </StaggerItem>
 
-                        {consensusPhases.map((phase, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: -50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.15 }}
-                                className="relative flex gap-8 mb-8 last:mb-0"
-                            >
-                                {/* Number */}
-                                <div className="hidden lg:flex w-16 h-16 bg-black text-white font-black text-2xl items-center justify-center flex-shrink-0 z-10">
-                                    {String(i + 1).padStart(2, '0')}
+                    <StaggerItem>
+                        <div className="text-center mb-12">
+                            <div className="text-8xl font-black mb-8">↓</div>
+                            <p className="text-4xl font-black">ArthaChain separates these roles</p>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-2 gap-1 bg-black">
+                        <StaggerItem>
+                            <div className="bg-white p-16 border-l-8 border-[#8c52ff]">
+                                <Brain className="w-20 h-20 text-[#8c52ff] mb-6" />
+                                <h3 className="text-4xl font-black mb-4 text-[#8c52ff]">SVCP = The Brain</h3>
+                                <p className="text-xl">Ensures fairness, performance, and decentralization.</p>
+                            </div>
+                        </StaggerItem>
+
+                        <StaggerItem>
+                            <div className="bg-white p-16 border-l-8 border-[#ff4080]">
+                                <Shield className="w-20 h-20 text-[#ff4080] mb-6" />
+                                <h3 className="text-4xl font-black mb-4 text-[#ff4080]">Quantum-SVBFT = The Skeleton</h3>
+                                <p className="text-xl">Ensures unbreakable finality and security.</p>
+                            </div>
+                        </StaggerItem>
+                    </div>
+                </StaggerContainer>
+            </section>
+
+            {/* BENEFITS - Icon Grid */}
+            <section className="py-24 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <h2 className="text-5xl font-black mb-6">This Dual System Gives ArthaChain</h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-3 gap-1 bg-white">
+                        {[
+                            'Infinite scalability',
+                            'Sub-second finality',
+                            'Zero staking',
+                            'Zero mining wastage',
+                            'Quantum resistance',
+                            'Full decentralization'
+                        ].map((benefit, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-black p-10 h-full flex items-center justify-center text-center">
+                                    <p className="text-2xl font-black">{benefit}</p>
                                 </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+                </StaggerContainer>
+            </section>
 
-                                {/* Content */}
-                                <motion.div
-                                    whileHover={{ x: 10 }}
-                                    className="flex-1 border-4 border-black p-8 bg-white hover:bg-black group transition-colors cursor-pointer"
-                                >
-                                    <div className="flex items-center justify-between mb-4">
-                                        <h3 className="text-2xl font-black text-black group-hover:text-white transition-colors">
-                                            {phase.phase}
-                                        </h3>
-                                        <div className="flex items-center gap-2 text-[#ff4080]">
-                                            <Clock size={16} />
-                                            <span className="font-black">{phase.time}</span>
-                                        </div>
+            {/* PHASE 1 - SVCP - Full Width Feature */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <div className="flex items-center gap-6 mb-8">
+                                <div className="text-9xl font-black text-[#8c52ff]">1</div>
+                                <div>
+                                    <h2 className="text-6xl md:text-7xl font-black mb-4">SVCP</h2>
+                                    <p className="text-3xl text-gray-600">AI Selector Layer</p>
+                                </div>
+                            </div>
+                            <p className="text-2xl font-bold">Scalable Virtual Consensus Protocol</p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="bg-black text-white p-16 mb-16">
+                            <p className="text-3xl font-bold mb-4">SVCP is not PoW or PoS.</p>
+                            <p className="text-2xl text-gray-400">It is a Proof of Computation + Behavior system powered by AI.</p>
+                        </div>
+                    </StaggerItem>
+
+                    {/* NodeScore */}
+                    <StaggerItem>
+                        <div className="mb-16">
+                            <div className="bg-[#8c52ff] text-white p-12 mb-8">
+                                <h3 className="text-4xl font-black mb-6">NodeScore: The Heart of SVCP</h3>
+                                <p className="text-xl">Every node receives an AI-generated score (0.0 – 1.0)</p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {[
+                                    { title: 'Device Health', desc: 'CPU/RAM, stability' },
+                                    { title: 'Network Quality', desc: 'Latency, uptime' },
+                                    { title: 'Storage Reliability', desc: 'SVDB integrity' },
+                                    { title: 'Engagement', desc: 'Vote participation' },
+                                    { title: 'AI Behavior Score', desc: 'Patterns, honesty' }
+                                ].map((item, i) => (
+                                    <div key={i} className="bg-black text-white p-8">
+                                        <h4 className="text-xl font-black mb-2 text-[#8c52ff]">{item.title}</h4>
+                                        <p className="text-gray-400">{item.desc}</p>
                                     </div>
-                                    <p className="text-black/60 group-hover:text-white/60 text-lg mb-4 transition-colors">
-                                        {phase.description}
-                                    </p>
-                                    <div className="flex flex-wrap gap-3">
-                                        {phase.details.map((detail, j) => (
-                                            <span
-                                                key={j}
-                                                className="text-xs font-bold px-3 py-1 border-2 border-[#ff4080]/30 text-black/60 group-hover:text-white/80 group-hover:border-white/30 transition-colors"
-                                            >
-                                                {detail}
-                                            </span>
+                                ))}
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    {/* Weighted Lottery */}
+                    <StaggerItem>
+                        <div className="mb-16">
+                            <div className="border-l-8 border-[#8c52ff] pl-8 mb-8">
+                                <h3 className="text-4xl font-black mb-4">Weighted Lottery — Leader Selection</h3>
+                            </div>
+
+                            <div className="bg-black text-white p-12">
+                                <div className="space-y-6 text-xl">
+                                    <p>Nodes above score threshold become Proposer Candidates</p>
+                                    <p>Weighted randomness algorithm selects the leader</p>
+                                    <p className="text-[#ffc502] font-bold">Higher NodeScore = Higher probability</p>
+                                </div>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-6 mt-8">
+                                {[
+                                    'No rich validator dominance',
+                                    'No stake-based corruption',
+                                    'No GPU/ASIC advantage',
+                                    'Full fairness'
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-4 p-6 border-2 border-black">
+                                        <div className="w-8 h-8 bg-[#8c52ff] rounded-full flex items-center justify-center flex-shrink-0">
+                                            <span className="text-white font-black text-sm">{i + 1}</span>
+                                        </div>
+                                        <p className="text-lg font-bold">{item}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="bg-[#ffc502] text-black p-12 text-center">
+                            <p className="text-3xl font-black">
+                                A Raspberry Pi with perfect uptime can outperform a malicious supercomputer.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* PHASE 2 - QUANTUM-SVBFT */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <div className="flex items-center gap-6 mb-8">
+                                <div className="text-9xl font-black text-[#ff4080]">2</div>
+                                <div>
+                                    <h2 className="text-6xl md:text-7xl font-black mb-4">Quantum-SVBFT</h2>
+                                    <p className="text-3xl text-gray-400">Finality Layer</p>
+                                </div>
+                            </div>
+                            <p className="text-2xl font-bold">Quantum Secure Verifiable Byzantine Fault Tolerance</p>
+                        </div>
+                    </StaggerItem>
+
+                    {/* 3-Phase Commit */}
+                    <StaggerItem>
+                        <div className="mb-16">
+                            <h3 className="text-4xl font-black mb-12 text-center">Deterministic 3-Phase Commit</h3>
+
+                            <div className="space-y-8">
+                                {[
+                                    {
+                                        phase: 'PREPARE',
+                                        color: '#8c52ff',
+                                        steps: [
+                                            'Validator checks block validity',
+                                            'Validates PQC signature',
+                                            'Broadcasts PREPARE vote'
+                                        ]
+                                    },
+                                    {
+                                        phase: 'PRE-COMMIT',
+                                        color: '#ff4080',
+                                        steps: [
+                                            'Validators confirm +2/3 PREPARE',
+                                            'Broadcast PRE-COMMIT vote'
+                                        ]
+                                    },
+                                    {
+                                        phase: 'COMMIT',
+                                        color: '#ffc502',
+                                        steps: [
+                                            'Validators lock the block',
+                                            'Block becomes PERMANENT & IRREVERSIBLE'
+                                        ]
+                                    }
+                                ].map((phase, i) => (
+                                    <div key={i}>
+                                        <div className="bg-white text-black p-10 border-l-8" style={{ borderLeftColor: phase.color }}>
+                                            <h4 className="text-3xl font-black mb-6" style={{ color: phase.color }}>
+                                                {phase.phase}
+                                            </h4>
+                                            <div className="space-y-3">
+                                                {phase.steps.map((step, j) => (
+                                                    <p key={j} className="text-lg flex items-start gap-3">
+                                                        <span style={{ color: phase.color }}>→</span>
+                                                        <span>{step}</span>
+                                                    </p>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        {i < 2 && (
+                                            <div className="flex justify-center py-4">
+                                                <div className="text-5xl font-black" style={{ color: phase.color }}>↓</div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="bg-white text-black p-12 text-center">
+                            <p className="text-3xl font-black">
+                                Absolute finality, not probabilistic like Bitcoin.
+                            </p>
+                        </div>
+                    </StaggerItem>
+
+                    {/* Quantum Resistant */}
+                    <StaggerItem>
+                        <div className="mt-20 mb-16">
+                            <div className="bg-[#ff4080] text-white p-12 mb-8">
+                                <h3 className="text-4xl font-black mb-6">Quantum-Resistant Security</h3>
+                                <p className="text-xl">Every vote, signature, and consensus message uses:</p>
+                            </div>
+
+                            <div className="grid md:grid-cols-3 gap-6 mb-12">
+                                {[
+                                    'Dilithium (post-quantum)',
+                                    'ML-DSA',
+                                    'Hybrid Ed25519 + PQC'
+                                ].map((tech, i) => (
+                                    <div key={i} className="bg-white text-black p-8 text-center">
+                                        <p className="text-xl font-black">{tech}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="bg-white text-black p-12">
+                                <p className="text-2xl font-bold mb-8 text-center">Even a future quantum computer cannot:</p>
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    {[
+                                        'Forge validator signatures',
+                                        'Rewrite history',
+                                        'Steal accounts',
+                                        'Break message authentication'
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-4">
+                                            <span className="text-4xl text-red-600">✗</span>
+                                            <p className="text-lg">{item}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* THE PIPELINE - Visual Flow */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-5xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">The Brain–Skeleton Pipeline</h2>
+                            <p className="text-2xl text-gray-600">End-to-end consensus flow</p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="space-y-8">
+                            <div className="bg-black text-white p-10 text-center">
+                                <p className="text-2xl font-bold">User Transaction</p>
+                            </div>
+
+                            <div className="flex justify-center">
+                                <div className="text-6xl font-black text-gray-400">↓</div>
+                            </div>
+
+                            <div className="bg-[#8c52ff] text-white p-12">
+                                <h3 className="text-3xl font-black mb-6">AI Brain – SVCP</h3>
+                                <p className="text-xl">Analyze → Score → Select Leader → Parallel Block Build</p>
+                            </div>
+
+                            <div className="flex justify-center">
+                                <div className="text-6xl font-black text-gray-400">↓</div>
+                            </div>
+
+                            <div className="bg-[#ff4080] text-white p-12">
+                                <h3 className="text-3xl font-black mb-6">Skeleton – Quantum-SVBFT</h3>
+                                <p className="text-xl">Prepare → Pre-Commit → Commit → FINALITY</p>
+                            </div>
+
+                            <div className="flex justify-center">
+                                <div className="text-6xl font-black text-gray-400">↓</div>
+                            </div>
+
+                            <div className="bg-black text-white p-10 text-center">
+                                <p className="text-2xl font-bold">State Applied (EVM/WASM)</p>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-16 bg-[#ffc502] text-black p-12 text-center">
+                            <p className="text-3xl font-black">
+                                Entire flow finishes in sub-second time under load.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* TRILEMMA SOLUTION */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">Solving the Blockchain Trilemma</h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-3 gap-1 bg-white">
+                        {[
+                            {
+                                title: 'Scalability',
+                                color: '#ffc502',
+                                items: [
+                                    'Multi-proposer parallel',
+                                    'DAG ordering',
+                                    'Shard-aware execution',
+                                    'AI traffic prediction'
+                                ]
+                            },
+                            {
+                                title: 'Security',
+                                color: '#8c52ff',
+                                items: [
+                                    'Quantum-resistant signatures',
+                                    'Deterministic finality',
+                                    'Behavior-based slashing',
+                                    'Two-layer separation'
+                                ]
+                            },
+                            {
+                                title: 'Decentralization',
+                                color: '#ff4080',
+                                items: [
+                                    'No staking',
+                                    'No wealth concentration',
+                                    'No hardware dominance',
+                                    'Anyone can run a node'
+                                ]
+                            }
+                        ].map((pillar, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-black p-12 h-full">
+                                    <h3 className="text-4xl font-black mb-8" style={{ color: pillar.color }}>
+                                        {pillar.title}
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {pillar.items.map((item, j) => (
+                                            <p key={j} className="text-lg flex items-start gap-3">
+                                                <span style={{ color: pillar.color }}>→</span>
+                                                <span>{item}</span>
+                                            </p>
                                         ))}
                                     </div>
-                                </motion.div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* AI OPTIMIZATION */}
-            <section className="relative py-32 px-8 bg-black">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#8c52ff] uppercase tracking-widest mb-4 block">Innovation</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-white">
-                            AI <span className="text-[#8c52ff]">Optimization</span>
-                        </h2>
-                    </motion.div>
-
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        {/* Left - Brain Visualization */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            className="flex items-center justify-center"
-                        >
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                                className="relative"
-                            >
-                                <div className="w-64 h-64 rounded-full border-4 border-[#8c52ff]/30 flex items-center justify-center">
-                                    <div className="w-48 h-48 rounded-full border-4 border-[#8c52ff]/50 flex items-center justify-center">
-                                        <div className="w-32 h-32 rounded-full bg-[#8c52ff] flex items-center justify-center">
-                                            <Brain size={64} className="text-white" />
-                                        </div>
-                                    </div>
                                 </div>
-                            </motion.div>
-                        </motion.div>
-
-                        {/* Right - Features */}
-                        <div className="space-y-6">
-                            {[
-                                { icon: Users, title: 'Validator Selection', desc: 'ML models select optimal validators based on historical performance, stake, and network conditions' },
-                                { icon: Zap, title: 'Transaction Ordering', desc: 'AI optimizes transaction sequencing to maximize throughput and minimize MEV extraction' },
-                                { icon: Shield, title: 'Anomaly Detection', desc: 'Real-time detection of malicious behavior prevents attacks before they impact the network' },
-                                { icon: Cpu, title: 'Resource Allocation', desc: 'Dynamic resource optimization ensures efficient use of network capacity' },
-                            ].map((feature, i) => {
-                                const Icon = feature.icon;
-                                return (
-                                    <motion.div
-                                        key={i}
-                                        initial={{ opacity: 0, x: 50 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: i * 0.1 }}
-                                        whileHover={{ x: 10 }}
-                                        className="flex gap-4 border-2 border-white/10 p-6 hover:border-[#8c52ff] transition-colors cursor-pointer group"
-                                    >
-                                        <div className="w-12 h-12 border-4 border-[#8c52ff] flex items-center justify-center flex-shrink-0 group-hover:bg-[#8c52ff] transition-colors">
-                                            <Icon size={24} className="text-[#8c52ff] group-hover:text-white transition-colors" />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-lg font-black text-white mb-1">{feature.title}</h3>
-                                            <p className="text-white/50">{feature.desc}</p>
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
+                            </StaggerItem>
+                        ))}
                     </div>
-                </div>
+                </StaggerContainer>
             </section>
 
-            {/* VALIDATOR REQUIREMENTS */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* FINAL SUMMARY */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ffc502] uppercase tracking-widest mb-4 block">Participate</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-black">
-                            Become a <span className="text-[#ffc502]">Validator</span>
-                        </h2>
-                    </motion.div>
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="bg-black text-white p-16 mb-16 text-center">
+                            <h2 className="text-5xl md:text-6xl font-black mb-12">
+                                SVCP (AI Selection)<br />
+                                <span className="text-[#ffc502]">+</span><br />
+                                Quantum-SVBFT (Finality)
+                            </h2>
+                        </div>
+                    </StaggerItem>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid md:grid-cols-3 gap-6 mb-16">
                         {[
-                            { label: 'Minimum Stake', value: '32,000 ARTH' },
-                            { label: 'Hardware', value: '8 Core CPU' },
-                            { label: 'Memory', value: '32 GB RAM' },
-                            { label: 'Storage', value: '1 TB SSD' },
-                        ].map((req, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                whileHover={{ y: -10 }}
-                                className="border-4 border-black p-6 text-center cursor-pointer hover:bg-black group transition-colors"
-                            >
-                                <div className="text-sm font-bold text-black/40 group-hover:text-white/40 uppercase tracking-wider mb-2 transition-colors">{req.label}</div>
-                                <div className="text-2xl font-black text-black group-hover:text-[#ffc502] transition-colors">{req.value}</div>
-                            </motion.div>
+                            'Solves Trilemma',
+                            'Quantum secure',
+                            'Infinitely scalable',
+                            'Fully decentralized',
+                            'No staking, no mining',
+                            'Parallel & shard-native',
+                            'Sub-second finality'
+                        ].map((item, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-black text-white p-8 text-center h-full flex items-center justify-center">
+                                    <p className="text-xl font-bold">{item}</p>
+                                </div>
+                            </StaggerItem>
                         ))}
                     </div>
 
-                    <motion.div
-                        className="text-center mt-12"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                    >
-                        <motion.div whileHover={{ scale: 1.05 }}>
-                            <Link href="#" className="bg-black text-white px-10 py-5 font-bold uppercase tracking-wide hover:bg-[#ffc502] hover:text-black transition-colors inline-flex items-center gap-2">
-                                Validator Guide <ArrowRight className="w-5 h-5" />
+                    <StaggerItem>
+                        <div className="flex flex-wrap justify-center gap-6">
+                            <Link
+                                href="/core/papers"
+                                className="px-10 py-5 bg-black text-white font-black text-lg uppercase tracking-wider hover:bg-[#8c52ff] transition-all duration-300"
+                            >
+                                Read Consensus Paper →
                             </Link>
-                        </motion.div>
-                    </motion.div>
-                </div>
+                            <Link
+                                href="/core/dual-vm"
+                                className="px-10 py-5 border-4 border-black text-black font-black text-lg uppercase tracking-wider hover:bg-black hover:text-white transition-all duration-300"
+                            >
+                                Dual VM System →
+                            </Link>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
             </section>
         </div>
     );

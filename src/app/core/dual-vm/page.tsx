@@ -1,342 +1,465 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Box, Cpu, Code2, ArrowRight, ChevronDown, Check, Zap, Settings } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { ArrowRight, Cpu, Zap, Code, Layers, GitMerge, Brain, Shield, Gauge } from 'lucide-react';
+import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-animation';
 
 export default function DualVMPage() {
-    const [activeVM, setActiveVM] = useState<'evm' | 'wasm'>('evm');
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 0.2], [0, -30]);
-
-    const vms = {
-        evm: {
-            name: 'Ethereum Virtual Machine',
-            short: 'EVM',
-            color: '#8c52ff',
-            icon: Box,
-            tagline: 'Ethereum Compatibility',
-            description: 'Full EVM compatibility allows seamless migration of existing Ethereum smart contracts. Deploy your Solidity code without modifications.',
-            languages: ['Solidity', 'Vyper', 'Yul'],
-            features: [
-                'Full Ethereum tooling support (Hardhat, Foundry, Remix)',
-                'Compatible with MetaMask and all EVM wallets',
-                'Access to existing DeFi primitives',
-                'Familiar development experience',
-            ],
-            useCase: 'Best for: DeFi protocols, token contracts, existing Ethereum dApps',
-            performance: { gas: 'Standard', speed: 'Fast', security: 'Battle-tested' },
-        },
-        wasm: {
-            name: 'WebAssembly Runtime',
-            short: 'WASM',
-            color: '#ffc502',
-            icon: Cpu,
-            tagline: 'Maximum Performance',
-            description: 'Near-native execution speed with WebAssembly. Build high-performance applications in Rust, C++, or AssemblyScript.',
-            languages: ['Rust', 'C++', 'AssemblyScript', 'Go'],
-            features: [
-                'Near-native execution performance',
-                'Lower gas costs for compute-heavy operations',
-                'Access to advanced cryptographic libraries',
-                'Compile from multiple languages',
-            ],
-            useCase: 'Best for: Gaming, AI/ML on-chain, complex computations, ZK proofs',
-            performance: { gas: 'Optimized', speed: 'Ultra-fast', security: 'Memory-safe' },
-        },
-    };
-
-    const active = vms[activeVM];
-    const Icon = active.icon;
-
     return (
-        <div ref={containerRef} className="min-h-screen">
-            {/* HERO */}
-            <section className="relative min-h-screen bg-black flex items-center overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+        <div className="min-h-screen bg-white selection:bg-[#ffc502] selection:text-black">
 
-                <motion.div
-                    className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#8c52ff]/20 rounded-full blur-[150px]"
-                    animate={{ x: [0, 50, 0] }}
-                    transition={{ duration: 10, repeat: Infinity }}
-                />
-                <motion.div
-                    className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-[#ffc502]/15 rounded-full blur-[150px]"
-                    animate={{ x: [0, -50, 0] }}
-                    transition={{ duration: 8, repeat: Infinity }}
-                />
+            {/* HERO - Diagonal Split */}
+            <section className="relative min-h-screen bg-black text-white overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
-                <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full text-center">
-                    <motion.div style={{ y }}>
+                {/* Diagonal divider */}
+                <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-full bg-[#8c52ff] origin-top-left transform -skew-y-6 translate-y-1/2 opacity-10"></div>
+                </div>
+
+                <div className="relative z-10 min-h-screen flex items-center">
+                    <div className="max-w-7xl mx-auto px-6 py-32 w-full">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-8"
+                            transition={{ duration: 0.8 }}
                         >
-                            <Cpu className="w-4 h-4 text-[#ffc502]" />
-                            <span className="text-[12px] font-medium text-white/80 tracking-wider uppercase">Virtual Machines</span>
-                        </motion.div>
-
-                        <div className="overflow-hidden">
-                            <motion.h1 className="text-[56px] sm:text-[80px] lg:text-[120px] font-black leading-[0.85] tracking-[-0.04em]">
-                                <motion.span
-                                    className="block text-white"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                >
-                                    DUAL VM
-                                </motion.span>
-                                <motion.span
-                                    className="block"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.1 }}
-                                >
-                                    <span className="text-[#8c52ff]">EVM</span>
-                                    <span className="text-white/30 mx-4">+</span>
-                                    <span className="text-[#ffc502]">WASM</span>
-                                </motion.span>
-                            </motion.h1>
-                        </div>
-
-                        <motion.p
-                            className="text-white/50 text-lg sm:text-xl max-w-3xl mx-auto mt-8 mb-12"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                        >
-                            Choose the right tool for the job. Full Ethereum compatibility or maximum performance — or use both in the same application.
-                        </motion.p>
-
-                        {/* VM Toggle */}
-                        <motion.div
-                            className="flex justify-center gap-0 mb-12 border-4 border-white/20 inline-flex"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                        >
-                            <motion.button
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => setActiveVM('evm')}
-                                className={`px-10 py-5 font-bold uppercase tracking-wide transition-all flex items-center gap-3 ${activeVM === 'evm' ? 'bg-[#8c52ff] text-white' : 'bg-transparent text-white/60'}`}
-                            >
-                                <Box size={20} /> EVM
-                            </motion.button>
-                            <motion.button
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => setActiveVM('wasm')}
-                                className={`px-10 py-5 font-bold uppercase tracking-wide transition-all flex items-center gap-3 ${activeVM === 'wasm' ? 'bg-[#ffc502] text-black' : 'bg-transparent text-white/60'}`}
-                            >
-                                <Cpu size={20} /> WASM
-                            </motion.button>
-                        </motion.div>
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <ChevronDown className="text-white/40 w-8 h-8" />
-                </motion.div>
-            </section>
-
-            {/* VM DETAILS */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        key={activeVM}
-                        initial={{ opacity: 0, x: activeVM === 'evm' ? -50 : 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        {/* Header */}
-                        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-                            <div>
-                                <div
-                                    className="w-24 h-24 flex items-center justify-center mb-6"
-                                    style={{ backgroundColor: active.color }}
-                                >
-                                    <Icon size={48} className={activeVM === 'wasm' ? 'text-black' : 'text-white'} />
-                                </div>
-                                <h2 className="text-[40px] lg:text-[56px] font-black text-black leading-none mb-4">
-                                    {active.name}
-                                </h2>
-                                <p className="text-black/60 text-xl mb-6">{active.description}</p>
-                                <div
-                                    className="inline-block px-4 py-2 text-sm font-bold uppercase tracking-wider"
-                                    style={{ backgroundColor: active.color, color: activeVM === 'wasm' ? 'black' : 'white' }}
-                                >
-                                    {active.useCase}
-                                </div>
-                            </div>
-
-                            {/* Languages */}
-                            <div className="border-4 border-black p-8">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <Code2 size={24} style={{ color: active.color }} />
-                                    <h3 className="text-xl font-black text-black">Supported Languages</h3>
-                                </div>
-                                <div className="flex flex-wrap gap-3">
-                                    {active.languages.map((lang, i) => (
-                                        <motion.span
-                                            key={i}
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: i * 0.1 }}
-                                            className="px-6 py-3 border-4 border-black font-black text-black hover:text-white transition-colors cursor-pointer"
-                                            style={{ ['--hover-bg' as string]: active.color }}
-                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = active.color}
-                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                                        >
-                                            {lang}
-                                        </motion.span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Performance Metrics */}
-                        <div className="grid md:grid-cols-3 gap-6 mb-16">
-                            {Object.entries(active.performance).map(([key, value], i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="border-4 border-black p-6 text-center"
-                                >
-                                    <div className="text-sm font-bold text-black/40 uppercase tracking-wider mb-2">{key}</div>
-                                    <div className="text-2xl font-black" style={{ color: active.color }}>{value}</div>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Features */}
-                        <div className="space-y-4">
-                            {active.features.map((feature, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: -30 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.2 + i * 0.1 }}
-                                    whileHover={{ x: 10 }}
-                                    className="flex items-center gap-4 p-5 border-4 border-black hover:bg-black group transition-colors cursor-pointer"
-                                >
-                                    <div
-                                        className="w-10 h-10 flex-shrink-0 flex items-center justify-center"
-                                        style={{ backgroundColor: active.color }}
-                                    >
-                                        <Check className={activeVM === 'wasm' ? 'text-black' : 'text-white'} size={20} />
-                                    </div>
-                                    <span className="font-bold text-black group-hover:text-white transition-colors">{feature}</span>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* INTEROPERABILITY */}
-            <section className="relative py-32 px-8 bg-black">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ff4080] uppercase tracking-widest mb-4 block">Power</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-white">
-                            Cross-VM <span className="text-[#ff4080]">Interop</span>
-                        </h2>
-                        <p className="text-white/50 text-xl mt-4 max-w-2xl mx-auto">
-                            Call WASM contracts from EVM and vice versa. One unified ecosystem.
-                        </p>
-                    </motion.div>
-
-                    {/* Interop Visualization */}
-                    <div className="grid lg:grid-cols-3 gap-8 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="border-4 border-[#8c52ff] p-8 text-center"
-                        >
-                            <Box size={48} className="text-[#8c52ff] mx-auto mb-4" />
-                            <h3 className="text-2xl font-black text-white mb-2">EVM Contract</h3>
-                            <p className="text-white/50 text-sm font-mono">contract.sol</p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="flex flex-col items-center gap-4"
-                        >
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                            >
-                                <Settings size={64} className="text-[#ff4080]" />
-                            </motion.div>
-                            <span className="text-white font-black uppercase tracking-wider">ABI Bridge</span>
-                            <div className="flex items-center gap-2">
-                                <Zap className="text-[#ffc502]" size={16} />
-                                <span className="text-white/40 text-sm">Seamless Calls</span>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="border-4 border-[#ffc502] p-8 text-center"
-                        >
-                            <Cpu size={48} className="text-[#ffc502] mx-auto mb-4" />
-                            <h3 className="text-2xl font-black text-white mb-2">WASM Contract</h3>
-                            <p className="text-white/50 text-sm font-mono">contract.rs</p>
+                            <h1 className="text-7xl md:text-9xl font-black mb-8 leading-tight">
+                                Dual VM<br />System
+                            </h1>
+                            <p className="text-3xl md:text-4xl font-bold mb-12 max-w-4xl">
+                                Two Execution Engines.<br />
+                                One State.<br />
+                                Zero Limitations.
+                            </p>
+                            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed">
+                                The only blockchain where EVM and WASM run side-by-side on the same global state, with AI-driven scheduling and parallel execution.
+                            </p>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* THE PROBLEM - Full Width Statement */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
-                <div className="relative z-10 max-w-4xl mx-auto text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-[48px] lg:text-[72px] font-black text-black leading-none mb-8">
-                            Start <span className="text-[#8c52ff]">Coding</span>
-                        </h2>
-                        <div className="flex flex-wrap gap-4 justify-center">
-                            <motion.div whileHover={{ scale: 1.05 }}>
-                                <Link href="#" className="bg-black text-white px-10 py-5 font-bold uppercase tracking-wide hover:bg-[#8c52ff] transition-colors inline-flex items-center gap-2">
-                                    EVM Docs <ArrowRight className="w-5 h-5" />
-                                </Link>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.05 }}>
-                                <Link href="#" className="border-4 border-black text-black px-10 py-5 font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all">
-                                    WASM Docs
-                                </Link>
-                            </motion.div>
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <p className="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                                Most blockchains pick either EVM or WASM.<br />
+                                Some try to "add support" for the other.
+                            </p>
+                            <div className="w-32 h-1 bg-black mx-auto mb-8"></div>
+                            <p className="text-4xl md:text-5xl font-black">
+                                ArthaChain engineered both.
+                            </p>
                         </div>
-                    </motion.div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="bg-black text-white p-16 text-center">
+                            <p className="text-2xl md:text-3xl leading-relaxed">
+                                Two execution engines running <span className="text-[#ffc502] font-black">simultaneously</span>,<br />
+                                sharing one state tree, with <span className="text-[#8c52ff] font-black">AI-driven scheduling</span>,<br />
+                                parallel lanes, and <span className="text-[#ff4080] font-black">sharding awareness</span>.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* WHY DUAL VM - Vertical Timeline */}
+            <section className="py-24 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-5xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">Why Dual VM Exists</h2>
+                            <p className="text-2xl text-gray-400">Serving two developer worlds</p>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-2 gap-1 bg-white">
+                        <StaggerItem>
+                            <div className="bg-black p-12 h-full border-l-8 border-[#8c52ff]">
+                                <div className="text-7xl font-black text-[#8c52ff] mb-6">1</div>
+                                <h3 className="text-3xl font-black mb-6">The Ethereum World</h3>
+                                <div className="space-y-3 text-lg">
+                                    <p>Billions in tooling</p>
+                                    <p>Solidity dominance</p>
+                                    <p>Existing dApps migration</p>
+                                    <p>MetaMask compatibility</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+
+                        <StaggerItem>
+                            <div className="bg-black p-12 h-full border-l-8 border-[#ff4080]">
+                                <div className="text-7xl font-black text-[#ff4080] mb-6">2</div>
+                                <h3 className="text-3xl font-black mb-6">The Native WASM World</h3>
+                                <div className="space-y-3 text-lg">
+                                    <p>Rust high-performance apps</p>
+                                    <p>AI-enhanced logic</p>
+                                    <p>Complex deterministic compute</p>
+                                    <p>Microservices on-chain</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+                    </div>
+
+                    <StaggerItem>
+                        <div className="mt-12 text-center">
+                            <p className="text-3xl font-bold">
+                                Instead of forcing compromise,<br />
+                                <span className="text-[#ffc502]">ArthaChain gave both their own execution lane.</span>
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* THE ENGINES - Side by Side Comparison */}
+            <section className="bg-white">
+                <div className="grid md:grid-cols-2">
+                    {/* EVM ENGINE */}
+                    <div className="bg-white p-16 border-r border-black/10">
+                        <StaggerContainer>
+                            <StaggerItem>
+                                <div className="mb-12">
+                                    <div className="w-16 h-16 bg-[#8c52ff] flex items-center justify-center mb-6">
+                                        <Code className="w-10 h-10 text-white" />
+                                    </div>
+                                    <h2 className="text-5xl font-black mb-4">EVM Lane</h2>
+                                    <p className="text-2xl text-gray-600">Full Ethereum Compatibility</p>
+                                </div>
+                            </StaggerItem>
+
+                            <StaggerItem>
+                                <div className="mb-12">
+                                    <div className="w-16 h-1 bg-[#8c52ff] mb-6"></div>
+                                    <h3 className="text-2xl font-black mb-6">What It Runs</h3>
+                                    <div className="space-y-3">
+                                        <p>Full Solidity compatibility</p>
+                                        <p>All standard EVM opcodes</p>
+                                        <p>Ethereum gas schedule</p>
+                                        <p>JSON-RPC compatible</p>
+                                        <p>Hardhat/Foundry ready</p>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+
+                            <StaggerItem>
+                                <div className="bg-black text-white p-8">
+                                    <p className="font-black mb-4 text-[#8c52ff]">ArthaChain Enhancements</p>
+                                    <div className="space-y-2 text-sm">
+                                        <p>→ Parallel processing</p>
+                                        <p>→ Shard awareness</p>
+                                        <p>→ AI-optimized scheduling</p>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        </StaggerContainer>
+                    </div>
+
+                    {/* WASM ENGINE */}
+                    <div className="bg-white p-16">
+                        <StaggerContainer>
+                            <StaggerItem>
+                                <div className="mb-12">
+                                    <div className="w-16 h-16 bg-[#ff4080] flex items-center justify-center mb-6">
+                                        <Zap className="w-10 h-10 text-white" />
+                                    </div>
+                                    <h2 className="text-5xl font-black mb-4">WASM Lane</h2>
+                                    <p className="text-2xl text-gray-600">Native Rust Execution</p>
+                                </div>
+                            </StaggerItem>
+
+                            <StaggerItem>
+                                <div className="mb-12">
+                                    <div className="w-16 h-1 bg-[#ff4080] mb-6"></div>
+                                    <h3 className="text-2xl font-black mb-6">What It Runs</h3>
+                                    <div className="space-y-3">
+                                        <p>Wasmtime runtime</p>
+                                        <p>Custom gas/fuel accounting</p>
+                                        <p>Near-native performance</p>
+                                        <p>Multi-language support</p>
+                                        <p>Direct state access</p>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+
+                            <StaggerItem>
+                                <div className="bg-black text-white p-8">
+                                    <p className="font-black mb-4 text-[#ff4080]">Perfect For</p>
+                                    <div className="space-y-2 text-sm">
+                                        <p>→ AI agents</p>
+                                        <p>→ Advanced logic systems</p>
+                                        <p>→ High-speed microservices</p>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        </StaggerContainer>
+                    </div>
                 </div>
+            </section>
+
+            {/* UNIFIED STATE - Centered Focus */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-4xl mx-auto relative z-10 text-center">
+                    <StaggerItem>
+                        <div className="mb-16">
+                            <h2 className="text-6xl md:text-7xl font-black mb-8">Unified State Layer</h2>
+                            <p className="text-2xl text-gray-400">The heart of the Dual VM system</p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="bg-white text-black p-16 mb-12">
+                            <p className="text-3xl font-black mb-12">Both VMs write to the same:</p>
+                            <div className="grid grid-cols-2 gap-8 text-xl">
+                                <div>Account map</div>
+                                <div>Storage trie</div>
+                                <div>Balance bridge</div>
+                                <div>Contract code map</div>
+                                <div>Logs & receipts</div>
+                                <div>Merkle root</div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="grid md:grid-cols-2 gap-8 text-xl">
+                            {[
+                                'Solidity contract calling WASM contract',
+                                'WASM calling EVM precompiles',
+                                'Cross-VM libraries',
+                                'One address space'
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-[#ffc502] flex items-center justify-center flex-shrink-0">
+                                        <span className="font-black text-black">{i + 1}</span>
+                                    </div>
+                                    <p className="text-lg">{item}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-16 p-12 border-4 border-[#ffc502]">
+                            <p className="text-3xl font-black text-[#ffc502]">
+                                No other chain supports this.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* CROSS-VM CALLING - Code Example Layout */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">Cross-VM Calling</h2>
+                            <p className="text-2xl text-gray-600">Where ArthaChain becomes futuristic</p>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-2 gap-12">
+                        <StaggerItem>
+                            <div className="bg-black text-white p-10">
+                                <p className="text-sm uppercase tracking-wider text-[#8c52ff] mb-4">Solidity → WASM</p>
+                                <div className="font-mono text-sm mb-6">
+                                    <p className="text-gray-400">// Call WASM from Solidity</p>
+                                    <p className="text-green-400">Address("wasm_contract")</p>
+                                    <p className="text-white">.invoke("function", args)</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+
+                        <StaggerItem>
+                            <div className="bg-black text-white p-10">
+                                <p className="text-sm uppercase tracking-wider text-[#ff4080] mb-4">WASM → EVM</p>
+                                <div className="font-mono text-sm mb-6">
+                                    <p className="text-gray-400">// Call EVM from WASM</p>
+                                    <p className="text-green-400">evm_call</p>
+                                    <p className="text-white">(address, method, params)</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+                    </div>
+
+                    <StaggerItem>
+                        <div className="mt-12 bg-black text-white p-12 text-center">
+                            <p className="text-2xl font-bold mb-6">Under the hood:</p>
+                            <div className="flex flex-wrap justify-center gap-6 text-lg">
+                                <span className="px-6 py-3 bg-white/10">VM switch</span>
+                                <span className="px-6 py-3 bg-white/10">Execution routing</span>
+                                <span className="px-6 py-3 bg-white/10">Unified gas meter</span>
+                                <span className="px-6 py-3 bg-white/10">Merged receipt</span>
+                            </div>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* PARALLEL EXECUTION - Flow Diagram */}
+            <section className="py-24 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">Parallel Execution</h2>
+                            <p className="text-2xl text-gray-400">AI-driven concurrent processing</p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="space-y-8">
+                            {[
+                                { step: 'Separate transactions into non-conflicting groups', icon: GitMerge },
+                                { step: 'Run across CPU cores simultaneously', icon: Cpu },
+                                { step: 'Schedule EVM + WASM together', icon: Layers },
+                                { step: 'Use DAG ordering for concurrency', icon: GitMerge },
+                                { step: 'AI detects patterns and optimizes', icon: Brain }
+                            ].map((item, i) => {
+                                const Icon = item.icon;
+                                return (
+                                    <div key={i} className="flex items-center gap-6 bg-white/5 p-8">
+                                        <div className="w-16 h-16 bg-[#ffc502] flex items-center justify-center flex-shrink-0">
+                                            <Icon className="w-10 h-10 text-black" />
+                                        </div>
+                                        <p className="text-2xl font-bold">{item.step}</p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-16 grid md:grid-cols-3 gap-6">
+                            {[
+                                'Higher TPS',
+                                'Faster execution',
+                                'Lower latency',
+                                'Better hot-spot control',
+                                'Scalability per core',
+                                'Scalability per shard'
+                            ].map((benefit, i) => (
+                                <div key={i} className="bg-white text-black p-6 text-center">
+                                    <p className="font-black text-lg">{benefit}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* WHY UNIQUE - Numbered List */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-5xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">Why This Is Unique</h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="space-y-1">
+                        {[
+                            { num: '01', title: 'Dual native execution environments', desc: 'EVM and WASM both compile to native bytecode with equal priority in transaction processing and block inclusion.', color: '#8c52ff' },
+                            { num: '02', title: 'True parallel transaction execution', desc: 'Multiple CPU cores process EVM and WASM transactions concurrently using dependency graph analysis and conflict detection.', color: '#ff4080' },
+                            { num: '03', title: 'Single unified Merkle state root', desc: 'Both VMs write to the same Patricia Merkle Trie, ensuring one source of truth for all account states and storage.', color: '#ffc502' },
+                            { num: '04', title: 'Cross-VM contract interoperability', desc: 'Smart contracts can invoke functions across execution engines within the same transaction using unified ABI routing.', color: '#8c52ff' },
+                            { num: '05', title: 'AI-driven execution optimization', desc: 'Machine learning models analyze transaction patterns to optimize gas pricing, scheduling, and resource allocation in real-time.', color: '#ff4080' },
+                            { num: '06', title: 'Shard-aware execution routing', desc: 'VM execution is localized to shard boundaries, minimizing cross-shard communication and maximizing throughput per partition.', color: '#ffc502' },
+                            { num: '07', title: 'Hybrid compute architecture', desc: 'WASM handles compute-intensive operations while EVM ensures ecosystem compatibility, creating optimal performance for all use cases.', color: '#8c52ff' }
+                        ].map((item, i) => (
+                            <StaggerItem key={i}>
+                                <div className="grid md:grid-cols-12 gap-0 bg-black text-white">
+                                    <div className="md:col-span-2 flex items-center justify-center p-8" style={{ backgroundColor: item.color }}>
+                                        <span className="text-6xl font-black text-white">{item.num}</span>
+                                    </div>
+                                    <div className="md:col-span-10 p-8">
+                                        <h3 className="text-2xl font-black mb-3" style={{ color: item.color }}>{item.title}</h3>
+                                        <p className="text-lg text-gray-300">{item.desc}</p>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+                </StaggerContainer>
+            </section>
+
+            {/* DEVELOPER BENEFITS - Icon Grid */}
+            <section className="py-24 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">Why Developers Love This</h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-2 gap-1 bg-white mb-16">
+                        {[
+                            { icon: Code, title: 'Solidity devs', desc: 'Move apps instantly', color: '#8c52ff' },
+                            { icon: Zap, title: 'Rust devs', desc: 'Build powerful native modules', color: '#ff4080' },
+                            { icon: Brain, title: 'AI devs', desc: 'Run agents directly on-chain', color: '#ffc502' },
+                            { icon: Shield, title: 'Enterprises', desc: 'High performance with safety', color: '#8c52ff' }
+                        ].map((item, i) => {
+                            const Icon = item.icon;
+                            return (
+                                <StaggerItem key={i}>
+                                    <div className="bg-black p-12 h-full">
+                                        <Icon className="w-16 h-16 mb-6" style={{ color: item.color }} />
+                                        <h3 className="text-2xl font-black mb-3" style={{ color: item.color }}>{item.title}</h3>
+                                        <p className="text-lg text-gray-400">{item.desc}</p>
+                                    </div>
+                                </StaggerItem>
+                            );
+                        })}
+                    </div>
+
+                    <StaggerItem>
+                        <div className="bg-white text-black p-16 text-center">
+                            <p className="text-4xl md:text-5xl font-black mb-6">
+                                One chain. Two paradigms.
+                            </p>
+                            <p className="text-2xl text-gray-600">
+                                Build exactly the way you want, without limits.
+                            </p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-16 flex flex-wrap justify-center gap-6">
+                            <Link
+                                href="/core/consensus"
+                                className="px-10 py-5 bg-white text-black font-black text-lg uppercase tracking-wider hover:bg-[#8c52ff] hover:text-white transition-all duration-300"
+                            >
+                                Explore Consensus →
+                            </Link>
+                            <Link
+                                href="/core/dual-chain"
+                                className="px-10 py-5 border-4 border-white text-white font-black text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                Dual Chain System →
+                            </Link>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
             </section>
         </div>
     );

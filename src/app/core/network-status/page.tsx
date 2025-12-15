@@ -1,332 +1,255 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Activity, Server, Cpu, HardDrive, Clock, ArrowUpRight, ChevronDown, TrendingUp, Users, Zap, Box } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { ArrowRight, Activity, Server, Globe, Zap, CheckCircle2, Network, Wifi, Clock, TrendingUp, Users, Box } from 'lucide-react';
+import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-animation';
 
 export default function NetworkStatusPage() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 0.2], [0, -30]);
-
-    // Simulated live data
-    const [stats, setStats] = useState({
-        tps: 847293,
-        blockHeight: 12847392,
-        validators: 10847,
-        avgBlockTime: 0.12,
-        networkHealth: 99.97,
-        totalTransactions: 2847392847,
-    });
-
-    // Simulate live updates
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setStats(prev => ({
-                tps: prev.tps + Math.floor(Math.random() * 1000 - 500),
-                blockHeight: prev.blockHeight + 1,
-                validators: prev.validators + Math.floor(Math.random() * 3 - 1),
-                avgBlockTime: 0.12 + (Math.random() * 0.02 - 0.01),
-                networkHealth: 99.9 + Math.random() * 0.09,
-                totalTransactions: prev.totalTransactions + Math.floor(Math.random() * 10000),
-            }));
-        }, 2000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const formatNumber = (num: number) => {
-        if (num >= 1000000000) return (num / 1000000000).toFixed(2) + 'B';
-        if (num >= 1000000) return (num / 1000000).toFixed(2) + 'M';
-        if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
-        return num.toFixed(0);
-    };
-
-    const liveMetrics = [
-        { icon: Zap, label: 'Current TPS', value: formatNumber(stats.tps), color: '#8c52ff', live: true },
-        { icon: Box, label: 'Block Height', value: formatNumber(stats.blockHeight), color: '#ffc502', live: true },
-        { icon: Users, label: 'Validators', value: formatNumber(stats.validators), color: '#ff4080', live: false },
-        { icon: Clock, label: 'Avg Block Time', value: stats.avgBlockTime.toFixed(2) + 's', color: '#450693', live: false },
-    ];
-
-    const recentBlocks = [
-        { height: stats.blockHeight, txns: 2847, time: '0.12s', producer: '0x1a2b...3c4d' },
-        { height: stats.blockHeight - 1, txns: 3102, time: '0.11s', producer: '0x5e6f...7g8h' },
-        { height: stats.blockHeight - 2, txns: 2654, time: '0.13s', producer: '0x9i0j...1k2l' },
-        { height: stats.blockHeight - 3, txns: 2981, time: '0.12s', producer: '0x3m4n...5o6p' },
-        { height: stats.blockHeight - 4, txns: 2763, time: '0.11s', producer: '0x7q8r...9s0t' },
-    ];
-
     return (
-        <div ref={containerRef} className="min-h-screen">
+        <div className="min-h-screen bg-white selection:bg-[#ffc502] selection:text-black">
+
             {/* HERO */}
-            <section className="relative min-h-screen bg-black flex items-center overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            <section className="relative min-h-[80vh] flex items-center bg-black text-white overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
-                <motion.div
-                    className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#8c52ff]/15 rounded-full blur-[150px]"
-                    animate={{ scale: [1, 1.3, 1] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                />
+                <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <span className="inline-block px-6 py-2 bg-[#00c853] text-white text-sm font-black uppercase tracking-[0.3em] mb-8">
+                            All Systems Operational
+                        </span>
+                    </motion.div>
 
-                <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full text-center">
-                    <motion.div style={{ y }}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-8"
-                        >
-                            <motion.div
-                                animate={{ scale: [1, 1.2, 1] }}
-                                transition={{ duration: 1, repeat: Infinity }}
-                            >
-                                <Activity className="w-4 h-4 text-green-500" />
-                            </motion.div>
-                            <span className="text-[12px] font-medium text-green-500 tracking-wider uppercase">Live Network Stats</span>
-                        </motion.div>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight"
+                    >
+                        Network <span className="text-[#ffc502]">Status</span>
+                    </motion.h1>
 
-                        <div className="overflow-hidden">
-                            <motion.h1 className="text-[56px] sm:text-[80px] lg:text-[120px] font-black leading-[0.85] tracking-[-0.04em]">
-                                <motion.span
-                                    className="block text-white"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                >
-                                    NETWORK
-                                </motion.span>
-                                <motion.span
-                                    className="block text-[#8c52ff]"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.1 }}
-                                >
-                                    STATUS
-                                </motion.span>
-                            </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto"
+                    >
+                        Live network statistics and performance metrics for ArthaChain Testnet.
+                    </motion.p>
+                </div>
+            </section>
+
+            {/* LIVE STATS */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-6 py-2 bg-[#8c52ff] text-white text-sm font-black uppercase tracking-[0.3em] mb-6">
+                                Live Stats
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black">
+                                Testnet <span className="text-[#8c52ff]">Metrics</span>
+                            </h2>
                         </div>
+                    </StaggerItem>
 
-                        {/* Network Health Bar */}
-                        <motion.div
-                            className="max-w-md mx-auto mt-12"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                        >
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-white/40 text-sm uppercase tracking-wider">Network Health</span>
-                                <span className="text-green-500 font-black">{stats.networkHealth.toFixed(2)}%</span>
-                            </div>
-                            <div className="h-3 bg-white/10 overflow-hidden">
-                                <motion.div
-                                    className="h-full bg-green-500"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${stats.networkHealth}%` }}
-                                    transition={{ duration: 1, delay: 0.6 }}
-                                />
-                            </div>
-                        </motion.div>
-
-                        {/* Live Stats */}
-                        <motion.div
-                            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.7 }}
-                        >
-                            {liveMetrics.map((metric, i) => {
-                                const Icon = metric.icon;
-                                return (
-                                    <motion.div
-                                        key={i}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.8 + i * 0.1 }}
-                                        className="border-2 border-white/10 p-6 text-center relative"
-                                    >
-                                        {metric.live && (
-                                            <motion.div
-                                                className="absolute top-2 right-2 w-2 h-2 rounded-full bg-green-500"
-                                                animate={{ opacity: [1, 0.5, 1] }}
-                                                transition={{ duration: 1, repeat: Infinity }}
-                                            />
-                                        )}
-                                        <Icon size={24} style={{ color: metric.color }} className="mx-auto mb-3" />
-                                        <div className="text-3xl font-black text-white mb-1">{metric.value}</div>
-                                        <div className="text-white/40 text-sm uppercase tracking-wider">{metric.label}</div>
-                                    </motion.div>
-                                );
-                            })}
-                        </motion.div>
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <ChevronDown className="text-white/40 w-8 h-8" />
-                </motion.div>
-            </section>
-
-            {/* RECENT BLOCKS */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#8c52ff] uppercase tracking-widest mb-4 block">Blockchain</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-black">
-                            Recent <span className="text-[#8c52ff]">Blocks</span>
-                        </h2>
-                    </motion.div>
-
-                    {/* Blocks Table */}
-                    <div className="border-4 border-black overflow-hidden">
-                        {/* Header */}
-                        <div className="grid grid-cols-4 bg-black text-white p-4 font-bold uppercase tracking-wider text-sm">
-                            <div>Block</div>
-                            <div>Transactions</div>
-                            <div>Time</div>
-                            <div>Producer</div>
-                        </div>
-
-                        {/* Rows */}
-                        {recentBlocks.map((block, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                whileHover={{ backgroundColor: '#f5f5f5' }}
-                                className="grid grid-cols-4 p-4 border-t-2 border-black/10 cursor-pointer group"
-                            >
-                                <div className="font-black text-[#8c52ff]">#{formatNumber(block.height)}</div>
-                                <div className="text-black/60">{block.txns.toLocaleString()}</div>
-                                <div className="text-black/60">{block.time}</div>
-                                <div className="flex items-center gap-2 text-black/60">
-                                    <span className="font-mono">{block.producer}</span>
-                                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <motion.div
-                        className="text-center mt-8"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                    >
-                        <Link href="#" className="text-[#8c52ff] font-bold uppercase tracking-wider hover:underline inline-flex items-center gap-2">
-                            View All Blocks <ArrowUpRight size={16} />
-                        </Link>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* NODE DISTRIBUTION */}
-            <section className="relative py-32 px-8 bg-black">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ffc502] uppercase tracking-widest mb-4 block">Global</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-white">
-                            Node <span className="text-[#ffc502]">Distribution</span>
-                        </h2>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {[
-                            { region: 'North America', nodes: 3847, percentage: 35 },
-                            { region: 'Europe', nodes: 2983, percentage: 27 },
-                            { region: 'Asia Pacific', nodes: 2456, percentage: 23 },
-                            { region: 'Rest of World', nodes: 1561, percentage: 15 },
-                        ].map((region, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                whileHover={{ y: -10 }}
-                                className="border-2 border-white/10 p-6 cursor-pointer hover:border-[#ffc502] transition-colors"
-                            >
-                                <Server size={32} className="text-[#ffc502] mb-4" />
-                                <h3 className="font-black text-white text-lg mb-2">{region.region}</h3>
-                                <div className="text-4xl font-black text-[#ffc502] mb-2">{region.nodes.toLocaleString()}</div>
-                                <div className="text-white/40">nodes ({region.percentage}%)</div>
-                                {/* Progress bar */}
-                                <div className="mt-4 h-2 bg-white/10 overflow-hidden">
-                                    <motion.div
-                                        className="h-full bg-[#ffc502]"
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: `${region.percentage}%` }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.8, delay: i * 0.1 }}
-                                    />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* NETWORK STATS */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ff4080] uppercase tracking-widest mb-4 block">All Time</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-black">
-                            Network <span className="text-[#ff4080]">Statistics</span>
-                        </h2>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {[
-                            { label: 'Total Transactions', value: formatNumber(stats.totalTransactions), icon: TrendingUp },
-                            { label: 'Unique Addresses', value: '284.7M', icon: Users },
-                            { label: 'Smart Contracts', value: '12.8M', icon: Cpu },
+                            { value: '1,247', label: 'Block Height', icon: Box, color: '#8c52ff' },
+                            { value: '23,891', label: 'Transactions', icon: Activity, color: '#ff4080' },
+                            { value: '156', label: 'Active Validators', icon: Server, color: '#ffc502' },
+                            { value: '99.9%', label: 'Uptime', icon: TrendingUp, color: '#00c853' },
                         ].map((stat, i) => {
                             const Icon = stat.icon;
                             return (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    whileHover={{ scale: 1.02 }}
-                                    className="border-4 border-black p-8 text-center cursor-pointer"
-                                >
-                                    <Icon size={48} className="text-[#ff4080] mx-auto mb-4" />
-                                    <div className="text-5xl font-black text-black mb-2">{stat.value}</div>
-                                    <div className="text-black/50 uppercase tracking-wider">{stat.label}</div>
-                                </motion.div>
+                                <StaggerItem key={i}>
+                                    <div className="border-4 border-black p-6 text-center hover:bg-black hover:text-white transition-all group">
+                                        <Icon className="w-8 h-8 mx-auto mb-4" style={{ color: stat.color }} />
+                                        <div className="text-3xl md:text-4xl font-black mb-1">{stat.value}</div>
+                                        <div className="text-gray-600 group-hover:text-gray-300 text-sm uppercase tracking-widest">{stat.label}</div>
+                                    </div>
+                                </StaggerItem>
                             );
                         })}
                     </div>
-                </div>
+                </StaggerContainer>
+            </section>
+
+            {/* PERFORMANCE */}
+            <section className="py-24 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-6 py-2 bg-[#ffc502] text-black text-sm font-black uppercase tracking-[0.3em] mb-6">
+                                Performance
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black">
+                                Network <span className="text-[#ffc502]">Speed</span>
+                            </h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { label: 'Block Time', value: '1.2s', desc: 'Average block production time', icon: Clock },
+                            { label: 'TPS', value: '2,450', desc: 'Current transactions per second', icon: Zap },
+                            { label: 'Finality', value: '0.8s', desc: 'Time to transaction finality', icon: CheckCircle2 },
+                        ].map((metric, i) => {
+                            const Icon = metric.icon;
+                            return (
+                                <StaggerItem key={i}>
+                                    <div className="border border-white/10 p-8 text-center hover:border-[#ffc502] transition-colors">
+                                        <Icon className="w-10 h-10 mx-auto mb-4 text-[#ffc502]" />
+                                        <div className="text-5xl font-black text-[#ffc502] mb-2">{metric.value}</div>
+                                        <div className="text-xl font-bold mb-2">{metric.label}</div>
+                                        <p className="text-gray-400">{metric.desc}</p>
+                                    </div>
+                                </StaggerItem>
+                            );
+                        })}
+                    </div>
+                </StaggerContainer>
+            </section>
+
+            {/* NETWORK TOPOLOGY */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-6 py-2 bg-[#ff4080] text-white text-sm font-black uppercase tracking-[0.3em] mb-6">
+                                P2P Network
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black">
+                                Neural Network <span className="text-[#ff4080]">Topology</span>
+                            </h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-2 gap-8 mb-12">
+                        <StaggerItem>
+                            <div className="bg-gray-50 p-8 h-full">
+                                <Network className="w-10 h-10 text-[#ff4080] mb-4" />
+                                <h3 className="text-2xl font-black mb-4">libp2p Based</h3>
+                                <div className="space-y-3">
+                                    {[
+                                        'GossipSub v1.1',
+                                        'Noise-based encryption',
+                                        'Yamux multiplexing',
+                                        'QUIC for ultra-low latency'
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <CheckCircle2 className="w-5 h-5 text-[#ff4080]" />
+                                            <span>{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </StaggerItem>
+
+                        <StaggerItem>
+                            <div className="bg-gray-50 p-8 h-full">
+                                <Globe className="w-10 h-10 text-[#8c52ff] mb-4" />
+                                <h3 className="text-2xl font-black mb-4">Self-Healing</h3>
+                                <div className="space-y-3">
+                                    {[
+                                        'Predictive routing',
+                                        'Automatic peer discovery',
+                                        'Dynamic topology adaptation',
+                                        'Self-healing infrastructure'
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <CheckCircle2 className="w-5 h-5 text-[#8c52ff]" />
+                                            <span>{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </StaggerItem>
+                    </div>
+
+                    <StaggerItem>
+                        <p className="text-center text-xl font-bold text-gray-600">
+                            The network routes itself like a <span className="text-[#ff4080]">living organism</span>.
+                        </p>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* NODE DISTRIBUTION */}
+            <section className="py-24 px-6 bg-[#8c52ff] text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-6xl font-black">
+                                Global Distribution
+                            </h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+                        {[
+                            { region: 'North America', nodes: '45' },
+                            { region: 'Europe', nodes: '38' },
+                            { region: 'Asia Pacific', nodes: '52' },
+                            { region: 'South America', nodes: '12' },
+                            { region: 'Africa', nodes: '9' },
+                        ].map((region, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-black/20 backdrop-blur-sm p-6 hover:bg-black/40 transition-colors">
+                                    <div className="text-4xl font-black text-[#ffc502] mb-2">{region.nodes}</div>
+                                    <div className="text-sm">{region.region}</div>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+                </StaggerContainer>
+            </section>
+
+            {/* CTA */}
+            <section className="py-40 px-6 bg-black text-white overflow-hidden border-t border-white/10 relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none" />
+
+                <StaggerContainer className="max-w-7xl mx-auto text-center relative z-10">
+                    <StaggerItem>
+                        <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
+                            Run a <span className="text-[#ffc502]">Node</span>
+                        </h2>
+                    </StaggerItem>
+
+                    <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+                        {[
+                            { text: 'Become a Validator', href: '/dev/validators', primary: true },
+                            { text: 'Get Testnet Tokens', href: '/dev/testnet', primary: false },
+                            { text: 'View Explorer', href: '/dev/explorer', primary: false }
+                        ].map((link, i) => (
+                            <StaggerItem key={i}>
+                                <Link
+                                    href={link.href}
+                                    className={`group flex items-center justify-between gap-6 w-full md:w-auto min-w-[260px] px-8 py-6 font-bold uppercase tracking-widest transition-all duration-300 ${link.primary
+                                            ? 'bg-[#ffc502] text-black hover:bg-[#ff4080] hover:text-white'
+                                            : 'bg-white/5 border border-white/10 text-white hover:border-white/50 hover:bg-white/10'
+                                        }`}
+                                >
+                                    <span className="text-sm">{link.text}</span>
+                                    <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${link.primary ? 'text-black group-hover:text-white' : 'text-[#ffc502]'}`} />
+                                </Link>
+                            </StaggerItem>
+                        ))}
+                    </div>
+                </StaggerContainer>
             </section>
         </div>
     );

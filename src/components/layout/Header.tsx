@@ -36,7 +36,7 @@ const navigationItems: NavItem[] = [
         label: 'ArthaCore',
         icon: '🟣',
         dropdown: [
-            { label: 'Technology', href: '/technology', description: 'Core protocol overview' },
+            { label: 'Technology', href: '/core-technology', description: 'Core protocol overview' },
             { label: 'Architecture', href: '/core/architecture', description: 'System design' },
             { label: 'Dual-Chain System', href: '/core/dual-chain', description: 'Two-layer approach' },
             { label: 'Dual VM (EVM + WASM)', href: '/core/dual-vm', description: 'Virtual machines' },

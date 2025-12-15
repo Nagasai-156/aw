@@ -1,340 +1,537 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Shield, Lock, Eye, AlertTriangle, ArrowRight, ChevronDown, Check, Key, Fingerprint, Bug, Layers } from 'lucide-react';
-import { useRef } from 'react';
+import { ArrowRight, Shield, Brain, Lock, Eye, Layers, Zap, AlertTriangle, CheckCircle } from 'lucide-react';
+import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-animation';
 
 export default function SecurityPage() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 0.2], [0, -30]);
-
-    const securityLayers = [
-        {
-            name: 'Network Security',
-            icon: Layers,
-            color: '#8c52ff',
-            measures: [
-                { title: 'DDoS Protection', desc: 'Distributed node architecture with rate limiting' },
-                { title: 'Eclipse Resistance', desc: 'Peer diversity requirements prevent isolation attacks' },
-                { title: 'Encrypted P2P', desc: 'All node communication uses TLS 1.3 encryption' },
-            ],
-        },
-        {
-            name: 'Consensus Security',
-            icon: Shield,
-            color: '#ffc502',
-            measures: [
-                { title: 'Slashing Conditions', desc: 'Economic penalties for malicious validator behavior' },
-                { title: 'Fraud Proofs', desc: 'Cryptographic evidence of invalid state transitions' },
-                { title: 'Randomness Beacon', desc: 'VRF-based unpredictable leader selection' },
-            ],
-        },
-        {
-            name: 'Cryptographic Security',
-            icon: Key,
-            color: '#ff4080',
-            measures: [
-                { title: 'Quantum-Resistant', desc: 'Lattice-based signatures (CRYSTALS-Dilithium)' },
-                { title: 'BLS Aggregation', desc: 'Efficient multi-signature verification' },
-                { title: 'Zero-Knowledge', desc: 'Privacy-preserving transaction validation' },
-            ],
-        },
-        {
-            name: 'Smart Contract Security',
-            icon: Bug,
-            color: '#450693',
-            measures: [
-                { title: 'Formal Verification', desc: 'Mathematical proofs of contract correctness' },
-                { title: 'Gas Limits', desc: 'Prevent infinite loops and resource exhaustion' },
-                { title: 'Upgrade Guards', desc: 'Timelock and multi-sig requirements for changes' },
-            ],
-        },
-    ];
-
     return (
-        <div ref={containerRef} className="min-h-screen">
-            {/* HERO */}
-            <section className="relative min-h-screen bg-black flex items-center overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+        <div className="min-h-screen bg-white selection:bg-[#ffc502] selection:text-black">
 
-                <motion.div
-                    className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-[#ffc502]/15 rounded-full blur-[150px]"
-                    animate={{ scale: [1, 1.3, 1] }}
-                    transition={{ duration: 6, repeat: Infinity }}
-                />
+            {/* HERO - Shield Fortress */}
+            <section className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
-                <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full text-center">
-                    <motion.div style={{ y }}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-8"
-                        >
-                            <Lock className="w-4 h-4 text-[#ffc502]" />
-                            <span className="text-[12px] font-medium text-white/80 tracking-wider uppercase">Protection Mechanisms</span>
-                        </motion.div>
-
-                        <div className="overflow-hidden">
-                            <motion.h1 className="text-[56px] sm:text-[80px] lg:text-[120px] font-black leading-[0.85] tracking-[-0.04em]">
-                                <motion.span
-                                    className="block text-white"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                >
-                                    SECURITY
-                                </motion.span>
-                                <motion.span
-                                    className="block text-[#ffc502]"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.1 }}
-                                >
-                                    MODEL
-                                </motion.span>
-                            </motion.h1>
-                        </div>
-
-                        <motion.p
-                            className="text-white/50 text-lg sm:text-xl max-w-3xl mx-auto mt-8 mb-12"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                        >
-                            Defense in depth with multiple security layers. Quantum-resistant cryptography protects assets today and tomorrow.
-                        </motion.p>
-
-                        {/* Security Stats */}
-                        <motion.div
-                            className="flex flex-wrap justify-center gap-8 lg:gap-16 mb-12"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                        >
-                            {[
-                                { value: '4', label: 'Security Layers' },
-                                { value: '$0', label: 'Lost to Hacks' },
-                                { value: '24/7', label: 'Monitoring' },
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, scale: 0.5 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.7 + i * 0.1, type: "spring" }}
-                                    className="text-center"
-                                >
-                                    <div className="text-4xl lg:text-5xl font-black text-[#ffc502]">{stat.value}</div>
-                                    <div className="text-white/40 text-sm uppercase tracking-wider">{stat.label}</div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <ChevronDown className="text-white/40 w-8 h-8" />
-                </motion.div>
-            </section>
-
-            {/* SECURITY LAYERS */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
+                <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
                     <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
                         className="text-center mb-20"
                     >
-                        <span className="text-sm font-bold text-[#ffc502] uppercase tracking-widest mb-4 block">Defense in Depth</span>
-                        <h2 className="text-[48px] lg:text-[72px] font-black text-black">
-                            Security <span className="text-[#ffc502]">Layers</span>
-                        </h2>
+                        <h1 className="text-7xl md:text-9xl font-black mb-12 leading-tight">
+                            Defense-in-Depth
+                        </h1>
+                        <div className="space-y-4 text-2xl md:text-3xl font-bold mb-16">
+                            <p>Quantum-Secure.</p>
+                            <p>AI-Intelligent.</p>
+                            <p>Mathematically Verifiable.</p>
+                            <p>Privacy-Protected.</p>
+                        </div>
                     </motion.div>
 
-                    {/* Security Layers Grid */}
-                    <div className="space-y-8">
-                        {securityLayers.map((layer, i) => {
-                            const Icon = layer.icon;
-                            return (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="border-4 border-black p-8"
-                                >
-                                    <div className="flex items-center gap-4 mb-6">
-                                        <div
-                                            className="w-16 h-16 flex items-center justify-center"
-                                            style={{ backgroundColor: layer.color }}
-                                        >
-                                            <Icon size={32} className="text-white" />
-                                        </div>
-                                        <h3 className="text-2xl font-black text-black">{layer.name}</h3>
-                                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="max-w-4xl mx-auto"
+                    >
+                        <div className="bg-white text-black p-16 mb-12">
+                            <p className="text-3xl font-bold mb-8 text-center">
+                                ArthaChain doesn't rely on a single lock.
+                            </p>
+                            <p className="text-2xl text-center">
+                                It is protected by <span className="text-[#8c52ff] font-black">five independent defensive layers</span>, each engineered to counter an entire class of attacks.
+                            </p>
+                        </div>
 
-                                    <div className="grid md:grid-cols-3 gap-4">
-                                        {layer.measures.map((measure, j) => (
-                                            <motion.div
-                                                key={j}
-                                                whileHover={{ x: 10 }}
-                                                className="flex gap-3 p-4 border-2 border-black/20 hover:border-black hover:bg-black group transition-colors cursor-pointer"
-                                            >
-                                                <div
-                                                    className="w-8 h-8 flex-shrink-0 flex items-center justify-center"
-                                                    style={{ backgroundColor: layer.color }}
-                                                >
-                                                    <Check size={16} className="text-white" />
-                                                </div>
-                                                <div>
-                                                    <h4 className="font-black text-black group-hover:text-white transition-colors">{measure.title}</h4>
-                                                    <p className="text-black/50 group-hover:text-white/60 text-sm transition-colors">{measure.desc}</p>
-                                                </div>
-                                            </motion.div>
+                        <div className="grid grid-cols-5 gap-2">
+                            {[
+                                { icon: Lock, label: 'Quantum', color: '#8c52ff' },
+                                { icon: Brain, label: 'AI', color: '#ff4080' },
+                                { icon: Shield, label: 'Consensus', color: '#ffc502' },
+                                { icon: Eye, label: 'Privacy', color: '#8c52ff' },
+                                { icon: Layers, label: 'Structural', color: '#ff4080' }
+                            ].map((shield, i) => {
+                                const Icon = shield.icon;
+                                return (
+                                    <div key={i} className="bg-white text-black p-6 text-center">
+                                        <Icon className="w-12 h-12 mx-auto mb-3" style={{ color: shield.color }} />
+                                        <p className="font-black text-sm">{shield.label}</p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* DEFENSE PHILOSOPHY */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <div className="grid md:grid-cols-3 gap-1 bg-black mb-16">
+                        {[
+                            { text: 'If one layer fails, the next layer activates.' },
+                            { text: 'If all layers fail, ArthaChain still stays secure.' },
+                            { text: 'True defense-in-depth architecture.' }
+                        ].map((item, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-white p-10 h-full flex items-center justify-center text-center">
+                                    <p className="text-xl font-bold">{item.text}</p>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+
+                    <StaggerItem>
+                        <div className="bg-black text-white p-12 text-center">
+                            <p className="text-3xl font-black mb-4">No other blockchain has this 5-shield model.</p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* LAYER 1 - QUANTUM SHIELD */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <div className="flex items-start gap-8 mb-12">
+                                <div className="w-32 h-32 bg-[#8c52ff] flex items-center justify-center flex-shrink-0">
+                                    <Lock className="w-20 h-20 text-white" />
+                                </div>
+                                <div>
+                                    <div className="text-8xl font-black text-[#8c52ff] mb-4">1</div>
+                                    <h2 className="text-6xl font-black mb-4">The Quantum Shield</h2>
+                                    <p className="text-2xl text-gray-400">Post-Quantum Cryptography at the Core</p>
+                                </div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="bg-white text-black p-12 mb-16">
+                            <p className="text-2xl font-bold mb-4">Modern blockchains depend on Elliptic Curve Cryptography.</p>
+                            <p className="text-xl text-gray-600">Quantum computers will break it.</p>
+                            <div className="w-24 h-1 bg-[#8c52ff] my-8"></div>
+                            <p className="text-3xl font-black text-[#8c52ff]">ArthaChain is natively post-quantum secure.</p>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-2 gap-12">
+                        <StaggerItem>
+                            <div className="border-4 border-[#8c52ff] p-10">
+                                <h3 className="text-3xl font-black mb-6 text-[#8c52ff]">Post-Quantum Signatures</h3>
+                                <p className="text-xl mb-6 font-bold">Crystals-Dilithium / ML-DSA-87</p>
+                                <div className="space-y-3 mb-8">
+                                    {[
+                                        'Transactions',
+                                        'Validator messages',
+                                        'Consensus votes',
+                                        'DID identity proofs'
+                                    ].map((item, i) => (
+                                        <p key={i} className="flex items-center gap-3">
+                                            <span className="text-[#8c52ff]">→</span>
+                                            <span>{item}</span>
+                                        </p>
+                                    ))}
+                                </div>
+                                <div className="bg-[#8c52ff] text-white p-6">
+                                    <p className="font-bold">Chosen by NIST as the next global cryptographic standard.</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+
+                        <StaggerItem>
+                            <div className="border-4 border-[#8c52ff] p-10">
+                                <h3 className="text-3xl font-black mb-6 text-[#8c52ff]">Post-Quantum Key Exchanges</h3>
+                                <p className="text-xl mb-6 font-bold">Kyber / ML-KEM</p>
+                                <div className="space-y-3 mb-8">
+                                    {[
+                                        'P2P node-to-node encryption',
+                                        'Private mempool communication',
+                                        'Validator handshake & sync'
+                                    ].map((item, i) => (
+                                        <p key={i} className="flex items-center gap-3">
+                                            <span className="text-[#8c52ff]">→</span>
+                                            <span>{item}</span>
+                                        </p>
+                                    ))}
+                                </div>
+                                <div className="bg-[#8c52ff] text-white p-6">
+                                    <p className="font-bold">Harvest-now-decrypt-later attacks become impossible.</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+                    </div>
+
+                    <StaggerItem>
+                        <div className="mt-16 bg-[#8c52ff] text-white p-12 text-center">
+                            <p className="text-4xl font-black">
+                                Try to break our keys → You hit a lattice-based cryptographic wall.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* LAYER 2 - AI SHIELD */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <div className="flex items-start gap-8 mb-12">
+                                <div className="w-32 h-32 bg-[#ff4080] flex items-center justify-center flex-shrink-0">
+                                    <Brain className="w-20 h-20 text-white" />
+                                </div>
+                                <div>
+                                    <div className="text-8xl font-black text-[#ff4080] mb-4">2</div>
+                                    <h2 className="text-6xl font-black mb-4">The Intelligence Shield</h2>
+                                    <p className="text-2xl text-gray-600">AI Immunity System</p>
+                                </div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="bg-black text-white p-12 mb-16 text-center">
+                            <p className="text-2xl mb-4">Other blockchains punish malicious actors <span className="text-gray-500">after damage</span>.</p>
+                            <p className="text-3xl font-black text-[#ff4080]">ArthaChain prevents attacks before they happen.</p>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="space-y-12">
+                        {[
+                            {
+                                title: 'Behavioral Fingerprinting',
+                                desc: 'AI analyzes CPU/RAM patterns, voting patterns, latency variability, network traffic, block timing, error bursts, and storage anomalies.',
+                                result: 'Creates a unique behavioral fingerprint for every validator.'
+                            },
+                            {
+                                title: 'Fraud Prediction',
+                                desc: 'AI finds pre-attack latency spikes, strange communication bursts, multi-node correlation patterns, suspicious silence, and timing anomalies.',
+                                result: 'Drops node reputation before attack happens. Malicious nodes never get a chance.'
+                            },
+                            {
+                                title: 'Sybil Defense',
+                                desc: 'AI detects identical latency curves, synchronized heartbeats, same kernel signatures, and cloned storage behavior.',
+                                result: '1000 fake nodes cannot trick the reputation system.'
+                            }
+                        ].map((feature, i) => (
+                            <StaggerItem key={i}>
+                                <div className="grid md:grid-cols-12 gap-0 border-4 border-black">
+                                    <div className="md:col-span-4 bg-black text-white p-10 flex items-center">
+                                        <h3 className="text-3xl font-black text-[#ff4080]">{feature.title}</h3>
+                                    </div>
+                                    <div className="md:col-span-8 p-10">
+                                        <p className="text-lg mb-6">{feature.desc}</p>
+                                        <div className="bg-[#ff4080] text-white p-6">
+                                            <p className="font-bold">{feature.result}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+
+                    <StaggerItem>
+                        <div className="mt-16 bg-[#ff4080] text-white p-12 text-center">
+                            <p className="text-4xl font-black">
+                                Try to cheat, spam, or behave abnormally → You get disqualified automatically.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* LAYER 3 - CONSENSUS SHIELD */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <div className="flex items-start gap-8 mb-12">
+                                <div className="w-32 h-32 bg-[#ffc502] flex items-center justify-center flex-shrink-0">
+                                    <Shield className="w-20 h-20 text-black" />
+                                </div>
+                                <div>
+                                    <div className="text-8xl font-black text-[#ffc502] mb-4">3</div>
+                                    <h2 className="text-6xl font-black mb-4">The Consensus Shield</h2>
+                                    <p className="text-2xl text-gray-400">Quantum-SVBFT Deterministic Finality</p>
+                                </div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-3 gap-1 bg-white mb-16">
+                        {[
+                            'Deterministic Finality',
+                            'No Probabilistic Security',
+                            'Signature Hardening'
+                        ].map((item, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-black p-10 h-full flex items-center justify-center text-center">
+                                    <p className="text-2xl font-black text-[#ffc502]">{item}</p>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+
+                    <StaggerItem>
+                        <div className="bg-white text-black p-12 mb-12">
+                            <div className="grid md:grid-cols-3 gap-8 text-center">
+                                <div>
+                                    <p className="text-6xl font-black mb-4">6</p>
+                                    <p className="text-lg">Bitcoin confirmations</p>
+                                </div>
+                                <div>
+                                    <p className="text-6xl font-black mb-4">64</p>
+                                    <p className="text-lg">Ethereum slots</p>
+                                </div>
+                                <div>
+                                    <p className="text-6xl font-black mb-4 text-[#ffc502]">1</p>
+                                    <p className="text-lg font-black">ArthaChain commit round</p>
+                                </div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="border-4 border-[#ffc502] p-12">
+                            <h3 className="text-3xl font-black mb-8 text-[#ffc502]">Double-Shield Cryptography</h3>
+                            <div className="space-y-6 text-xl">
+                                <p>Every vote uses: <span className="font-bold">Hybrid Ed25519 + Dilithium3 signatures</span></p>
+                                <p className="text-gray-400">Even if ECC is broken, Dilithium protects it.</p>
+                                <p className="text-gray-400">Even if Dilithium has a flaw, ECC protects it.</p>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-16 bg-[#ffc502] text-black p-12 text-center">
+                            <p className="text-4xl font-black">
+                                Try to fork the chain → You hit a mathematical wall.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* LAYER 4 - PRIVACY SHIELD */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <div className="flex items-start gap-8 mb-12">
+                                <div className="w-32 h-32 bg-[#8c52ff] flex items-center justify-center flex-shrink-0">
+                                    <Eye className="w-20 h-20 text-white" />
+                                </div>
+                                <div>
+                                    <div className="text-8xl font-black text-[#8c52ff] mb-4">4</div>
+                                    <h2 className="text-6xl font-black mb-4">The Privacy Shield</h2>
+                                    <p className="text-2xl text-gray-600">Zero Knowledge + Mempool Protection</p>
+                                </div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-2 gap-1 bg-black mb-16">
+                        <StaggerItem>
+                            <div className="bg-white p-12">
+                                <h3 className="text-3xl font-black mb-6 text-[#8c52ff]">ZK-SNARK Proofs</h3>
+                                <div className="space-y-3 text-lg">
+                                    {[
+                                        'Private transactions',
+                                        'Hidden balances',
+                                        'Proof-of-age (18+)',
+                                        'Proof-of-identity',
+                                        'DID verifiable credentials'
+                                    ].map((item, i) => (
+                                        <p key={i} className="flex items-center gap-3">
+                                            <CheckCircle className="w-5 h-5 text-[#8c52ff]" />
+                                            <span>{item}</span>
+                                        </p>
+                                    ))}
+                                </div>
+                                <div className="mt-6 pt-6 border-t-2 border-black">
+                                    <p className="font-bold">Prove truth without revealing data.</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+
+                        <StaggerItem>
+                            <div className="bg-white p-12">
+                                <h3 className="text-3xl font-black mb-6 text-[#8c52ff]">Private Mempool</h3>
+                                <p className="text-lg mb-6">Encrypted transaction routing prevents:</p>
+                                <div className="space-y-3 text-lg">
+                                    {[
+                                        'Bots front-running swaps',
+                                        'Validator sandwich attacks',
+                                        'Mempool state observation'
+                                    ].map((item, i) => (
+                                        <p key={i} className="flex items-center gap-3">
+                                            <AlertTriangle className="w-5 h-5 text-red-600" />
+                                            <span>{item}</span>
+                                        </p>
+                                    ))}
+                                </div>
+                                <div className="mt-6 pt-6 border-t-2 border-black">
+                                    <p className="font-bold">L2-level protection at L1.</p>
+                                </div>
+                            </div>
+                        </StaggerItem>
+                    </div>
+
+                    <StaggerItem>
+                        <div className="bg-[#8c52ff] text-white p-12 text-center">
+                            <p className="text-4xl font-black">
+                                Try to spy or front-run → You hit cryptographic invisibility.
+                            </p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* LAYER 5 - STRUCTURAL SHIELD */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="mb-20">
+                            <div className="flex items-start gap-8 mb-12">
+                                <div className="w-32 h-32 bg-[#ff4080] flex items-center justify-center flex-shrink-0">
+                                    <Layers className="w-20 h-20 text-white" />
+                                </div>
+                                <div>
+                                    <div className="text-8xl font-black text-[#ff4080] mb-4">5</div>
+                                    <h2 className="text-6xl font-black mb-4">The Structural Shield</h2>
+                                    <p className="text-2xl text-gray-400">Shard-Level Attack Resistance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="space-y-8">
+                        {[
+                            {
+                                title: 'Randomized Validator Shuffle',
+                                points: [
+                                    'Validators rotated randomly between shards',
+                                    'High-reputation nodes spread evenly',
+                                    'No shard becomes weak',
+                                    'No concentrated poor-reputation nodes'
+                                ]
+                            },
+                            {
+                                title: 'Cross-Shard Security Voting',
+                                points: [
+                                    'Global validator set detects anomaly',
+                                    'NodeScore drops instantly',
+                                    'Shard isolated automatically',
+                                    'Leader replaced, load redistributed'
+                                ]
+                            },
+                            {
+                                title: 'Shard Migration & Healing',
+                                points: [
+                                    'Shards auto-split under load',
+                                    'Validators redistributed',
+                                    'State partitioned securely',
+                                    'High-speed + highly secure'
+                                ]
+                            }
+                        ].map((feature, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-white text-black p-12 border-l-8 border-[#ff4080]">
+                                    <h3 className="text-3xl font-black mb-8 text-[#ff4080]">{feature.title}</h3>
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        {feature.points.map((point, j) => (
+                                            <p key={j} className="flex items-start gap-3 text-lg">
+                                                <span className="text-[#ff4080] mt-1">→</span>
+                                                <span>{point}</span>
+                                            </p>
                                         ))}
                                     </div>
-                                </motion.div>
-                            );
-                        })}
+                                </div>
+                            </StaggerItem>
+                        ))}
                     </div>
-                </div>
+                </StaggerContainer>
             </section>
 
-            {/* QUANTUM RESISTANCE */}
-            <section className="relative py-32 px-8 bg-black">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* ATTACK RESPONSE TABLE */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ff4080] uppercase tracking-widest mb-4 block">Future-Proof</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-white">
-                            Quantum <span className="text-[#ff4080]">Resistant</span>
-                        </h2>
-                    </motion.div>
-
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        {/* Left - Visualization */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="relative"
-                        >
-                            <div className="border-4 border-[#ff4080] p-12 text-center">
-                                <motion.div
-                                    animate={{ scale: [1, 1.1, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                    <Fingerprint size={120} className="text-[#ff4080] mx-auto mb-6" />
-                                </motion.div>
-                                <h3 className="text-3xl font-black text-white mb-4">CRYSTALS-Dilithium</h3>
-                                <p className="text-white/50">NIST-approved post-quantum digital signature algorithm</p>
-                            </div>
-                        </motion.div>
-
-                        {/* Right - Details */}
-                        <div className="space-y-6">
-                            {[
-                                { title: 'Lattice-Based Security', desc: 'Mathematical problems that quantum computers cannot efficiently solve' },
-                                { title: 'NIST Standardized', desc: 'Approved by National Institute of Standards and Technology' },
-                                { title: 'Larger Key Sizes', desc: 'Increased entropy prevents brute-force attacks' },
-                                { title: 'Hybrid Approach', desc: 'Classical + quantum-resistant for defense in depth' },
-                            ].map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: 50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    whileHover={{ x: 10 }}
-                                    className="flex gap-4 border-2 border-white/10 p-5 hover:border-[#ff4080] transition-colors cursor-pointer"
-                                >
-                                    <div className="w-10 h-10 bg-[#ff4080] flex items-center justify-center flex-shrink-0">
-                                        <Check size={20} className="text-white" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-black text-white">{item.title}</h4>
-                                        <p className="text-white/50">{item.desc}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-6xl md:text-7xl font-black mb-6">The 5 Shields in Action</h2>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </StaggerItem>
 
-            {/* AUDITS & BOUNTIES */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
-
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#8c52ff] uppercase tracking-widest mb-4 block">Assurance</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-black">
-                            Audits & <span className="text-[#8c52ff]">Bounties</span>
-                        </h2>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {/* Audits */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="border-4 border-black p-8"
-                        >
-                            <Eye size={48} className="text-[#8c52ff] mb-6" />
-                            <h3 className="text-2xl font-black text-black mb-4">Security Audits</h3>
-                            <p className="text-black/60 mb-6">Comprehensive audits by leading security firms</p>
-                            <div className="space-y-3">
-                                {['Trail of Bits', 'OpenZeppelin', 'Consensys Diligence', 'Quantstamp'].map((firm, i) => (
-                                    <div key={i} className="flex items-center gap-3 text-black font-bold">
-                                        <Check size={16} className="text-[#8c52ff]" />
-                                        {firm}
+                    <StaggerItem>
+                        <div className="bg-black text-white p-12">
+                            <div className="space-y-1">
+                                {[
+                                    { attack: 'Break keys', shield: 'Quantum Shield', color: '#8c52ff' },
+                                    { attack: 'Spam / DDoS', shield: 'AI Shield', color: '#ff4080' },
+                                    { attack: 'Forge blocks', shield: 'Consensus Shield', color: '#ffc502' },
+                                    { attack: 'Spy / MEV', shield: 'Privacy Shield', color: '#8c52ff' },
+                                    { attack: 'Attack a shard', shield: 'Structural Shield', color: '#ff4080' }
+                                ].map((row, i) => (
+                                    <div key={i} className="grid md:grid-cols-2 gap-0 bg-white text-black">
+                                        <div className="p-8 border-r border-black">
+                                            <p className="text-2xl font-bold">{row.attack}</p>
+                                        </div>
+                                        <div className="p-8" style={{ backgroundColor: row.color }}>
+                                            <p className="text-2xl font-black text-white">{row.shield}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
+                    </StaggerItem>
 
-                        {/* Bug Bounty */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="border-4 border-black p-8 bg-black"
-                        >
-                            <AlertTriangle size={48} className="text-[#ffc502] mb-6" />
-                            <h3 className="text-2xl font-black text-white mb-4">Bug Bounty</h3>
-                            <p className="text-white/60 mb-6">Earn rewards for finding vulnerabilities</p>
-                            <div className="text-5xl font-black text-[#ffc502] mb-4">$2M+</div>
-                            <p className="text-white/40">Maximum bounty for critical issues</p>
-                            <motion.div whileHover={{ scale: 1.05 }} className="mt-6">
-                                <Link href="#" className="bg-[#ffc502] text-black px-6 py-3 font-bold uppercase tracking-wide inline-flex items-center gap-2">
-                                    Submit Report <ArrowRight size={16} />
-                                </Link>
-                            </motion.div>
-                        </motion.div>
-                    </div>
-                </div>
+                    <StaggerItem>
+                        <div className="mt-16 bg-black text-white p-16 text-center">
+                            <p className="text-4xl font-black mb-8">
+                                ArthaChain is not secured by money, hashpower, or luck.
+                            </p>
+                            <p className="text-3xl">
+                                It is secured by <span className="text-[#8c52ff]">Intelligence</span>, <span className="text-[#ff4080]">Mathematics</span>, and <span className="text-[#ffc502]">Quantum Cryptography</span>.
+                            </p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-16 flex flex-wrap justify-center gap-6">
+                            <Link
+                                href="/core/consensus"
+                                className="px-10 py-5 bg-black text-white font-black text-lg uppercase tracking-wider hover:bg-[#8c52ff] transition-all duration-300"
+                            >
+                                Explore Consensus →
+                            </Link>
+                            <Link
+                                href="/core/papers"
+                                className="px-10 py-5 border-4 border-black text-black font-black text-lg uppercase tracking-wider hover:bg-black hover:text-white transition-all duration-300"
+                            >
+                                Read Security Paper →
+                            </Link>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
             </section>
         </div>
     );

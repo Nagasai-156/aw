@@ -1,345 +1,412 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { FileText, Download, Book, ExternalLink, ArrowRight, ChevronDown, Clock, Users, GitBranch, Code } from 'lucide-react';
-import { useRef } from 'react';
+import { ArrowRight, FileText, Download, CheckCircle, XCircle } from 'lucide-react';
+import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-animation';
 
-export default function ProtocolPapersPage() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 0.2], [0, -30]);
-
-    const papers = [
-        {
-            type: 'WHITEPAPER',
-            title: 'ArthaChain: A High-Performance Layer 1 Blockchain',
-            version: 'v2.1',
-            date: 'November 2024',
-            pages: 45,
-            authors: ['Dr. Sarah Chen', 'Dr. Michael Kumar', 'Alex Thompson'],
-            abstract: 'We present ArthaChain, a novel Layer 1 blockchain achieving over 1 million transactions per second through parallel execution and AI-optimized consensus.',
-            color: '#8c52ff',
-            featured: true,
-        },
-        {
-            type: 'TECHNICAL',
-            title: 'AI-Powered Consensus: Optimizing Byzantine Fault Tolerance',
-            version: 'v1.4',
-            date: 'October 2024',
-            pages: 32,
-            authors: ['Dr. Sarah Chen', 'Prof. James Liu'],
-            abstract: 'This paper introduces our novel AI-PoS consensus mechanism that uses machine learning to optimize validator selection and block production.',
-            color: '#ffc502',
-            featured: false,
-        },
-        {
-            type: 'RESEARCH',
-            title: 'Quantum-Resistant Cryptography in Distributed Ledgers',
-            version: 'v1.2',
-            date: 'September 2024',
-            pages: 28,
-            authors: ['Dr. Michael Kumar', 'Dr. Emma Wilson'],
-            abstract: 'An exploration of post-quantum cryptographic primitives and their integration into blockchain signature schemes.',
-            color: '#ff4080',
-            featured: false,
-        },
-        {
-            type: 'SPECIFICATION',
-            title: 'Dual VM Architecture: EVM + WASM Interoperability',
-            version: 'v1.0',
-            date: 'August 2024',
-            pages: 24,
-            authors: ['Alex Thompson', 'Dr. David Park'],
-            abstract: 'Technical specification for the dual virtual machine architecture enabling seamless cross-VM contract calls.',
-            color: '#450693',
-            featured: false,
-        },
-    ];
-
-    const resources = [
-        { icon: Book, title: 'Developer Docs', desc: 'Complete API reference and guides', link: '#' },
-        { icon: Code, title: 'GitHub', desc: 'Open source implementations', link: '#' },
-        { icon: GitBranch, title: 'RFCs', desc: 'Request for Comments archive', link: '#' },
-    ];
-
+export default function ProtocolPaperPage() {
     return (
-        <div ref={containerRef} className="min-h-screen">
-            {/* HERO */}
-            <section className="relative min-h-screen bg-black flex items-center overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+        <div className="min-h-screen bg-white selection:bg-[#ffc502] selection:text-black">
 
-                <motion.div
-                    className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#ffc502]/15 rounded-full blur-[150px]"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 8, repeat: Infinity }}
-                />
-
-                <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full text-center">
-                    <motion.div style={{ y }}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-8"
-                        >
-                            <FileText className="w-4 h-4 text-[#ffc502]" />
-                            <span className="text-[12px] font-medium text-white/80 tracking-wider uppercase">Technical Documentation</span>
-                        </motion.div>
-
-                        <div className="overflow-hidden">
-                            <motion.h1 className="text-[56px] sm:text-[80px] lg:text-[120px] font-black leading-[0.85] tracking-[-0.04em]">
-                                <motion.span
-                                    className="block text-white"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                >
-                                    PROTOCOL
-                                </motion.span>
-                                <motion.span
-                                    className="block text-[#ffc502]"
-                                    initial={{ y: 100 }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.1 }}
-                                >
-                                    PAPERS
-                                </motion.span>
-                            </motion.h1>
-                        </div>
-
-                        <motion.p
-                            className="text-white/50 text-lg sm:text-xl max-w-3xl mx-auto mt-8 mb-12"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                        >
-                            Deep-dive into the technical foundations of ArthaChain. Whitepapers, research papers, and specifications.
-                        </motion.p>
-
-                        {/* Stats */}
-                        <motion.div
-                            className="flex flex-wrap justify-center gap-8 lg:gap-16"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                        >
-                            {[
-                                { value: '4', label: 'Papers' },
-                                { value: '129', label: 'Pages' },
-                                { value: '8', label: 'Authors' },
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, scale: 0.5 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.7 + i * 0.1, type: "spring" }}
-                                    className="text-center"
-                                >
-                                    <div className="text-4xl font-black text-[#ffc502]">{stat.value}</div>
-                                    <div className="text-white/40 text-sm uppercase tracking-wider">{stat.label}</div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <ChevronDown className="text-white/40 w-8 h-8" />
-                </motion.div>
-            </section>
-
-            {/* FEATURED PAPER */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* HERO - Academic Header */}
+            <section className="relative bg-black text-white py-32 px-6">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
                 <div className="relative z-10 max-w-6xl mx-auto">
                     <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
                     >
-                        <span className="text-sm font-bold text-[#8c52ff] uppercase tracking-widest mb-4 block">Featured</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-black">
-                            Main <span className="text-[#8c52ff]">Whitepaper</span>
-                        </h2>
-                    </motion.div>
-
-                    {/* Featured Paper Card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        whileHover={{ y: -10 }}
-                        className="border-4 border-black p-8 lg:p-12 cursor-pointer group"
-                    >
-                        <div className="grid lg:grid-cols-3 gap-8">
-                            {/* Left - Icon */}
-                            <div className="flex items-center justify-center">
-                                <motion.div
-                                    className="w-40 h-52 bg-[#8c52ff] flex items-center justify-center relative"
-                                    whileHover={{ rotate: 5 }}
-                                >
-                                    <FileText size={80} className="text-white" />
-                                    <div className="absolute bottom-4 left-4 right-4 text-center">
-                                        <div className="text-white font-black text-sm">WHITEPAPER</div>
-                                        <div className="text-white/60 text-xs">v2.1</div>
-                                    </div>
-                                </motion.div>
+                        <div className="mb-12">
+                            <p className="text-sm uppercase tracking-[0.3em] mb-4 text-gray-400">Technical Documentation</p>
+                            <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+                                ArthaChain<br />Protocol Paper
+                            </h1>
+                            <div className="flex flex-wrap gap-6 text-lg mb-12">
+                                <p>Version 1.0</p>
+                                <p className="text-gray-400">•</p>
+                                <p>December 2025</p>
+                                <p className="text-gray-400">•</p>
+                                <p>Diigoo Tech Private Limited</p>
                             </div>
+                        </div>
 
-                            {/* Center - Content */}
-                            <div className="lg:col-span-2">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <span className="bg-[#8c52ff] text-white px-3 py-1 text-xs font-bold uppercase">Whitepaper</span>
-                                    <span className="text-black/40 text-sm flex items-center gap-1">
-                                        <Clock size={12} />
-                                        November 2024
-                                    </span>
-                                </div>
-                                <h3 className="text-[28px] lg:text-[36px] font-black text-black leading-tight mb-4">
-                                    {papers[0].title}
-                                </h3>
-                                <p className="text-black/60 mb-6">{papers[0].abstract}</p>
+                        <div className="bg-white text-black p-12">
+                            <p className="text-sm uppercase tracking-wider mb-4 font-black">Abstract</p>
+                            <p className="text-xl leading-relaxed">
+                                ArthaChain is a next-generation Layer-1 blockchain designed to dissolve the blockchain trilemma through a novel hybrid consensus model combining <span className="font-bold">AI-based leader selection (SVCP)</span> and <span className="font-bold">quantum-secure deterministic finality (Quantum-SVBFT)</span>.
+                            </p>
+                        </div>
 
-                                <div className="flex items-center gap-4 mb-6">
-                                    <Users size={16} className="text-black/40" />
-                                    <span className="text-black/60">{papers[0].authors.join(', ')}</span>
-                                </div>
-
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    className="bg-black text-white px-8 py-4 font-bold uppercase tracking-wide hover:bg-[#8c52ff] transition-colors inline-flex items-center gap-2"
-                                >
-                                    <Download size={18} />
-                                    Download PDF ({papers[0].pages} pages)
-                                </motion.button>
-                            </div>
+                        <div className="mt-12 flex flex-wrap gap-4">
+                            <button className="px-8 py-4 bg-white text-black font-black uppercase tracking-wider hover:bg-[#8c52ff] hover:text-white transition-all duration-300 flex items-center gap-3">
+                                <Download className="w-5 h-5" />
+                                Download PDF
+                            </button>
+                            <button className="px-8 py-4 border-2 border-white text-white font-black uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300">
+                                View on GitHub
+                            </button>
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* ALL PAPERS */}
-            <section className="relative py-32 px-8 bg-black">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* KEY FEATURES - Grid */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ffc502] uppercase tracking-widest mb-4 block">Library</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-white">
-                            All <span className="text-[#ffc502]">Papers</span>
-                        </h2>
-                    </motion.div>
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <h2 className="text-5xl md:text-6xl font-black mb-6">Core Capabilities</h2>
+                        </div>
+                    </StaggerItem>
 
-                    <div className="space-y-6">
-                        {papers.map((paper, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                whileHover={{ x: 10 }}
-                                className="flex flex-col lg:flex-row gap-6 border-2 border-white/10 p-6 hover:border-white/30 transition-colors cursor-pointer group"
-                            >
-                                {/* Icon */}
-                                <div
-                                    className="w-16 h-20 flex-shrink-0 flex items-center justify-center"
-                                    style={{ backgroundColor: paper.color }}
-                                >
-                                    <FileText size={32} className="text-white" />
+                    <div className="grid md:grid-cols-2 gap-1 bg-black">
+                        {[
+                            'Infinite horizontal scalability',
+                            'Sub-second finality',
+                            'AI-native execution',
+                            'Quantum resistance',
+                            'Sybil immunity',
+                            'Zero staking',
+                            'Linear scaling (10K → millions TPS)',
+                            'Open validator onboarding'
+                        ].map((feature, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-white p-8 flex items-center gap-4">
+                                    <CheckCircle className="w-8 h-8 text-[#8c52ff] flex-shrink-0" />
+                                    <p className="text-lg font-bold">{feature}</p>
                                 </div>
-
-                                {/* Content */}
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <span
-                                            className="px-2 py-1 text-xs font-bold uppercase"
-                                            style={{ backgroundColor: paper.color, color: 'white' }}
-                                        >
-                                            {paper.type}
-                                        </span>
-                                        <span className="text-white/40 text-sm">{paper.version}</span>
-                                        <span className="text-white/40 text-sm">{paper.date}</span>
-                                    </div>
-                                    <h3 className="text-xl font-black text-white group-hover:text-[#ffc502] transition-colors mb-2">
-                                        {paper.title}
-                                    </h3>
-                                    <p className="text-white/50 text-sm mb-3">{paper.abstract}</p>
-                                    <div className="flex items-center gap-4 text-white/40 text-sm">
-                                        <span>{paper.pages} pages</span>
-                                        <span>{paper.authors.length} authors</span>
-                                    </div>
-                                </div>
-
-                                {/* Download */}
-                                <div className="flex items-center">
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        className="border-2 p-3 hover:bg-white/10 transition-colors"
-                                        style={{ borderColor: paper.color }}
-                                    >
-                                        <Download size={20} style={{ color: paper.color }} />
-                                    </motion.button>
-                                </div>
-                            </motion.div>
+                            </StaggerItem>
                         ))}
                     </div>
-                </div>
+                </StaggerContainer>
             </section>
 
-            {/* ADDITIONAL RESOURCES */}
-            <section className="relative py-32 px-8 bg-white">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* TRILEMMA COMPARISON */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ff4080] uppercase tracking-widest mb-4 block">More</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-black">
-                            Additional <span className="text-[#ff4080]">Resources</span>
-                        </h2>
-                    </motion.div>
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <h2 className="text-5xl md:text-6xl font-black mb-6">Solving the Trilemma</h2>
+                            <p className="text-2xl text-gray-400">Most chains solve only two. ArthaChain solves all three.</p>
+                        </div>
+                    </StaggerItem>
 
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {resources.map((resource, i) => {
-                            const Icon = resource.icon;
-                            return (
-                                <motion.a
-                                    key={i}
-                                    href={resource.link}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    whileHover={{ y: -10 }}
-                                    className="border-4 border-black p-8 text-center hover:bg-black group transition-colors"
-                                >
-                                    <div className="w-16 h-16 border-4 border-[#ff4080] flex items-center justify-center mx-auto mb-4 group-hover:bg-[#ff4080] transition-colors">
-                                        <Icon size={32} className="text-[#ff4080] group-hover:text-white transition-colors" />
+                    <StaggerItem>
+                        <div className="bg-white text-black p-12">
+                            <div className="overflow-x-auto">
+                                <table className="w-full">
+                                    <thead>
+                                        <tr className="border-b-2 border-black">
+                                            <th className="text-left py-4 px-4 font-black text-xl">Chain</th>
+                                            <th className="text-center py-4 px-4 font-black text-xl">Scalability</th>
+                                            <th className="text-center py-4 px-4 font-black text-xl">Security</th>
+                                            <th className="text-center py-4 px-4 font-black text-xl">Decentralization</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {[
+                                            { chain: 'Bitcoin', scalability: false, security: true, decentralization: true },
+                                            { chain: 'Ethereum', scalability: false, security: true, decentralization: true },
+                                            { chain: 'Solana', scalability: true, security: true, decentralization: false },
+                                            { chain: 'Aptos/Sui', scalability: true, security: false, decentralization: false },
+                                            { chain: 'ArthaChain', scalability: true, security: true, decentralization: true, highlight: true }
+                                        ].map((row, i) => (
+                                            <tr key={i} className={`border-b border-gray-200 ${row.highlight ? 'bg-[#ffc502]' : ''}`}>
+                                                <td className={`py-4 px-4 font-bold text-lg ${row.highlight ? 'font-black' : ''}`}>{row.chain}</td>
+                                                <td className="py-4 px-4 text-center">
+                                                    {row.scalability ?
+                                                        <CheckCircle className="w-6 h-6 text-green-600 mx-auto" /> :
+                                                        <XCircle className="w-6 h-6 text-red-600 mx-auto" />
+                                                    }
+                                                </td>
+                                                <td className="py-4 px-4 text-center">
+                                                    {row.security ?
+                                                        <CheckCircle className="w-6 h-6 text-green-600 mx-auto" /> :
+                                                        <XCircle className="w-6 h-6 text-red-600 mx-auto" />
+                                                    }
+                                                </td>
+                                                <td className="py-4 px-4 text-center">
+                                                    {row.decentralization ?
+                                                        <CheckCircle className="w-6 h-6 text-green-600 mx-auto" /> :
+                                                        <XCircle className="w-6 h-6 text-red-600 mx-auto" />
+                                                    }
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* ARCHITECTURE LAYERS */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-5xl md:text-6xl font-black mb-6">Four-Layer Architecture</h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="space-y-1">
+                        {[
+                            { num: '01', title: 'Consensus Layer', desc: 'Hybrid SVCP + Quantum-SVBFT', color: '#8c52ff' },
+                            { num: '02', title: 'Execution Layer', desc: 'Dual-VM (EVM + WASM) with parallel lanes, DAG-assisted', color: '#ff4080' },
+                            { num: '03', title: 'Scalability Layer', desc: 'Dynamic Account Sharding + Hybrid DAG Ordering', color: '#ffc502' },
+                            { num: '04', title: 'Security Layer', desc: 'PQ-crypto, ZK-proofs, AI anomaly detection, shard protections', color: '#8c52ff' }
+                        ].map((layer, i) => (
+                            <StaggerItem key={i}>
+                                <div className="grid md:grid-cols-12 gap-0 bg-black text-white">
+                                    <div className="md:col-span-2 flex items-center justify-center p-8" style={{ backgroundColor: layer.color }}>
+                                        <span className="text-6xl font-black text-white">{layer.num}</span>
                                     </div>
-                                    <h3 className="text-xl font-black text-black group-hover:text-white mb-2 transition-colors">{resource.title}</h3>
-                                    <p className="text-black/50 group-hover:text-white/60 transition-colors">{resource.desc}</p>
-                                    <ExternalLink size={16} className="mx-auto mt-4 text-black/20 group-hover:text-white/40 transition-colors" />
-                                </motion.a>
-                            );
-                        })}
+                                    <div className="md:col-span-10 p-8">
+                                        <h3 className="text-3xl font-black mb-3" style={{ color: layer.color }}>{layer.title}</h3>
+                                        <p className="text-xl text-gray-300">{layer.desc}</p>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        ))}
                     </div>
-                </div>
+                </StaggerContainer>
+            </section>
+
+            {/* TECHNICAL SPECS - Bento Grid */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-5xl md:text-6xl font-black mb-6">Technical Specifications</h2>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { label: 'TPS per Shard', value: '10,000+', color: '#8c52ff' },
+                            { label: 'Finality Time', value: '1.5s', color: '#ff4080' },
+                            { label: 'Latency', value: '200-800ms', color: '#ffc502' },
+                            { label: 'Validator Sync', value: 'Minutes', color: '#8c52ff' },
+                            { label: 'Shard Split Time', value: 'Sub-second', color: '#ff4080' },
+                            { label: 'Reorg Probability', value: '0%', color: '#ffc502' }
+                        ].map((spec, i) => (
+                            <StaggerItem key={i}>
+                                <div className="bg-white text-black p-10 text-center">
+                                    <p className="text-6xl font-black mb-4" style={{ color: spec.color }}>{spec.value}</p>
+                                    <p className="text-lg font-bold">{spec.label}</p>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+                </StaggerContainer>
+            </section>
+
+            {/* COMPETITOR COMPARISON */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-7xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-5xl md:text-6xl font-black mb-6">Competitive Landscape</h2>
+                            <p className="text-2xl text-gray-600">ArthaChain vs. The Industry</p>
+                        </div>
+                    </StaggerItem>
+
+                    <div className="space-y-16">
+                        {[
+                            {
+                                category: 'Regular L1 Blockchains',
+                                examples: 'Ethereum, Solana, Avalanche, NEAR',
+                                color: '#8c52ff'
+                            },
+                            {
+                                category: 'DePIN Compute Networks',
+                                examples: 'Akash, Render, Aethir, io.net',
+                                color: '#ff4080'
+                            },
+                            {
+                                category: 'AI-Focused Blockchains',
+                                examples: 'Bittensor, Gensyn, Fetch.ai, SingularityNET',
+                                color: '#ffc502'
+                            },
+                            {
+                                category: 'Centralized GPU Clouds',
+                                examples: 'AWS, Google Cloud, Azure, CoreWeave',
+                                color: '#8c52ff'
+                            }
+                        ].map((segment, i) => (
+                            <StaggerItem key={i}>
+                                <div className="border-4 border-black p-12">
+                                    <div className="flex items-center gap-6 mb-8">
+                                        <div className="w-16 h-16 flex items-center justify-center flex-shrink-0" style={{ backgroundColor: segment.color }}>
+                                            <span className="text-3xl font-black text-white">{i + 1}</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-3xl font-black mb-2" style={{ color: segment.color }}>{segment.category}</h3>
+                                            <p className="text-gray-600">{segment.examples}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-black text-white p-8">
+                                        <div className="grid md:grid-cols-2 gap-6">
+                                            <div>
+                                                <p className="text-sm uppercase tracking-wider mb-4 text-gray-400">Their Weaknesses</p>
+                                                <div className="space-y-2">
+                                                    {i === 0 && ['Not AI-native', 'No quantum security', 'Limited scalability'].map((w, j) => (
+                                                        <p key={j} className="flex items-center gap-2">
+                                                            <XCircle className="w-4 h-4 text-red-500" />
+                                                            <span className="text-sm">{w}</span>
+                                                        </p>
+                                                    ))}
+                                                    {i === 1 && ['Not L1 blockchains', 'No consensus innovation', 'Just GPU rental'].map((w, j) => (
+                                                        <p key={j} className="flex items-center gap-2">
+                                                            <XCircle className="w-4 h-4 text-red-500" />
+                                                            <span className="text-sm">{w}</span>
+                                                        </p>
+                                                    ))}
+                                                    {i === 2 && ['Platforms, not blockchains', 'Rely on other chains', 'No native execution'].map((w, j) => (
+                                                        <p key={j} className="flex items-center gap-2">
+                                                            <XCircle className="w-4 h-4 text-red-500" />
+                                                            <span className="text-sm">{w}</span>
+                                                        </p>
+                                                    ))}
+                                                    {i === 3 && ['Fully centralized', 'User lock-in', 'Not censorship resistant'].map((w, j) => (
+                                                        <p key={j} className="flex items-center gap-2">
+                                                            <XCircle className="w-4 h-4 text-red-500" />
+                                                            <span className="text-sm">{w}</span>
+                                                        </p>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p className="text-sm uppercase tracking-wider mb-4 text-[#ffc502]">ArthaChain Advantage</p>
+                                                <div className="space-y-2">
+                                                    {['AI-native execution', 'Quantum security', 'Infinite scalability'].map((a, j) => (
+                                                        <p key={j} className="flex items-center gap-2">
+                                                            <CheckCircle className="w-4 h-4 text-green-500" />
+                                                            <span className="text-sm">{a}</span>
+                                                        </p>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </div>
+                </StaggerContainer>
+            </section>
+
+            {/* POSITIONING DIAGRAM */}
+            <section className="py-32 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
+
+                <StaggerContainer className="max-w-5xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-20">
+                            <h2 className="text-5xl md:text-6xl font-black mb-6">Market Positioning</h2>
+                            <p className="text-2xl text-gray-400">The convergence of four categories</p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="space-y-8">
+                            {[
+                                { label: 'Central Clouds', sub: 'High Compute, Centralized', color: '#666' },
+                                { label: 'AI Chains', sub: 'AI-focused, no chain infra', color: '#888' },
+                                { label: 'DePIN', sub: 'Compute networks, not blockchains', color: '#aaa' },
+                                { label: 'L1 Blockchains', sub: 'Smart contracts, no AI infra', color: '#ccc' }
+                            ].map((tier, i) => (
+                                <div key={i}>
+                                    <div className="bg-white text-black p-8 text-center" style={{ opacity: 1 - (i * 0.15) }}>
+                                        <p className="text-2xl font-black mb-2">{tier.label}</p>
+                                        <p className="text-sm text-gray-600">{tier.sub}</p>
+                                    </div>
+                                    {i < 3 && (
+                                        <div className="flex justify-center py-4">
+                                            <div className="text-4xl text-gray-600">↓</div>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-12 bg-[#ffc502] text-black p-16 text-center">
+                            <h3 className="text-5xl font-black mb-8">ARTHACHAIN</h3>
+                            <p className="text-2xl font-bold mb-8">The convergence of all four categories</p>
+                            <div className="grid md:grid-cols-2 gap-4 text-lg">
+                                {[
+                                    'AI-first L1',
+                                    'Infinite scaling',
+                                    'PQC security',
+                                    'Vector DB',
+                                    'Dual VM',
+                                    'DID Identity',
+                                    'AI Consensus',
+                                    'Decentralized compute'
+                                ].map((feature, i) => (
+                                    <p key={i} className="font-bold">✓ {feature}</p>
+                                ))}
+                            </div>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="mt-16 text-center">
+                            <p className="text-4xl font-black mb-4">ArthaChain ≠ Blockchain</p>
+                            <p className="text-3xl">ArthaChain = A decentralized, intelligent,<br />quantum-secure global compute fabric</p>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
+            </section>
+
+            {/* CONCLUSION */}
+            <section className="py-32 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
+
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="bg-black text-white p-16 text-center mb-16">
+                            <h2 className="text-5xl font-black mb-8">The Foundation of the Intelligent Internet</h2>
+                            <p className="text-2xl leading-relaxed max-w-4xl mx-auto">
+                                ArthaChain enables decentralized AI agents, real-time applications, massive user adoption, and trustless global systems with sub-second speed.
+                            </p>
+                        </div>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <div className="flex flex-wrap justify-center gap-6">
+                            <Link
+                                href="/core/consensus"
+                                className="px-10 py-5 bg-black text-white font-black text-lg uppercase tracking-wider hover:bg-[#8c52ff] transition-all duration-300"
+                            >
+                                Explore Consensus →
+                            </Link>
+                            <Link
+                                href="/core/security"
+                                className="px-10 py-5 border-4 border-black text-black font-black text-lg uppercase tracking-wider hover:bg-black hover:text-white transition-all duration-300"
+                            >
+                                Security Model →
+                            </Link>
+                        </div>
+                    </StaggerItem>
+                </StaggerContainer>
             </section>
         </div>
     );
