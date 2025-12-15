@@ -1,318 +1,345 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Mail, MessageCircle, MapPin, Send, ArrowUpRight, Clock, ChevronDown, ArrowRight } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { Mail, MessageCircle, Send, ArrowUpRight, Clock, ArrowRight, Globe, Twitter, Github, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-animation';
 
 export default function ContactPage() {
     const [focusedField, setFocusedField] = useState<string | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll();
-    const y = useTransform(scrollYProgress, [0, 0.2], [0, -30]);
-    const opacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        topic: '',
+        message: ''
+    });
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Email recipients
+        const recipients = 'sainath@diigoo.com,nagasai@diigoo.com';
+
+        // Create email subject
+        const subject = `[ArthaChain Contact] ${formData.topic} - ${formData.name}`;
+
+        // Create email body
+        const body = `Hello ArthaChain Team,
+
+Name: ${formData.name}
+Email: ${formData.email}
+Topic: ${formData.topic}
+
+Message:
+${formData.message}
+
+---
+Sent from ArthaChain Contact Form`;
+
+        // Create mailto link and open it
+        const mailtoLink = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(mailtoLink, '_blank');
+
+        // Show success message
+        setSubmitStatus('success');
+
+        // Reset form after a delay
+        setTimeout(() => {
+            setFormData({ name: '', email: '', topic: '', message: '' });
+            setSubmitStatus('idle');
+        }, 3000);
+    };
 
     return (
-        <div ref={containerRef} className="min-h-screen">
-            {/* HERO - Bold Contact */}
-            <section className="relative min-h-screen bg-black flex items-center overflow-hidden">
-                {/* Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+        <div className="min-h-screen bg-white selection:bg-[#ffc502] selection:text-black">
 
-                {/* Animated Orbs */}
-                <motion.div
-                    className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#ff4080]/15 rounded-full blur-[150px]"
-                    animate={{ scale: [1, 1.3, 1] }}
-                    transition={{ duration: 6, repeat: Infinity }}
-                />
-                <motion.div
-                    className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#8c52ff]/10 rounded-full blur-[120px]"
-                    animate={{ scale: [1.3, 1, 1.3] }}
-                    transition={{ duration: 8, repeat: Infinity }}
-                />
+            {/* HERO */}
+            <section className="relative min-h-[80vh] flex items-center bg-black text-white overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
-                <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+                <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 w-full">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         {/* Left */}
-                        <motion.div style={{ y, opacity }}>
-                            {/* Badge */}
+                        <div>
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 backdrop-blur-sm rounded-full mb-8"
+                                transition={{ duration: 0.8 }}
                             >
-                                <motion.div
-                                    animate={{ scale: [1, 1.2, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                    <Mail className="w-4 h-4 text-[#ff4080]" />
-                                </motion.div>
-                                <span className="text-[12px] font-medium text-white/80 tracking-wider uppercase">Contact Us</span>
+                                <span className="inline-block px-6 py-2 bg-[#ff4080] text-white text-sm font-black uppercase tracking-[0.3em] mb-8">
+                                    Contact
+                                </span>
                             </motion.div>
 
-                            <div className="overflow-hidden">
-                                <motion.h1
-                                    className="text-[56px] sm:text-[72px] lg:text-[100px] font-black text-white leading-[0.85] tracking-[-0.04em]"
-                                >
-                                    <motion.span
-                                        className="block"
-                                        initial={{ y: 100 }}
-                                        animate={{ y: 0 }}
-                                        transition={{ duration: 0.8 }}
-                                    >
-                                        LET'S
-                                    </motion.span>
-                                    <motion.span
-                                        className="block text-[#ff4080]"
-                                        initial={{ y: 100 }}
-                                        animate={{ y: 0 }}
-                                        transition={{ duration: 0.8, delay: 0.1 }}
-                                    >
-                                        TALK
-                                    </motion.span>
-                                </motion.h1>
-                            </div>
+                            <motion.h1
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight"
+                            >
+                                Let's <span className="text-[#ff4080]">Talk</span>
+                            </motion.h1>
 
                             <motion.p
-                                className="text-white/50 text-lg mt-8 mb-8 max-w-md"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.4 }}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                                className="text-xl text-gray-400 mb-8 max-w-md"
                             >
-                                Have a question or want to partner with us? We'd love to hear from you.
+                                Have a question, partnership inquiry, or just want to say hello? We'd love to hear from you.
                             </motion.p>
 
                             <motion.a
-                                href="mailto:hello@arthachain.io"
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.5 }}
-                                whileHover={{ x: 10 }}
-                                className="text-2xl text-white/60 hover:text-[#ff4080] transition-colors inline-flex items-center gap-3 group"
+                                href="mailto:sainath@diigoo.com"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.6 }}
+                                className="text-2xl text-white hover:text-[#ff4080] transition-colors inline-flex items-center gap-3 group font-bold"
                             >
-                                hello@arthachain.io
-                                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                sainath@diigoo.com
+                                <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </motion.a>
-                        </motion.div>
+                        </div>
 
                         {/* Right - Contact Methods */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3 }}
+                            transition={{ delay: 0.4, duration: 0.8 }}
                             className="space-y-4"
                         >
                             {[
-                                { icon: Mail, label: 'Email Us', value: 'hello@arthachain.io', color: '#ff4080' },
-                                { icon: MessageCircle, label: 'Discord', value: 'Join Community', color: '#8c52ff' },
-                                { icon: Clock, label: 'Response Time', value: 'Within 24 hours', color: '#ffc502' },
+                                { icon: Mail, label: 'Email', value: 'sainath@diigoo.com', href: 'mailto:sainath@diigoo.com', color: '#ff4080' },
+                                { icon: MessageCircle, label: 'Discord', value: 'Join Our Community', href: '#', color: '#8c52ff' },
+                                { icon: Clock, label: 'Response Time', value: 'Within 24 hours', href: null, color: '#ffc502' },
                             ].map((item, i) => {
                                 const Icon = item.icon;
+                                const Wrapper = item.href ? 'a' : 'div';
                                 return (
                                     <motion.div
                                         key={i}
-                                        initial={{ opacity: 0, x: 50 }}
+                                        initial={{ opacity: 0, x: 30 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.4 + i * 0.1 }}
-                                        whileHover={{ x: 10, transition: { duration: 0.2 } }}
-                                        className="flex items-center gap-6 p-6 border-2 border-white/10 hover:border-white/30 transition-all group cursor-pointer"
+                                        transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }}
                                     >
-                                        <motion.div
-                                            className="w-14 h-14 flex items-center justify-center border-4"
-                                            style={{ borderColor: item.color }}
-                                            whileHover={{ scale: 1.1, rotate: 5 }}
+                                        <Wrapper
+                                            {...(item.href ? { href: item.href } : {})}
+                                            className="flex items-center gap-6 p-6 border border-white/10 hover:border-white/30 transition-all group cursor-pointer"
                                         >
-                                            <Icon size={24} style={{ color: item.color }} />
-                                        </motion.div>
-                                        <div>
-                                            <div className="text-white/40 text-sm uppercase tracking-wider">{item.label}</div>
-                                            <div className="text-white font-bold text-lg">{item.value}</div>
-                                        </div>
-                                        <ArrowUpRight className="ml-auto text-white/20 group-hover:text-white transition-colors" />
+                                            <div
+                                                className="w-14 h-14 flex items-center justify-center border-4"
+                                                style={{ borderColor: item.color }}
+                                            >
+                                                <Icon size={24} style={{ color: item.color }} />
+                                            </div>
+                                            <div className="flex-grow">
+                                                <div className="text-white/40 text-sm uppercase tracking-wider">{item.label}</div>
+                                                <div className="text-white font-bold text-lg">{item.value}</div>
+                                            </div>
+                                            {item.href && (
+                                                <ArrowUpRight className="text-white/20 group-hover:text-white transition-colors" />
+                                            )}
+                                        </Wrapper>
                                     </motion.div>
                                 );
                             })}
                         </motion.div>
                     </div>
                 </div>
-
-                {/* Scroll Indicator */}
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, y: [0, 10, 0] }}
-                    transition={{ opacity: { delay: 1 }, y: { duration: 2, repeat: Infinity } }}
-                >
-                    <ChevronDown className="text-white/40 w-8 h-8" />
-                </motion.div>
             </section>
 
-            {/* FORM - Animated Inputs */}
-            <section className="relative bg-white py-32 px-8">
-                {/* Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* CONTACT FORM */}
+            <section className="py-24 px-6 bg-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.04]" />
 
-                <div className="relative z-10 max-w-3xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#ff4080] uppercase tracking-widest mb-4 block">Get in Touch</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-black">
-                            Send a <span className="text-[#ff4080]">Message</span>
-                        </h2>
-                    </motion.div>
-
-                    <motion.form
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="space-y-6"
-                    >
-                        <div className="grid md:grid-cols-2 gap-6">
-                            {['name', 'email'].map((field, i) => (
-                                <motion.div
-                                    key={field}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                >
-                                    <motion.input
-                                        type={field === 'email' ? 'email' : 'text'}
-                                        placeholder={field === 'email' ? 'Your Email' : 'Your Name'}
-                                        className={`w-full px-6 py-5 border-4 bg-white text-black font-bold outline-none transition-all ${focusedField === field ? 'border-[#ff4080]' : 'border-black'}`}
-                                        onFocus={() => setFocusedField(field)}
-                                        onBlur={() => setFocusedField(null)}
-                                        whileFocus={{ scale: 1.02 }}
-                                    />
-                                </motion.div>
-                            ))}
+                <StaggerContainer className="max-w-3xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-6 py-2 bg-[#ff4080] text-white text-sm font-black uppercase tracking-[0.3em] mb-6">
+                                Get in Touch
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black mb-4">
+                                Send a <span className="text-[#ff4080]">Message</span>
+                            </h2>
+                            <p className="text-xl text-gray-600">
+                                Fill out the form below and we'll get back to you shortly.
+                            </p>
                         </div>
+                    </StaggerItem>
 
-                        <motion.input
-                            type="text"
-                            placeholder="Subject"
-                            className={`w-full px-6 py-5 border-4 bg-white text-black font-bold outline-none transition-all ${focusedField === 'subject' ? 'border-[#ff4080]' : 'border-black'}`}
-                            onFocus={() => setFocusedField('subject')}
-                            onBlur={() => setFocusedField(null)}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                        />
+                    <StaggerItem>
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            {/* Status Messages */}
+                            {submitStatus === 'success' && (
+                                <div className="flex items-center gap-3 p-4 bg-green-50 border-4 border-green-500 text-green-700">
+                                    <CheckCircle className="w-6 h-6 flex-shrink-0" />
+                                    <p className="font-medium">Your email client will open. Please send the email to complete your message!</p>
+                                </div>
+                            )}
 
-                        <motion.textarea
-                            rows={5}
-                            placeholder="Your Message"
-                            className={`w-full px-6 py-5 border-4 bg-white text-black font-bold outline-none transition-all resize-none ${focusedField === 'message' ? 'border-[#ff4080]' : 'border-black'}`}
-                            onFocus={() => setFocusedField('message')}
-                            onBlur={() => setFocusedField(null)}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                        />
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        placeholder="Your Name"
+                                        required
+                                        className={`w-full px-6 py-5 border-4 bg-white text-black font-medium outline-none transition-all ${focusedField === 'name' ? 'border-[#ff4080]' : 'border-black'}`}
+                                        onFocus={() => setFocusedField('name')}
+                                        onBlur={() => setFocusedField(null)}
+                                    />
+                                </div>
+                                <div>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        placeholder="Your Email"
+                                        required
+                                        className={`w-full px-6 py-5 border-4 bg-white text-black font-medium outline-none transition-all ${focusedField === 'email' ? 'border-[#ff4080]' : 'border-black'}`}
+                                        onFocus={() => setFocusedField('email')}
+                                        onBlur={() => setFocusedField(null)}
+                                    />
+                                </div>
+                            </div>
 
-                        <motion.button
-                            type="submit"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full bg-black text-white py-6 font-bold uppercase tracking-wider text-lg hover:bg-[#ff4080] transition-colors flex items-center justify-center gap-3"
-                        >
-                            <motion.div
-                                whileHover={{ rotate: 20 }}
+                            <div>
+                                <select
+                                    name="topic"
+                                    value={formData.topic}
+                                    onChange={handleInputChange}
+                                    required
+                                    className={`w-full px-6 py-5 border-4 bg-white text-black font-medium outline-none transition-all appearance-none cursor-pointer ${focusedField === 'topic' ? 'border-[#ff4080]' : 'border-black'}`}
+                                    onFocus={() => setFocusedField('topic')}
+                                    onBlur={() => setFocusedField(null)}
+                                >
+                                    <option value="" disabled>Select a Topic</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Partnership">Partnership</option>
+                                    <option value="Technical Support">Technical Support</option>
+                                    <option value="Press & Media">Press & Media</option>
+                                    <option value="Investment">Investment</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    rows={5}
+                                    placeholder="Your Message"
+                                    required
+                                    className={`w-full px-6 py-5 border-4 bg-white text-black font-medium outline-none transition-all resize-none ${focusedField === 'message' ? 'border-[#ff4080]' : 'border-black'}`}
+                                    onFocus={() => setFocusedField('message')}
+                                    onBlur={() => setFocusedField(null)}
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full py-6 font-bold uppercase tracking-wider text-lg flex items-center justify-center gap-3 transition-all bg-black text-white hover:bg-[#ff4080]"
                             >
                                 <Send className="w-5 h-5" />
-                            </motion.div>
-                            Send Message
-                        </motion.button>
-                    </motion.form>
-                </div>
+                                Send Message
+                            </button>
+                        </form>
+                    </StaggerItem>
+                </StaggerContainer>
             </section>
 
-            {/* OFFICES - Location Cards */}
-            <section className="relative bg-black py-32 px-8">
-                {/* Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
+            {/* QUICK CONNECT */}
+            <section className="py-24 px-6 bg-black text-white relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.05]" />
 
-                <div className="relative z-10 max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <span className="text-sm font-bold text-[#8c52ff] uppercase tracking-widest mb-4 block">Locations</span>
-                        <h2 className="text-[48px] lg:text-[64px] font-black text-white">
-                            Our <span className="text-[#8c52ff]">Offices</span>
-                        </h2>
-                    </motion.div>
+                <StaggerContainer className="max-w-6xl mx-auto relative z-10">
+                    <StaggerItem>
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-6 py-2 bg-[#8c52ff] text-white text-sm font-black uppercase tracking-[0.3em] mb-6">
+                                Quick Connect
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black">
+                                Join Our <span className="text-[#8c52ff]">Community</span>
+                            </h2>
+                        </div>
+                    </StaggerItem>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-4 gap-6">
                         {[
-                            { city: 'SAN FRANCISCO', country: 'USA', code: 'SF', color: '#8c52ff' },
-                            { city: 'LONDON', country: 'UK', code: 'LDN', color: '#ffc502' },
-                            { city: 'SINGAPORE', country: 'SG', code: 'SIN', color: '#ff4080' },
-                        ].map((office, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 50, rotateX: -15 }}
-                                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.15 }}
-                                whileHover={{ y: -10 }}
-                                className="border-2 border-white/10 p-8 hover:border-white/30 transition-all cursor-pointer"
-                            >
-                                <div
-                                    className="w-16 h-16 flex items-center justify-center text-xl font-black mb-4"
-                                    style={{ backgroundColor: office.color }}
-                                >
-                                    <span className="text-black">{office.code}</span>
-                                </div>
-                                <MapPin className="w-8 h-8 mb-4" style={{ color: office.color }} />
-                                <h3 className="text-2xl font-black text-white mb-2">{office.city}</h3>
-                                <p className="text-white/60">{office.country}</p>
-                            </motion.div>
-                        ))}
+                            { name: 'Twitter', handle: '@ArthaChain', icon: Twitter, color: '#ff4080' },
+                            { name: 'Discord', handle: 'Join Server', icon: MessageCircle, color: '#8c52ff' },
+                            { name: 'GitHub', handle: 'arthachain', icon: Github, color: '#ffc502' },
+                            { name: 'Telegram', handle: '@arthachain', icon: Globe, color: '#ff4080' },
+                        ].map((social, i) => {
+                            const Icon = social.icon;
+                            return (
+                                <StaggerItem key={i}>
+                                    <a
+                                        href="#"
+                                        className="block p-8 border border-white/10 hover:border-white/30 transition-all group"
+                                    >
+                                        <Icon className="w-8 h-8 mb-4" style={{ color: social.color }} />
+                                        <h3 className="text-xl font-black mb-2">{social.name}</h3>
+                                        <p className="text-gray-400 group-hover:text-white transition-colors">{social.handle}</p>
+                                    </a>
+                                </StaggerItem>
+                            );
+                        })}
                     </div>
-                </div>
+                </StaggerContainer>
             </section>
 
-            {/* SOCIAL - Animated Links */}
-            <section className="relative bg-white py-24 px-8">
-                {/* Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_110%)]" />
 
-                <div className="relative z-10 max-w-4xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-8"
-                    >
-                        <h3 className="text-2xl font-black text-black">Follow Us</h3>
-                    </motion.div>
 
-                    <div className="flex flex-wrap justify-center gap-6">
-                        {['Twitter', 'Discord', 'GitHub', 'LinkedIn', 'Telegram'].map((social, i) => (
-                            <motion.a
-                                key={i}
-                                href="#"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                whileHover={{ y: -5, color: '#8c52ff' }}
-                                className="text-black/40 hover:text-[#8c52ff] font-bold uppercase tracking-wider transition-colors text-lg"
-                            >
-                                {social}
-                            </motion.a>
+            {/* CTA */}
+            <section className="py-40 px-6 bg-black text-white overflow-hidden border-t border-white/10 relative">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none" />
+
+                <StaggerContainer className="max-w-7xl mx-auto text-center relative z-10">
+                    <StaggerItem>
+                        <h2 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tighter">
+                            Ready to <span className="text-[#ff4080]">Connect</span>?
+                        </h2>
+                    </StaggerItem>
+
+                    <StaggerItem>
+                        <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-16">
+                            Whether you're a developer, investor, or enthusiast, we're here to help you get started.
+                        </p>
+                    </StaggerItem>
+
+                    <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+                        {[
+                            { text: 'Email Us', href: 'mailto:sainath@diigoo.com', primary: true },
+                            { text: 'Join Discord', href: '#', primary: false },
+                            { text: 'Follow on Twitter', href: '#', primary: false }
+                        ].map((link, i) => (
+                            <StaggerItem key={i}>
+                                <a
+                                    href={link.href}
+                                    className={`group flex items-center justify-between gap-6 w-full md:w-auto min-w-[260px] px-8 py-6 font-bold uppercase tracking-widest transition-all duration-300 ${link.primary
+                                        ? 'bg-[#ff4080] text-white hover:bg-[#8c52ff]'
+                                        : 'bg-white/5 border border-white/10 text-white hover:border-white/50 hover:bg-white/10 backdrop-blur-sm'
+                                        }`}
+                                >
+                                    <span className="text-sm">{link.text}</span>
+                                    <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${link.primary ? 'text-white' : 'text-[#ff4080] group-hover:text-white'}`} />
+                                </a>
+                            </StaggerItem>
                         ))}
                     </div>
-                </div>
+                </StaggerContainer>
             </section>
         </div>
     );

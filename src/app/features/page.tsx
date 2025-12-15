@@ -100,26 +100,7 @@ export default function FeaturesPage() {
                 </div>
             </section>
 
-            <section className="relative py-32 px-8 bg-black">
-                <div className="relative z-10 max-w-4xl mx-auto text-center">
-                    <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                        <Zap size={64} className="text-[#ffc502] mx-auto mb-8" />
-                        <h2 className="text-[48px] lg:text-[72px] font-black text-white leading-none mb-8">Ready to <span className="text-[#ffc502]">Build?</span></h2>
-                        <div className="flex flex-wrap gap-4 justify-center">
-                            <motion.div whileHover={{ scale: 1.05 }}>
-                                <Link href="/dev/docs" className="bg-[#ffc502] text-black px-10 py-5 font-bold uppercase tracking-wide inline-flex items-center gap-2">
-                                    View Docs <ArrowRight className="w-5 h-5" />
-                                </Link>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.05 }}>
-                                <Link href="#" className="border-2 border-white/20 text-white px-10 py-5 font-bold uppercase tracking-wide hover:bg-white hover:text-black transition-all">
-                                    Use Cases
-                                </Link>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+
         </div>
     );
 }

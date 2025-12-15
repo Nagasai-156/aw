@@ -22,12 +22,11 @@ export const mainNavigation: NavCategory[] = [
         label: 'About ArthaChain',
         icon: '🟣',
         dropdown: [
-            { label: 'What is ArthaChain', href: '/about', description: 'Learn about our vision' },
-            { label: 'Mission & Vision', href: '/about#mission', description: 'Our goals and purpose' },
+            { label: 'What is ArthaChain', href: '/what-is-arthachain', description: 'Product & technology overview' },
+            { label: 'Mission & Vision', href: '/mission', description: 'Our goals and purpose' },
+            { label: 'About Us', href: '/about', description: 'Learn about our vision' },
             { label: 'Technology Overview', href: '/technology', description: 'Technical foundation' },
-            { label: 'Contact Us', href: '#contact', description: 'Get in touch' },
-            { label: 'Press & Media', href: '#press', description: 'Media resources' },
-            { label: 'Brand Kit', href: '#brand', description: 'Logos and assets' },
+            { label: 'Contact Us', href: '/contact', description: 'Get in touch' },
         ],
     },
     {

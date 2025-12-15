@@ -26,12 +26,10 @@ const navigationItems: NavItem[] = [
         icon: '🟣',
         dropdown: [
             { label: 'About', href: '/about', description: 'Learn about our vision' },
-            { label: 'What is ArthaChain', href: '/what', description: 'Discover the platform' },
+            { label: 'What is ArthaChain', href: '/what-is-arthachain', description: 'Discover the platform' },
             { label: 'Mission & Vision', href: '/mission', description: 'Our goals and purpose' },
             { label: 'Technology', href: '/technology', description: 'Technical foundation' },
             { label: 'Contact Us', href: '/contact', description: 'Get in touch' },
-            { label: 'Press & Media', href: '/press', description: 'Media resources' },
-            { label: 'Brand Kit', href: '/brand', description: 'Logos and assets' },
         ],
     },
     {

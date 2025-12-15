@@ -49,6 +49,7 @@ interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
     gridGap?: number;
     flickerChance?: number;
     color?: string;
+    textColor?: string;  // NEW: Separate color for text
     width?: number;
     height?: number;
     className?: string;
@@ -63,6 +64,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     gridGap = 3,
     flickerChance = 0.2,
     color = "#B4B4B4",
+    textColor,  // NEW: Optional separate text color
     width,
     height,
     className,
@@ -80,6 +82,10 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     const memoizedColor = useMemo(() => {
         return getRGBA(color);
     }, [color]);
+
+    const memoizedTextColor = useMemo(() => {
+        return getRGBA(textColor || color);  // Use textColor if provided, else use color
+    }, [textColor, color]);
 
     const drawGrid = useCallback(
         (
@@ -132,12 +138,14 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
                         ? Math.min(1, opacity * 3 + 0.4)
                         : opacity;
 
-                    ctx.fillStyle = colorWithOpacity(memoizedColor, finalOpacity);
+                    // Use textColor for text pixels, regular color for background
+                    const pixelColor = hasText ? memoizedTextColor : memoizedColor;
+                    ctx.fillStyle = colorWithOpacity(pixelColor, finalOpacity);
                     ctx.fillRect(x, y, squareWidth, squareHeight);
                 }
             }
         },
-        [memoizedColor, squareSize, gridGap, text, fontSize, fontWeight],
+        [memoizedColor, memoizedTextColor, squareSize, gridGap, text, fontSize, fontWeight],
     );
 
     const setupCanvas = useCallback(
