@@ -11,35 +11,35 @@ const features = [
         icon: Code,
         description: 'Comprehensive documentation, interactive tutorials, step-by-step guides, and battle-tested best practices.',
         cta: 'Open Developer Portal →',
-        href: '/dev',
+        href: '/coming-soon',
     },
     {
         title: 'SDKs & APIs',
         icon: Cpu,
         description: 'Solidity SDK (EVM), Rust SDK (WASM), TypeScript SDK, and AI Tools SDK. Everything you need in one place.',
         cta: 'View SDKs →',
-        href: '/dev/sdks',
+        href: '/coming-soon',
     },
     {
         title: 'Smart Contract Tools',
         icon: Zap,
         description: 'AI Smart Contract Generator, on-chain debugger, WASM Playground, and instant Localnet Launcher.',
         cta: 'Open Tools →',
-        href: '/dev/tools',
+        href: '/coming-soon',
     },
     {
         title: 'Testnet & Faucet',
         icon: Database,
         description: 'Deploy instantly on Artha Devnet with free test tokens. No signup required.',
         cta: 'Get Test Tokens →',
-        href: '/dev/faucet',
+        href: '/coming-soon',
     },
     {
         title: 'Templates & Starter Kits',
         icon: Layers,
         description: 'AI Agent Starter Pack, autonomous dApp templates, Rust/Solidity boilerplates, and DeAI compute templates.',
         cta: 'Download Templates →',
-        href: '/dev/templates',
+        href: '/coming-soon',
     },
     {
         title: 'GitHub Repositories',
@@ -168,7 +168,7 @@ export default function AdvancedGridFeaturesSection() {
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         <motion.a
-                            href="/dev"
+                            href="/coming-soon"
                             className="group inline-flex items-center gap-3 px-8 py-4 bg-[#8c52ff] hover:bg-[#7a45e0] text-white text-sm font-bold tracking-wide rounded-full transition-all duration-300 shadow-lg shadow-[#8c52ff]/25 hover:shadow-xl hover:shadow-[#8c52ff]/40"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.98 }}
@@ -184,7 +184,7 @@ export default function AdvancedGridFeaturesSection() {
                             </svg>
                         </motion.a>
                         <motion.a
-                            href="/dev/sdks"
+                            href="/coming-soon"
                             className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/15 text-white border-2 border-white/20 hover:border-[#8c52ff]/50 text-sm font-bold tracking-wide rounded-full transition-all duration-300"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.98 }}

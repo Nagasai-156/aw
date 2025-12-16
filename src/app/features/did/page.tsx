@@ -40,7 +40,7 @@ export default function DIDPage() {
                                     <Link href="#architecture" className="px-8 py-4 bg-[#8c52ff] text-white font-black uppercase tracking-wider hover:bg-[#ff4080] transition-all duration-300 text-center">
                                         Explore DID Layer
                                     </Link>
-                                    <Link href="/dev/docs" className="px-8 py-4 border-4 border-white text-white font-black uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 text-center">
+                                    <Link href="/coming-soon" className="px-8 py-4 border-4 border-white text-white font-black uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 text-center">
                                         Developer Docs
                                     </Link>
                                 </div>
@@ -463,7 +463,7 @@ export default function DIDPage() {
                             It is the foundation of the Intelligent Internet.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                            <Link href="/dev/docs" className="px-8 sm:px-10 py-4 sm:py-5 bg-white text-[#8c52ff] font-black text-base sm:text-lg uppercase tracking-wider hover:bg-black hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-3">
+                            <Link href="/coming-soon" className="px-8 sm:px-10 py-4 sm:py-5 bg-white text-[#8c52ff] font-black text-base sm:text-lg uppercase tracking-wider hover:bg-black hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-3">
                                 Start Building <ArrowRight className="w-5 h-5" />
                             </Link>
                             <Link href="/arthaverse/features" className="px-8 sm:px-10 py-4 sm:py-5 border-4 border-white text-white font-black text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-[#8c52ff] transition-all duration-300 inline-flex items-center justify-center gap-3">

@@ -466,7 +466,7 @@ export default function CollectivePage() {
                             <Link href="/contact" className="px-8 py-5 border-4 border-white text-white font-black text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-[#8c52ff] transition-all duration-300 inline-flex items-center justify-center gap-3">
                                 Start a Campus Chapter
                             </Link>
-                            <Link href="/dev/docs" className="px-8 py-5 bg-black text-white font-black text-base sm:text-lg uppercase tracking-wider hover:bg-[#ff4080] transition-all duration-300 inline-flex items-center justify-center gap-3">
+                            <Link href="/coming-soon" className="px-8 py-5 bg-black text-white font-black text-base sm:text-lg uppercase tracking-wider hover:bg-[#ff4080] transition-all duration-300 inline-flex items-center justify-center gap-3">
                                 Build Your First App <ArrowUpRight className="w-5 h-5" />
                             </Link>
                             <Link href="https://github.com" target="_blank" className="px-8 py-5 border-4 border-white text-white font-black text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-[#8c52ff] transition-all duration-300 inline-flex items-center justify-center gap-3">

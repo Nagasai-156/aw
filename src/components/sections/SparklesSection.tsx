@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { StaggerContainer, StaggerItem } from "@/components/ui/scroll-animation";
 
@@ -50,12 +51,12 @@ export default function SparklesSection() {
                 {/* CTA Buttons - Reduced margin */}
                 <StaggerItem className="w-full">
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-6 sm:mt-8 w-full sm:w-auto px-4 sm:px-0">
-                        <button className="bg-[#8c52ff] hover:bg-[#7a45e0] text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 w-full sm:w-auto">
+                        <Link href="/coming-soon" className="bg-[#8c52ff] hover:bg-[#7a45e0] text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 w-full sm:w-auto text-center">
                             GET STARTED
-                        </button>
-                        <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 w-full sm:w-auto">
+                        </Link>
+                        <Link href="/coming-soon" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 text-[13px] sm:text-[14px] font-bold tracking-[0.02em] uppercase transition-all duration-200 w-full sm:w-auto text-center">
                             READ DOCS
-                        </button>
+                        </Link>
                     </div>
                 </StaggerItem>
             </StaggerContainer>

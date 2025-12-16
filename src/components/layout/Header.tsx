@@ -20,7 +20,6 @@ interface NavItem {
 
 
 const navigationItems: NavItem[] = [
-    { label: 'Home', href: '/' },
     {
         label: 'About ArthaChain',
         icon: '🟣',
@@ -42,22 +41,7 @@ const navigationItems: NavItem[] = [
             { label: 'Dual VM (EVM + WASM)', href: '/core/dual-vm', description: 'Virtual machines' },
             { label: 'Consensus', href: '/core/consensus', description: 'Agreement protocol' },
             { label: 'Security Model', href: '/core/security', description: 'Protection mechanisms' },
-            { label: 'Network Status', href: '/core/network-status', description: 'Live network stats' },
             { label: 'Protocol Papers', href: '/core/papers', description: 'Technical documentation' },
-        ],
-    },
-    {
-        label: 'ArthaDev Hub',
-        icon: '⚫',
-        dropdown: [
-            { label: 'Docs', href: '/dev/docs', description: 'Developer documentation' },
-            { label: 'SDKs', href: '/dev/sdks', description: 'Software development kits' },
-            { label: 'Explorer', href: '/dev/explorer', description: 'Blockchain explorer' },
-            { label: 'Testnet / Faucet', href: '/dev/testnet', description: 'Test network access' },
-            { label: 'Validator Hub', href: '/dev/validators', description: 'Run a validator' },
-            { label: 'Bounties & Grants', href: '/dev/bounties', description: 'Funding opportunities' },
-            { label: 'Tutorials', href: '/dev/tutorials', description: 'Step-by-step guides' },
-            { label: 'GitHub', href: 'https://github.com/arthachain', description: 'Source code', external: true },
         ],
     },
     {
@@ -74,20 +58,7 @@ const navigationItems: NavItem[] = [
             { label: 'Use Cases', href: '/features/use-cases', description: 'Real-world applications' },
         ],
     },
-    {
-        label: 'Learn',
-        icon: '⚪',
-        dropdown: [
-            { label: 'Blog', href: '/blog', description: 'Latest updates & insights' },
-            { label: 'FAQ', href: '/faq', description: 'Common questions answered' },
-            { label: 'Whitepaper', href: '#whitepaper', description: 'Complete technical paper' },
-            { label: 'Roadmap', href: '#roadmap', description: 'Development timeline' },
-            { label: 'Beginner Guides', href: '#guides', description: 'Getting started' },
-            { label: 'Research', href: '#research', description: 'Academic papers' },
-            { label: 'E-books', href: '#ebooks', description: 'Educational resources' },
-            { label: 'Security Audits', href: '#audits', description: 'Security reports' },
-        ],
-    },
+
     {
         label: 'Community',
         icon: '💗',
@@ -95,10 +66,6 @@ const navigationItems: NavItem[] = [
             { label: 'Artha Collective', href: '/community/collective', description: 'Join our community' },
             { label: 'Ambassadors', href: '/community/ambassadors', description: 'Become an ambassador' },
             { label: 'Campus Program', href: '/community/campus', description: 'University initiatives' },
-            { label: 'Events', href: '/community/events', description: 'Upcoming events' },
-            { label: 'Rewards', href: '/community/rewards', description: 'Earn rewards' },
-            { label: 'Careers', href: '/community/careers', description: 'Join the team' },
-            { label: 'Newsletter', href: '/community/newsletter', description: 'Stay updated' },
             { label: 'Discord', href: 'https://discord.gg/arthachain', description: 'Join our Discord', external: true },
             { label: 'X (Twitter)', href: 'https://twitter.com/arthachain', description: 'Follow us on X', external: true },
             { label: 'Telegram', href: 'https://t.me/arthachain', description: 'Join Telegram group', external: true },
@@ -212,7 +179,7 @@ export default function Header() {
                     {/* CTA Button - Desktop */}
                     <div className="hidden lg:block">
                         <Link
-                            href="#waitlist"
+                            href="/coming-soon"
                             className="inline-block bg-[#8c52ff] text-white hover:bg-[#ff4080] px-6 py-3 text-[13px] font-bold uppercase tracking-wide transition-colors border-2 border-[#8c52ff] hover:border-[#ff4080]"
                         >
                             GET STARTED
@@ -291,7 +258,7 @@ export default function Header() {
                         {/* Mobile CTA */}
                         <div className="px-4 pt-4">
                             <Link
-                                href="#waitlist"
+                                href="/coming-soon"
                                 className="block text-center bg-[#8c52ff] text-white hover:bg-[#ff4080] px-6 py-3 text-sm font-bold uppercase transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >

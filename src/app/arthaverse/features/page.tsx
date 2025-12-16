@@ -427,7 +427,7 @@ export default function FeaturesPage() {
                     <StaggerItem>
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                             <Link
-                                href="/dev/docs"
+                                href="/coming-soon"
                                 className="px-8 sm:px-10 py-4 sm:py-5 bg-[#8c52ff] text-white font-black text-base sm:text-lg uppercase tracking-wider hover:bg-[#ff4080] transition-all duration-300 inline-flex items-center justify-center gap-3"
                             >
                                 Start Building <ArrowRight className="w-5 h-5" />

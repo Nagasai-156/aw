@@ -408,7 +408,7 @@ export default function DeFiPage() {
                             </h2>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-                            <Link href="/dev/docs" className="px-8 sm:px-10 py-4 sm:py-5 bg-[#ffc502] text-black font-black text-base sm:text-lg uppercase tracking-wider hover:bg-white transition-all duration-300 inline-flex items-center justify-center gap-3">
+                            <Link href="/coming-soon" className="px-8 sm:px-10 py-4 sm:py-5 bg-[#ffc502] text-black font-black text-base sm:text-lg uppercase tracking-wider hover:bg-white transition-all duration-300 inline-flex items-center justify-center gap-3">
                                 Start Building <ArrowRight className="w-5 h-5" />
                             </Link>
                             <Link href="/arthaverse/features" className="px-8 sm:px-10 py-4 sm:py-5 border-4 border-white text-white font-black text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 inline-flex items-center justify-center gap-3">

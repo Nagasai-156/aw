@@ -32,14 +32,14 @@ export default function CTASection() {
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <Link
-                            href="/get-started"
+                            href="/coming-soon"
                             className="flex items-center gap-2 px-12 py-5 bg-white text-black font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors rounded-sm"
                         >
                             GET STARTED
                             <ArrowUpRight className="w-5 h-5" />
                         </Link>
                         <Link
-                            href="/docs"
+                            href="/coming-soon"
                             className="px-12 py-5 bg-transparent border-2 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 rounded-sm"
                         >
                             VIEW DOCS
